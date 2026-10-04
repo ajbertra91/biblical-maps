@@ -181,9 +181,9 @@ export const FAMILIES: Family[] = [
     name: 'Abraham',
     sub: 'The life of Abraham, Genesis 11 to 25',
     stops: [
-      { place: 'ur', ref: 'Gen 11:27–31', event: 'Terah takes Abram, Sarai and Lot from Ur to go to Canaan', span: 620, note: 'God brought Abram out from Ur (Gen 15:7). Acts 7:2–4 says God appeared to him in Mesopotamia, before he lived in Haran.' },
+      { place: 'ur', ref: 'Gen 11:27–31', event: 'Terah takes Abram, Sarai and Lot from Ur to go to Canaan', span: 620, note: 'God brought Abram out from Ur (Gen 15:7). Acts 7:2–3 says God appeared to him in Mesopotamia, before he lived in Haran. Acts puts the call of Gen 12:1 there.' },
       { place: 'haran', ref: 'Gen 11:31–32', event: 'They settle in Haran. Terah dies there', span: 300 },
-      { place: 'haran', ref: 'Gen 12:1–5', event: 'The LORD calls Abram. At 75 he leaves Haran with Sarai, Lot and their people', span: 300 },
+      { place: 'haran', ref: 'Gen 12:1–5', event: 'The LORD calls Abram. At 75 he leaves Haran with Sarai, Lot and their people', span: 300, note: 'Acts 7:4 says Abram left Haran after his father died. If Terah was 70 at the birth of Abram (Gen 11:26), Terah was still alive (Gen 11:32; 12:4). Many writers say Abram was not the first son.' },
       { place: 'shechem', ref: 'Gen 12:6–7', event: 'The LORD appears at the oak of Moreh and promises the land. Abram builds an altar', span: 140 },
       { place: 'bethel', ref: 'Gen 12:8', event: 'Abram pitches his tent between Bethel and Ai and builds an altar', span: 120 },
       { place: 'egypt', ref: 'Gen 12:10–20', event: 'Famine drives Abram to Egypt. Pharaoh takes Sarai, then sends them away', span: 320, note: 'Abram first journeys toward the Negev (Gen 12:9).' },
@@ -202,7 +202,7 @@ export const FAMILIES: Family[] = [
       { place: 'salem', ref: 'Gen 14:17–24', event: 'Melchizedek, king of Salem, blesses Abram. Abram gives him a tenth', moves: [
         { force: 'abraham', label: 'Abram', path: ['damascus', 'salem'], ref: 'Gen 14:16–17' },
       ] },
-      { place: 'mamre', ref: 'Gen 15:1–21', event: 'The LORD makes a covenant with Abram. He promises the land from the river of Egypt to the Euphrates', span: 900, note: 'The text does not name the place. Abram lived by the oaks of Mamre (Gen 14:13).' },
+      { place: 'mamre', ref: 'Gen 15:1–21', event: 'The LORD makes a covenant with Abram. He promises the land from the river of Egypt to the Euphrates', span: 900, note: 'The text does not name the place. Abram lived by the oaks of Mamre (Gen 14:13). Acts 7:5 says God gave him no land, not even a foot, but promised it to him and his offspring when he had no child. Acts 7:6–7 quotes Gen 15:13–14: his offspring will be slaves for 400 years.' },
       { place: 'mamre', ref: 'Gen 16:1–16', event: 'Hagar flees from Sarai. The angel of the LORD sends her back. She bears Ishmael', note: 'Hagar was on the way to Shur (Gen 16:7).', moves: [
         { force: 'hagar', label: 'Hagar', path: ['mamre', 'lahairoi'], ref: 'Gen 16:6–14' },
       ] },
@@ -214,7 +214,7 @@ export const FAMILIES: Family[] = [
         { force: 'lot', label: 'Lot', path: ['sodom', 'zoar'], ref: 'Gen 19:15–23' },
       ] },
       { place: 'gerar', ref: 'Gen 20:1–18', event: 'Abraham lives in Gerar. Abimelech takes Sarah, then gives her back', span: 120 },
-      { place: 'gerar', ref: 'Gen 21:1–7', event: 'Sarah bears Isaac. Abraham is 100', span: 120, note: 'The text does not name the place. Abraham lived in Gerar (Gen 20:1).' },
+      { place: 'gerar', ref: 'Gen 21:1–7', event: 'Sarah bears Isaac. Abraham is 100', span: 120, note: 'The text does not name the place. Abraham lived in Gerar (Gen 20:1). Abraham circumcised Isaac on the eighth day (Gen 21:4; Acts 7:8).' },
       { place: 'gerar', ref: 'Gen 21:8–21', event: 'Abraham sends Hagar and Ishmael away', note: 'The text does not name the place.', moves: [
         { force: 'hagar', label: 'Hagar and Ishmael', path: ['gerar', 'beersheba', 'paran'], ref: 'Gen 21:14, 21' },
       ] },
@@ -223,7 +223,7 @@ export const FAMILIES: Family[] = [
         { force: 'abraham', label: 'Abraham and Isaac', path: ['beersheba', 'moriah'], ref: 'Gen 22:3–4' },
       ] },
       { place: 'beersheba', ref: 'Gen 22:15–19', event: 'The angel of the LORD repeats the promise. Abraham returns to Beersheba', span: 120 },
-      { place: 'machpelah', ref: 'Gen 23:1–20', event: 'Sarah dies at Hebron. Abraham buys the cave of Machpelah and buries her', span: 100, note: 'Sarah died at Kiriath-arba, that is, Hebron (Gen 23:2).' },
+      { place: 'machpelah', ref: 'Gen 23:1–20', event: 'Sarah dies at Hebron. Abraham buys the cave of Machpelah and buries her', span: 100, note: 'Sarah died at Kiriath-arba, that is, Hebron (Gen 23:2). Acts 7:16 says Abraham bought a tomb in Shechem from the sons of Hamor. In Genesis, Abraham buys Machpelah from Ephron the Hittite (Gen 23:16), and Jacob buys land at Shechem from the sons of Hamor (Gen 33:19).' },
       { place: 'mamre', ref: 'Gen 24:1–67', event: 'Abraham sends his servant to the city of Nahor. The servant brings back Rebekah for Isaac', note: 'The text does not say where Abraham lived. The arrow starts at Mamre. Laban, the brother of Rebekah, lived in Haran (Gen 27:43).', moves: [
         { force: 'abraham', label: 'Servant', path: ['mamre', 'haran'], ref: 'Gen 24:10' },
         { force: 'abraham', label: 'Rebekah', path: ['haran', 'lahairoi'], ref: 'Gen 24:61–62' },

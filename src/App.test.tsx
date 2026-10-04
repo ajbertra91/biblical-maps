@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App.tsx'
+import { PhotoViewer } from './PhotoViewer'
 import { FAMILIES, PLACES } from './data/places'
+import { PHOTOS } from './data/photos'
+
+// Every photo file in public/assets. Vite lists the paths. It does not load the files.
+const FILES = Object.keys(import.meta.glob('/public/assets/places/**/*.jpg'))
 
 const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John) \d+/
 
@@ -64,6 +69,31 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Abraham' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^ur, gen 11:27–31/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /mount moriah, gen 22:1–14/i })).toBeInTheDocument()
+  })
+
+  it('has a local file and a credit for every site photo', () => {
+    for (const [id, photos] of Object.entries(PHOTOS)) {
+      expect(PLACES[id], id).toBeDefined()
+      for (const p of photos) {
+        expect(FILES, p.src).toContain(`/public/${p.src}`)
+        expect(p.credit, p.src).not.toBe('')
+        expect(p.source, p.src).toMatch(/^https:\/\/commons\.wikimedia\.org\//)
+      }
+    }
+  })
+
+  it('steps through site photos with their credits', () => {
+    // jsdom does not scroll, so the stop panel stays on the overview. Test the viewer alone.
+    render(<PhotoViewer place="Ur" photos={PHOTOS.ur} onClose={() => {}} />)
+    // jsdom has no showModal, so the dialog stays closed and has no role. Query it directly.
+    const dialog = document.querySelector('dialog[aria-label="Photos of Ur"]')!
+    expect(dialog).toHaveTextContent(PHOTOS.ur[0].caption)
+    expect(dialog).toHaveTextContent(PHOTOS.ur[0].credit)
+    fireEvent.click(screen.getByLabelText('Next photo'))
+    expect(dialog).toHaveTextContent(PHOTOS.ur[1].caption)
+    fireEvent.click(screen.getByLabelText('Previous photo'))
+    fireEvent.click(screen.getByLabelText('Previous photo'))
+    expect(dialog).toHaveTextContent(PHOTOS.ur.at(-1)!.caption)
   })
 
   it('switches the map family', () => {

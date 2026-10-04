@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { MapLayer } from './MapLayer'
+import { PhotoViewer } from './PhotoViewer'
 import { centerOf, type Key } from './camera'
 import { FAMILIES, FORCES, PLACES, familyById, type Confidence, type FamilyId, type Stop } from './data/places'
+import { PHOTOS } from './data/photos'
 import { distanceKm, project, type Pt } from './data/geo-utils'
 import { useScrollCamera } from './useScrollCamera'
 
@@ -26,6 +28,9 @@ function App() {
   const cite = useRef<HTMLDivElement>(null)
   const citeAt = useRef<{ p: Pt; hover: boolean } | null>(null)
   const [hover, setHover] = useState<string | null>(null)
+  // The place whose photos are open. It stays fixed if the camera moves on behind the viewer.
+  const [photosFor, setPhotosFor] = useState<string | null>(null)
+  const closePhotos = useCallback(() => setPhotosFor(null), [])
 
   const keys = useMemo<Key[]>(() => {
     const at = (id: string) => project(PLACES[id].lat, PLACES[id].lon)
@@ -42,7 +47,7 @@ function App() {
     })]
   }, [family, stops])
 
-  const { chapter } = useScrollCamera({ keys, stopCount: stops.length, svgRef, stageRef, readout, cite, citeAt })
+  const { chapter, requestDraw } = useScrollCamera({ keys, stopCount: stops.length, svgRef, stageRef, readout, cite, citeAt })
 
   // Real straight-line distances between stops. Both ends need coordinates.
   // A stop off the route has no leg. The next leg starts at the last stop on the route.
@@ -76,6 +81,7 @@ function App() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT|SUMMARY)$/.test(e.target.tagName)) return
+      if (e.target instanceof HTMLElement && e.target.closest('dialog')) return
       if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goTo(Math.min(stops.length, chapter + 1)) }
       if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goTo(Math.max(0, chapter - 1)) }
     }
@@ -95,6 +101,7 @@ function App() {
 
   const stop = chapter > 0 ? stops[chapter - 1] : undefined
   const place = stop ? PLACES[stop.place] : undefined
+  const photos = stop ? PHOTOS[stop.place] : undefined
 
   // The pop-up shows the hovered place, or else the current stop. It lists every reference for that place.
   const citeId = hover ?? stop?.place
@@ -102,7 +109,8 @@ function App() {
   useEffect(() => {
     const p = citeId ? PLACES[citeId] : undefined
     citeAt.current = p ? { p: project(p.lat, p.lon), hover: hover !== null } : null
-  }, [citeId, hover])
+    requestDraw()
+  }, [citeId, hover, requestDraw])
 
   return (
     <>
@@ -174,7 +182,15 @@ function App() {
               </p>
               <h1 className="place-name">{place.name}</h1>
               <p className="event">{stop.event}</p>
-              <p className="ref"><span>{stop.ref}</span></p>
+              <p className="ref">
+                <span>{stop.ref}</span>
+                {photos && (
+                  <button className="photos-open" onClick={() => setPhotosFor(stop.place)} aria-haspopup="dialog">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" /><circle cx="5.5" cy="6.5" r="1.3" /><path d="M2 12l4-4 3 3 2-2 3 3" /></svg>
+                    Photos <span className="num">{photos.length}</span>
+                  </button>
+                )}
+              </p>
               {stop.moves && (
                 <ul className="moves-list" aria-label="Army movements">
                   {stop.moves.map((m, i) => (
@@ -212,6 +228,7 @@ function App() {
           <li><i className="k-pin" />{hasRoute ? 'Stop' : 'Battle'}</li>
         </ul>
       </div>
+      {photosFor && <PhotoViewer place={PLACES[photosFor].name} photos={PHOTOS[photosFor]} onClose={closePhotos} />}
       <div className="scroll-space" style={{ height: `calc(100svh + ${stops.length * 70}svh)` }} aria-hidden="true" />
     </>
   )

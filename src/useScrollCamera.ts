@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useCallback, useEffect, useRef, useState, type RefObject } from 'react'
 import { cameraAt, flight, viewBox, type Key } from './camera'
 import { kmPerUnit, unproject, type Pt } from './data/geo-utils'
 
@@ -21,6 +21,7 @@ export function useScrollCamera({ keys, stopCount, svgRef, stageRef, readout, ci
   const target = useRef(0)
   const current = useRef(0)
   const lastChapter = useRef(0)
+  const redraw = useRef<() => void>(() => {})
 
   useEffect(() => {
     const svg = svgRef.current
@@ -86,31 +87,50 @@ export function useScrollCamera({ keys, stopCount, svgRef, stageRef, readout, ci
       }
     }
 
+    // The loop runs only while the camera moves. At rest it stops, so an idle page does no work.
+    // A scroll, a resize or a call to redraw starts it again.
+    let dirty = true
     const frame = (now: number) => {
       const dt = Math.min(0.1, (now - last) / 1000)
       last = now
       const diff = target.current - current.current
       if (reduce?.matches || Math.abs(diff) < 0.0004) current.current = target.current
       else current.current += diff * (1 - Math.exp(-dt * 5.5))
-      draw(current.current)
+      if (diff !== 0 || dirty) draw(current.current)
+      dirty = false
+      raf = current.current === target.current ? 0 : requestAnimationFrame(frame)
+    }
+    const wake = () => {
+      dirty = true
+      if (raf) return
+      last = performance.now()
       raf = requestAnimationFrame(frame)
     }
+    redraw.current = wake
 
+    const onScroll = () => {
+      readScroll()
+      wake()
+    }
     const resize = () => {
       w = stage.clientWidth
       h = stage.clientHeight
+      wake()
     }
     readScroll()
     current.current = target.current
     raf = requestAnimationFrame(frame)
-    window.addEventListener('scroll', readScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', resize)
     return () => {
       cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', readScroll)
+      redraw.current = () => {}
+      window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', resize)
     }
   }, [keys, stopCount, svgRef, stageRef, readout, cite, citeAt])
 
-  return { chapter }
+  /** Draws one frame. Call it after a change the camera cannot see, such as the pop-up target. */
+  const requestDraw = useCallback(() => redraw.current(), [])
+  return { chapter, requestDraw }
 }
