@@ -305,5 +305,1343 @@ export const PHOTOS: Record<string, Photo[]> = {
       "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
       "source": "https://commons.wikimedia.org/wiki/File:Tel_Be%27er_Sheva_Overview_2007041.JPG"
     }
+  ],
+  "rameses": [
+    {
+      "src": "assets/places/rameses/1.jpg",
+      "caption": "The feet of a colossal statue of Ramesses II at Qantir, the site of Pi-Ramesses.",
+      "credit": "Iri-en-achti",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Kolossalstatue_Qantir.JPG"
+    },
+    {
+      "src": "assets/places/rameses/2.jpg",
+      "caption": "Tell el-Dab'a, the site of Avaris, next to Qantir. Pi-Ramesses grew over this city.",
+      "credit": "Didia",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_el-daba04.jpg"
+    },
+    {
+      "src": "assets/places/rameses/3.jpg",
+      "caption": "A small mound at Tell el-Dab'a, with fields and the village of Ezbet Rushdi.",
+      "credit": "Didia",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_el-Daba.jpg"
+    }
+  ],
+  "succoth": [
+    {
+      "src": "assets/places/succoth/1.jpg",
+      "caption": "Tell el-Maskhuta in the Wadi Tumilat, in an early photograph. Writers link it to Pithom or to Succoth.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Mashuta_(Pithom),_Egypt_LOC_matpc.23182.jpg"
+    },
+    {
+      "src": "assets/places/succoth/2.jpg",
+      "caption": "Brick chambers at Tell el-Maskhuta in 1904. Édouard Naville called them the store chambers of Pithom (Exod 1:11).",
+      "credit": "Underwood & Underwood",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Brick_store-chambers_of_Pithom,_the_city_built_by_Hebrew_bondsmen_(looking_north)_--Egypt._(32)_(1904)_-_front_edited_-_TIMEA.jpg"
+    }
+  ],
+  "crossing": [
+    {
+      "src": "assets/places/crossing/1.jpg",
+      "caption": "The beach at Nuweiba, on the Gulf of Aqaba.",
+      "credit": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Nuweiba,_Beach,_Red_Sea,_Sinai,_Egypt.jpg"
+    },
+    {
+      "src": "assets/places/crossing/2.jpg",
+      "caption": "Sunrise over the Gulf of Aqaba near Nuweiba. The coast of Saudi Arabia, the land of Midian, is on the far side.",
+      "credit": "Florian Prischl",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunrise_up_with_camels_near_Nuweiba.jpg"
+    },
+    {
+      "src": "assets/places/crossing/3.jpg",
+      "caption": "Nuweiba and the wide beach at the mouth of the wadi, from the hills.",
+      "credit": "Cairocamels B. Simpson",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Nuweiba_Port.JPG"
+    }
+  ],
+  "marah": [
+    {
+      "src": "assets/places/marah/1.jpg",
+      "caption": "Rock-cut tombs at Maghair Shuaib, near al-Bad'. Local tradition links the site to Jethro, the father-in-law of Moses.",
+      "credit": "بندر الحويفي",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D9%85%D8%AF%D8%A7%D8%A6%D9%86_%D8%B4%D8%B9%D9%8A%D8%A8.jpg"
+    },
+    {
+      "src": "assets/places/marah/2.jpg",
+      "caption": "The sign at the Al-Sauaidani Well in al-Bad'. Local people call it the Well of Moses.",
+      "credit": "Wikkiwooki",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Al-Sauaidani_Well.jpg"
+    },
+    {
+      "src": "assets/places/marah/3.jpg",
+      "caption": "Ayun Musa, the Springs of Moses, near Suez, in an early photograph. Writers who use the traditional route put Marah here or at Ain Hawarah.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Sinai._Springs_of_Moses._Exodus_15-23_LOC_matpc.23007.jpg"
+    }
+  ],
+  "sinai": [
+    {
+      "src": "assets/places/sinai/1.jpg",
+      "caption": "Cloud and snow on Jabal al-Lawz, in the Tabuk region of Saudi Arabia, in 2022.",
+      "credit": "وكالة الأنباء السعودية",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%AB%D9%84%D9%88%D8%AC_%D8%AA%D8%BA%D8%B7%D9%8A_%D8%AC%D8%A8%D9%84_%D8%A7%D9%84%D9%84%D9%88%D8%B2_%D9%81%D9%8A_%D8%AA%D8%A8%D9%88%D9%83_2022.jpg"
+    },
+    {
+      "src": "assets/places/sinai/2.jpg",
+      "caption": "Camels in the snow on Jabal al-Lawz, in 2021.",
+      "credit": "وكالة الأنباء السعودية",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D8%A5%D8%A8%D9%84_%D8%AA%D8%B3%D8%B1%D8%AD_%D9%81%D9%8A_%D8%A7%D9%84%D8%AB%D9%84%D9%88%D8%AC_%D8%A8%D8%AC%D8%A8%D9%84_%D8%A7%D9%84%D9%84%D9%88%D8%B2.jpg"
+    },
+    {
+      "src": "assets/places/sinai/3.jpg",
+      "caption": "Jabal al-Lawz from the International Space Station. The Sinai Peninsula is across the Gulf of Aqaba.",
+      "credit": "Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Jabal_Al-Lawz_Location.jpg"
+    },
+    {
+      "src": "assets/places/sinai/4.jpg",
+      "caption": "The path to Jebel Musa in the Sinai Peninsula, the traditional Mount Sinai.",
+      "credit": "Berthold Werner",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mount_Sinai_BW_4.jpg"
+    }
+  ],
+  "kadesh": [
+    {
+      "src": "assets/places/kadesh/1.jpg",
+      "caption": "The oasis at Ain el-Qudeirat, often identified with Kadesh-barnea, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Sinai._Ain_Gedeirat,_Kadesh_Barnea._Num._20-1_LOC_matpc.23028.jpg"
+    },
+    {
+      "src": "assets/places/kadesh/2.jpg",
+      "caption": "Trees and the stream bed at the oasis of Ain el-Qudeirat.",
+      "credit": "רוני קניגסברג",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_75836_the_oasis_of_kadesh_barnea.jpg"
+    },
+    {
+      "src": "assets/places/kadesh/3.jpg",
+      "caption": "Ain el-Qudeirat below the hills, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:To_Sinai_by_car._Ain_Gedeirat._Possibly_Kadesh_Barnea_of_Num._32-8,_etc._LOC_matpc.15542.jpg"
+    }
+  ],
+  "ezion": [
+    {
+      "src": "assets/places/ezion/1.jpg",
+      "caption": "Pharaoh's Island (Jezirat Faraun) in the Gulf of Aqaba, in a photograph of the 1800s. Some writers put Ezion-geber here, not at Tell el-Kheleifeh.",
+      "credit": "Frank Mason Good",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Graia,_On_the_Red_Sea,_Near_Ezion-Geber,_Port_of_King_Solomon_MET_DP71226.jpg"
+    },
+    {
+      "src": "assets/places/ezion/2.jpg",
+      "caption": "Pharaoh's Island today, with the castle of Saladin on it.",
+      "credit": "Youssof Saafan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%B9%D9%84%D9%8A_%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9_%D9%81%D8%B1%D8%B9%D9%88%D9%86_%D8%A8%D8%B7%D8%A7%D8%A8%D8%A7.jpg"
+    },
+    {
+      "src": "assets/places/ezion/3.jpg",
+      "caption": "Travelers on camels near Ezion-geber, in a stereo photograph from about 1860 to 1880.",
+      "credit": "Tekniska museet",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ezion_Geber_(8764228745).jpg"
+    }
+  ],
+  "nebo": [
+    {
+      "src": "assets/places/nebo/1.jpg",
+      "caption": "The view from Mount Nebo over the Dead Sea, the Jordan Valley and Jericho (Deut 34:1–3).",
+      "credit": "Mohammad hajeer",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Overhead_view_from_Mount_Nebo_of_the_Dead_Sea_and_Jordan_Valley_area.jpg"
+    },
+    {
+      "src": "assets/places/nebo/2.jpg",
+      "caption": "The Memorial of Moses, the church on top of Mount Nebo.",
+      "credit": "Mohammad hajeer",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Memorial_of_Moses_in_Mount_Nebo.jpg"
+    },
+    {
+      "src": "assets/places/nebo/3.jpg",
+      "caption": "The valley below Mount Nebo, toward the spring of Moses (Ayun Musa).",
+      "credit": "Verity Cridland",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:View_from_Mount_Nebo_looking_at_Moses_Spring.jpg"
+    }
+  ],
+  "rephidim": [
+    {
+      "src": "assets/places/rephidim/1.jpg",
+      "caption": "The oasis in Wadi Feiran, with Jebel Serbal behind it, in an early photograph. Wadi Feiran is the traditional site of Rephidim. The map uses a site in Midian.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Sinai._Oasis_in_Wady_Feiran_(Rephidim),_and_distant_view_of_Jebel_Serbal._LOC_matpc.07236.jpg"
+    },
+    {
+      "src": "assets/places/rephidim/2.jpg",
+      "caption": "The road through Wadi Feiran toward Jebel Serbal, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:To_Sinai_by_car._Wadi_Feiran._Approaching_Gebel_Serbal_LOC_matpc.15560.jpg"
+    },
+    {
+      "src": "assets/places/rephidim/3.jpg",
+      "caption": "A road near Jabal al-Lawz in snow. The map puts Rephidim at the split rock west of this mountain.",
+      "credit": "وكالة الأنباء السعودية",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D8%B7%D8%B1%D9%8A%D9%82_%D8%AD%D9%88%D9%84_%D8%AC%D8%A8%D9%84_%D8%A7%D9%84%D9%84%D9%88%D8%B2_%D8%A8%D9%8A%D9%86_%D8%A7%D9%84%D8%AB%D9%84%D9%88%D8%AC_%D8%A8%D9%85%D9%86%D8%B7%D9%82%D8%A9_%D8%AA%D8%A8%D9%88%D9%83.jpg"
+    }
+  ],
+  "arad": [
+    {
+      "src": "assets/places/arad/1.jpg",
+      "caption": "Tel Arad from the air. The fortress on the hill is from the time of the kings of Judah.",
+      "credit": "זאב שטיין",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:89883_tel_arad_PikiWiki_Israel.jpg"
+    },
+    {
+      "src": "assets/places/arad/2.jpg",
+      "caption": "The lower city of Tel Arad, with the fortress hill behind it. The lower city is from the Early Bronze Age.",
+      "credit": "Ovedc",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:By_Ovedc_-_Tel_Arad_(9).jpg"
+    },
+    {
+      "src": "assets/places/arad/3.jpg",
+      "caption": "Towers of the fortress at Tel Arad.",
+      "credit": "Acer11",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Arad_2.JPG"
+    }
+  ],
+  "heshbon": [
+    {
+      "src": "assets/places/heshbon/1.jpg",
+      "caption": "Tell Hesban, the site of Heshbon. Heshbon was the city of Sihon, king of the Amorites (Num 21:26).",
+      "credit": "Bashar Tabbah",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_Hesban.jpg"
+    },
+    {
+      "src": "assets/places/heshbon/2.jpg",
+      "caption": "An arch in the ruins at Tell Hesban.",
+      "credit": "Bashar Tabbah",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_Hesban_(Arch).jpg"
+    },
+    {
+      "src": "assets/places/heshbon/3.jpg",
+      "caption": "The site of Heshbon, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:East_of_Jordan_and_the_Dead_Sea._Site_of_Heshbon_LOC_matpc.06957.jpg"
+    }
+  ],
+  "edrei": [
+    {
+      "src": "assets/places/edrei/1.jpg",
+      "caption": "Daraa in about 1905. The hill in the middle is the old mound of the town.",
+      "credit": "Moritz, B. (Bernhard), 1859-1939.",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Der%CA%BB%C3%A2h_123_km_von_Damaskus,_529_m_%C3%BC._M._In_der_Mitte_der_Kerak_(Burgberg)._LCCN2014648727.jpg"
+    },
+    {
+      "src": "assets/places/edrei/2.jpg",
+      "caption": "Daraa in 1917.",
+      "credit": "ביתמונה",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:%D7%93%D7%A8%D7%A2%D7%90_1917_-_i_%D7%90%D7%95%D7%A8%D7%99_%D7%95%D7%95%D7%9C%D7%A3i_btm14593.jpeg"
+    },
+    {
+      "src": "assets/places/edrei/3.jpg",
+      "caption": "Farmers thresh grain at Daraa in 1906.",
+      "credit": "Moritz, B. (Bernhard), 1859-1939.",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Der%CA%BB%C3%A2h_Getreidedreschen_mit_dem_Dreschschittlitten._1906._LCCN2014648726.jpg"
+    }
+  ],
+  "kenath": [
+    {
+      "src": "assets/places/kenath/1.jpg",
+      "caption": "Ruins of the basilica complex at Qanawat, the site of Kenath.",
+      "credit": "Frank Kidner",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Basilica_Complex,_Qanawat_(%D9%82%D9%86%D9%88%D8%A7%D8%AA),_Syria_-_East_part-_view_from_north_-_PHBZ024_2016_3573_-_Dumbarton_Oaks.jpg"
+    },
+    {
+      "src": "assets/places/kenath/2.jpg",
+      "caption": "The Roman nymphaeum at Qanawat, in 2008.",
+      "credit": "Gianfranco Gazzetti",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Al_Quanawat-Kanatha_-_GAR_-_8-04.jpg"
+    },
+    {
+      "src": "assets/places/kenath/3.jpg",
+      "caption": "Ruins at Qanawat in 1900. Gertrude Bell took this photograph.",
+      "credit": "Gertrude Bell (in year 1900)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:A-060_Qanawat,_Syria_in_1900_by_Gertrude_Bell.jpg"
+    }
+  ],
+  "shittim": [
+    {
+      "src": "assets/places/shittim/1.jpg",
+      "caption": "Tall el-Hammam above the Jordan Valley. It is one proposed site of Abel-shittim.",
+      "credit": "Deg777",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tall_el-Hammam_overlooking_the_Jordan_Valley_2007.jpg"
+    },
+    {
+      "src": "assets/places/shittim/2.jpg",
+      "caption": "Date palms near Tall el-Hammam, in the plains of Moab.",
+      "credit": "Deg777",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Date_Palms_Tall_el-Hammam_Jordan.jpg"
+    }
+  ],
+  "gilgal": [
+    {
+      "src": "assets/places/gilgal/1.jpg",
+      "caption": "A foot-shaped stone enclosure from the Iron Age, near Wadi al-Makuk. Some archaeologists link these enclosures to Gilgal.",
+      "credit": "Lipkin.Aaron",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gilgal_of_Benjamin.jpg"
+    },
+    {
+      "src": "assets/places/gilgal/2.jpg",
+      "caption": "The stone walls of the enclosure at Bedhat esh-Sha'ab (Gilgal Argaman), in the Jordan Valley.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gilgal-Argaman-682.jpg"
+    },
+    {
+      "src": "assets/places/gilgal/3.jpg",
+      "caption": "A hill in the Jordan Valley that tradition links to the camp at Gilgal (Josh 5:2–9).",
+      "credit": "Rgrobman",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gilgal_.jpg"
+    }
+  ],
+  "ai": [
+    {
+      "src": "assets/places/ai/1.jpg",
+      "caption": "Ruins at et-Tell, the traditional site of Ai.",
+      "credit": "Alex Ostrovski",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Et-Tell_(Ai)_ruins.jpg"
+    },
+    {
+      "src": "assets/places/ai/2.jpg",
+      "caption": "Excavated walls at et-Tell, next to the village of Deir Dibwan.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Deir-Dibwan-686.jpg"
+    },
+    {
+      "src": "assets/places/ai/3.jpg",
+      "caption": "Khirbet el-Maqatir from above. It is another proposed site of Ai.",
+      "credit": "Tom Miller",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Maqatir_Aerial_Oblique.jpg"
+    }
+  ],
+  "gibeon": [
+    {
+      "src": "assets/places/gibeon/1.jpg",
+      "caption": "The rock-cut pool at Gibeon (el-Jib). Steps go down around its wall (2 Sam 2:13).",
+      "credit": "Ovedc",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:By_Ovedc_-_Gibeon_(1).jpg"
+    },
+    {
+      "src": "assets/places/gibeon/2.jpg",
+      "caption": "Hikers at Gibeon, with fields around the site.",
+      "credit": "Ovedc",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:By_Ovedc_-_Gibeon_(2).jpg"
+    },
+    {
+      "src": "assets/places/gibeon/3.jpg",
+      "caption": "A rock-cut cave at Gibeon.",
+      "credit": "Ovedc",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:By_Ovedc_-_Gibeon_(11).jpg"
+    }
+  ],
+  "bethhoron": [
+    {
+      "src": "assets/places/bethhoron/1.jpg",
+      "caption": "Beit Ur al-Fauqa, the site of Upper Beth-horon, in a photograph from 1950 to 1977.",
+      "credit": "Matson Photo Service, photographer",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Beit_Ur_al-Fauqa_color.jpg"
+    },
+    {
+      "src": "assets/places/bethhoron/2.jpg",
+      "caption": "The ascent of Beth-horon, the old road from the coast up to the hills, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Jaffa_to_Jerusalem._Ascent_to_Beth_Horon_LOC_matpc.22720.jpg"
+    },
+    {
+      "src": "assets/places/bethhoron/3.jpg",
+      "caption": "Upper Beth-horon from the air, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Air_views_of_Palestine._West_of_Jerusalem._Upper_Beth-Horon._Beit_%27Ur_el-Foka_LOC_matpc.15867.jpg"
+    }
+  ],
+  "azekah": [
+    {
+      "src": "assets/places/azekah/1.jpg",
+      "caption": "The hill of Azekah above the Elah Valley.",
+      "credit": "Davidbena",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Azekah,_Israel.jpg"
+    },
+    {
+      "src": "assets/places/azekah/2.jpg",
+      "caption": "The Elah Valley from the top of Tel Azekah.",
+      "credit": "Maor X",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Emek_HaEla_viewed_from_Tel_Azeka_-Spring_2013.jpg"
+    },
+    {
+      "src": "assets/places/azekah/3.jpg",
+      "caption": "Tel Azekah from Khirbet Qeiyafa. The walls in front are at Khirbet Qeiyafa.",
+      "credit": "Wilson44691",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Khirbet_Qeiyafa_view_of_Tel_Azeka.jpg"
+    }
+  ],
+  "makkedah": [
+    {
+      "src": "assets/places/makkedah/1.jpg",
+      "caption": "The view from the hills at al-Kum. Khirbet el-Qom, one proposed site of Makkedah, is next to the village.",
+      "credit": "Mujaddara",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Al_Kum_-_panoramio.jpg"
+    },
+    {
+      "src": "assets/places/makkedah/2.jpg",
+      "caption": "A Hebrew grave inscription from Khirbet el-Qom. It is now in the Israel Museum.",
+      "credit": "פעמי-עליון",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%D7%9B%D7%AA%D7%95%D7%91%D7%AA_%D7%A7%D7%91%D7%95%D7%A8%D7%94_%D7%9E%D7%97%D7%95%D7%A8%D7%91%D7%AA_%D7%90%D7%9C-%D7%9B%D7%95%D7%9D.jpg"
+    }
+  ],
+  "libnah": [
+    {
+      "src": "assets/places/libnah/1.jpg",
+      "caption": "Tel Burna from the air. It is one proposed site of Libnah.",
+      "credit": "Joeuziel",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Tel_Burna.jpg"
+    },
+    {
+      "src": "assets/places/libnah/2.jpg",
+      "caption": "The hill of Tel Burna.",
+      "credit": "Atbannett עמיחי בנעט",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_Burna.jpg"
+    },
+    {
+      "src": "assets/places/libnah/3.jpg",
+      "caption": "An excavation area at Tel Burna.",
+      "credit": "Atbannett עמיחי בנעט",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_Burna3.jpg"
+    }
+  ],
+  "lachish": [
+    {
+      "src": "assets/places/lachish/1.jpg",
+      "caption": "Walls on the slope of Tel Lachish.",
+      "credit": "Liadmalone",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:3124_%D7%AA%D7%9C_%D7%9C%D7%9B%D7%99%D7%A9.JPG"
+    },
+    {
+      "src": "assets/places/lachish/2.jpg",
+      "caption": "The road up to the gate of Lachish.",
+      "credit": "Ian Scott",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Approaching_the_gate_of_ancient_Lachish_(19654923232).jpg"
+    },
+    {
+      "src": "assets/places/lachish/3.jpg",
+      "caption": "The entry ramp of Lachish from above, with fields below it.",
+      "credit": "Ian Scott",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Entry_ramp_of_Lachish_from_above_(19039491004).jpg"
+    }
+  ],
+  "eglon": [
+    {
+      "src": "assets/places/eglon/1.jpg",
+      "caption": "Tel Eton, one proposed site of Eglon.",
+      "credit": "Owenglyndur",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_Eton.jpg"
+    },
+    {
+      "src": "assets/places/eglon/2.jpg",
+      "caption": "The road to Tel Eton.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel-Eton-368.jpg"
+    },
+    {
+      "src": "assets/places/eglon/3.jpg",
+      "caption": "An excavated four-room house at Tel Eton.",
+      "credit": "Owenglyndur",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Four-room_house.jpg"
+    }
+  ],
+  "hebron": [
+    {
+      "src": "assets/places/hebron/1.jpg",
+      "caption": "Ancient walls in an olive grove at Tel Rumeida, the site of ancient Hebron.",
+      "credit": "CarlSerafino",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ancient_walls_near_olive_trees_in_Hebron%27s_Tel_Hevron_-_Admot_Yishai_neighborhood.jpg"
+    },
+    {
+      "src": "assets/places/hebron/2.jpg",
+      "caption": "Olive trees on Tel Rumeida.",
+      "credit": "Paul Rich",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Paul_Rich,_Olive_Trees_on_Tel_Rumeida,_Hebron_(102).jpg"
+    },
+    {
+      "src": "assets/places/hebron/3.jpg",
+      "caption": "An old olive tree on Tel Rumeida.",
+      "credit": "MohmmadRjab",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:An_ancient_Roman_olive_tree_in_Tel_Rumeida_in_the_city_of_Hebron,_Palestine.jpg"
+    }
+  ],
+  "debir": [
+    {
+      "src": "assets/places/debir/1.jpg",
+      "caption": "Khirbet Rabud from the northeast. It is one proposed site of Debir.",
+      "credit": "יעקב",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:TelDvir5417.JPG"
+    },
+    {
+      "src": "assets/places/debir/2.jpg",
+      "caption": "Khirbet Rabud, with terraces on its slopes.",
+      "credit": "יעקב",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:TelDvir6193.JPG"
+    },
+    {
+      "src": "assets/places/debir/3.jpg",
+      "caption": "Ruins on top of Khirbet Rabud.",
+      "credit": "hatul",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:IHM_%D7%AA%D7%9C_%D7%93%D7%91%D7%99%D7%A8_%E2%80%93_%D7%97%D7%95%D7%A8%D7%91%D7%AA_%D7%A8%D7%91%D7%95%D7%93.jpeg"
+    }
+  ],
+  "merom": [
+    {
+      "src": "assets/places/merom/1.jpg",
+      "caption": "Lake Hula and Mount Hermon from the Safed road, in the 1940s. The map puts the waters of Merom here. The lake was drained in the 1950s.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Huleh_district,_(Lake_Merom),_Lake_Huleh_%26_Mt._Hermon_from_the_Safad_road_LOC_matpc.14490.jpg"
+    },
+    {
+      "src": "assets/places/merom/2.jpg",
+      "caption": "A man with a rifle on the shore of Lake Hula, in a color photograph by Bonfils from the late 1800s.",
+      "credit": "Félix Bonfils",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:COLOR_PHOTO_TAKEN_IN_THE_LATE_19TH_CENTURY_BY_FRENCH_PHOTOGRAPHER,_BONFILS,_DEPICTING_AN_ARAB_ARMED_WITH_THE_A_RIFLE_ON_THE_SHORE_OF_LAKE_HULA,_IN_THE_NORTH._%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%A6%D7%91%D7%A2_%D7%9E%D7%A1%D7%95%D7%A3_%D7%94%D7%9E.jpg"
+    },
+    {
+      "src": "assets/places/merom/3.jpg",
+      "caption": "Agamon HaHula, a new lake in the Hula Valley, with the hills of Naftali behind it.",
+      "credit": "אליעזר שוורץ, ירושלים. יישור האופק של התמונה בוצע על ידי [1]",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:HachoolaLake1.jpg"
+    }
+  ],
+  "hazor": [
+    {
+      "src": "assets/places/hazor/1.jpg",
+      "caption": "The arch of a house in the upper city of Hazor.",
+      "credit": "Ian Scott",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Common_house_structure_in_upper_Hazor_(5831065378).jpg"
+    },
+    {
+      "src": "assets/places/hazor/2.jpg",
+      "caption": "The moat and the lower city of Hazor.",
+      "credit": "Hanay",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hatzor_%E2%80%93_Moat_and_Lower_city.JPG"
+    },
+    {
+      "src": "assets/places/hazor/3.jpg",
+      "caption": "Tel el-Qedah, the site of Hazor, in a photograph from 1950 to 1977.",
+      "credit": "Matson Photo Service, photographer",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_el-Kadeh,_Hazor._between_1950_and_1977._matpc.22970.jpg"
+    }
+  ],
+  "jabesh": [
+    {
+      "src": "assets/places/jabesh/1.jpg",
+      "caption": "Wadi al-Yabis, the valley that keeps the name of Jabesh. Both proposed sites of the city are near this wadi.",
+      "credit": "Frank Scholten",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Landscape_at_Wadi-al-Yabis,_NINO_F_Scholten_Transjordanie_3_069.tiff"
+    },
+    {
+      "src": "assets/places/jabesh/2.jpg",
+      "caption": "Hills above Wadi al-Yabis, in Gilead.",
+      "credit": "Frank Scholten",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Hills_at_Wadi_al-Yabis,_NINO_F_Scholten_Transjordanie_3_024.tiff"
+    }
+  ],
+  "geba": [
+    {
+      "src": "assets/places/geba/1.jpg",
+      "caption": "The village of Jaba, the site of Geba.",
+      "credit": "יעקב",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jaba6582.JPG"
+    },
+    {
+      "src": "assets/places/geba/2.jpg",
+      "caption": "Jaba from the west. Michmash is across the gorge to the north.",
+      "credit": "יעקב",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jaba6585.JPG"
+    }
+  ],
+  "michmash": [
+    {
+      "src": "assets/places/michmash/1.jpg",
+      "caption": "The village of Mukhmas, the site of Michmash, from the west.",
+      "credit": "יעקב",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mukhmus93.jpg"
+    },
+    {
+      "src": "assets/places/michmash/2.jpg",
+      "caption": "The gorge between Geba and Michmash. Jonathan climbed the cliffs here to the Philistine garrison (1 Sam 14:4–5).",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Area_near_Jerusalem._Michmash_Gorge._I_Sam_14-4,_5_LOC_matpc.22846.tif"
+    }
+  ],
+  "elah": [
+    {
+      "src": "assets/places/elah/1.jpg",
+      "caption": "The Valley of Elah from the top of Tel Azekah. The Philistines camped between Socoh and Azekah (1 Sam 17:1).",
+      "credit": "Wilson44691",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Valley_of_Elah_from_Tel_Azeka.jpg"
+    },
+    {
+      "src": "assets/places/elah/2.jpg",
+      "caption": "The Valley of Elah from its west end.",
+      "credit": "Davidbena",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Elah_valley.jpg"
+    },
+    {
+      "src": "assets/places/elah/3.jpg",
+      "caption": "The valley looking east toward the hills of Judah.",
+      "credit": "Davidbena",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Elah_valley_towards_Beit_Nettif.jpg"
+    }
+  ],
+  "maon": [
+    {
+      "src": "assets/places/maon/1.jpg",
+      "caption": "Tel Maon, in the Hebron hills.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel-Maon-592.jpg"
+    },
+    {
+      "src": "assets/places/maon/2.jpg",
+      "caption": "The view from Tel Maon. The wilderness of Maon is to the east (1 Sam 23:24).",
+      "credit": "Bukvoed",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel-Maon-195.jpg"
+    },
+    {
+      "src": "assets/places/maon/3.jpg",
+      "caption": "Ruins on Tel Maon.",
+      "credit": "Bukvoed",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel-Maon-199.jpg"
+    }
+  ],
+  "engedi": [
+    {
+      "src": "assets/places/engedi/1.jpg",
+      "caption": "Nahal David at En-gedi, with the Dead Sea beyond.",
+      "credit": "Ludvig14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ein-Gedi_DavidRiver_8329a.jpg"
+    },
+    {
+      "src": "assets/places/engedi/2.jpg",
+      "caption": "A waterfall in Nahal David. The spring at En-gedi feeds it all year.",
+      "credit": "Grauesel",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:En_Gedi_Waterfall.jpg"
+    },
+    {
+      "src": "assets/places/engedi/3.jpg",
+      "caption": "Cliffs at En-gedi. The text calls this area the Rocks of the Wild Goats (1 Sam 24:2).",
+      "credit": "Ludvig14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ein-Gedi_D08v2.jpg"
+    }
+  ],
+  "ziklag": [
+    {
+      "src": "assets/places/ziklag/1.jpg",
+      "caption": "Tel Sera, one proposed site of Ziklag, on Nahal Gerar. The view looks south.",
+      "credit": "Danny Gershoni",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_A-Sheria_5.jpg"
+    },
+    {
+      "src": "assets/places/ziklag/2.jpg",
+      "caption": "Tel Sera from a distance.",
+      "credit": "Danny Gershoni",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_A-Sheria_3.jpg"
+    },
+    {
+      "src": "assets/places/ziklag/3.jpg",
+      "caption": "Excavated walls on Tel Sera.",
+      "credit": "Danny Gershoni",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_A-Sheria_excavation_1.jpg"
+    }
+  ],
+  "aphek": [
+    {
+      "src": "assets/places/aphek/1.jpg",
+      "caption": "Tel Afek, the site of Aphek. The fortress on top is Ottoman, from the 16th century.",
+      "credit": "Shell Furman",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_72597_tel_afek.jpg"
+    },
+    {
+      "src": "assets/places/aphek/2.jpg",
+      "caption": "The Ottoman fortress on Tel Afek. Herod rebuilt the city as Antipatris.",
+      "credit": "Юкатан",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Antipatris-general.jpg"
+    },
+    {
+      "src": "assets/places/aphek/3.jpg",
+      "caption": "Tel Afek from the air, beside the springs of the Yarkon River.",
+      "credit": "Dvirraz, Neukoln (retouch)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Antipatris_aerial_view_Feb_2014.JPG"
+    }
+  ],
+  "besor": [
+    {
+      "src": "assets/places/besor/1.jpg",
+      "caption": "Tell el-Farah (South), from the east. It stands above the Besor.",
+      "credit": "The devious diesel (Hebrew Wikipedia)",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_el-Farah_South.jpg"
+    },
+    {
+      "src": "assets/places/besor/2.jpg",
+      "caption": "The bed of the Besor in the northwestern Negev.",
+      "credit": "ekeidar",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:HaBsor_Valey_%D7%A0%D7%97%D7%9C_%D7%94%D7%91%D7%A9%D7%95%D7%A8_-_panoramio.jpg"
+    },
+    {
+      "src": "assets/places/besor/3.jpg",
+      "caption": "The Besor valley in spring.",
+      "credit": "רונית מיארה",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_43704_Geography_of_Israel.jpg"
+    }
+  ],
+  "gilboa": [
+    {
+      "src": "assets/places/gilboa/1.jpg",
+      "caption": "The ridge of Mount Gilboa.",
+      "credit": "Amir Yalon from Ganei Tikva, Israel",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mount_Gilboa_(441170410).jpg"
+    },
+    {
+      "src": "assets/places/gilboa/2.jpg",
+      "caption": "The view from Gilboa down to the Jezreel Valley, where Israel camped (1 Sam 29:1).",
+      "credit": "Hoshvilim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mount_Gilboa_Avinadav_Trail_09.jpg"
+    },
+    {
+      "src": "assets/places/gilboa/3.jpg",
+      "caption": "Mount Gilboa from the hill of Moreh. The Philistines camped at Shunem, on this hill (1 Sam 28:4).",
+      "credit": "OSU Special Collections & Archives : Commons",
+      "license": "No restrictions",
+      "licenseUrl": "https://www.flickr.com/commons/usage/",
+      "source": "https://commons.wikimedia.org/wiki/File:Mount_Gilboa_from_the_Hill_Moreh_(4879737546).jpg"
+    }
+  ],
+  "bethshan": [
+    {
+      "src": "assets/places/bethshan/1.jpg",
+      "caption": "Tel Beth-shan. The city of Saul’s time was on this mound.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beit-Shean-national-park-3-01707.jpg"
+    },
+    {
+      "src": "assets/places/bethshan/2.jpg",
+      "caption": "The Roman street of Scythopolis, with the tel behind it.",
+      "credit": "דוד שי",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_Beit_Shean_Succot.jpg"
+    },
+    {
+      "src": "assets/places/bethshan/3.jpg",
+      "caption": "The Roman and Byzantine city below the tel, from the air.",
+      "credit": "AVRAMGR",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:ANCIENT_BEIT_SHE%27AN_AERIAL_(2).jpg"
+    }
+  ],
+  "jerusalem": [
+    {
+      "src": "assets/places/jerusalem/1.jpg",
+      "caption": "The City of David, the ridge south of the Temple Mount, above the Kidron Valley.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:City_of_David,_Southern_Wall_Temple_Mount_Kidron_Valley_Ophel_and_Siloam.jpg"
+    },
+    {
+      "src": "assets/places/jerusalem/2.jpg",
+      "caption": "The Stepped Stone Structure in the City of David, from the Mount of Olives.",
+      "credit": "Chris Yunker from St. Louis, United States",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Remote_view_from_Mount_of_Olives_of_the_Stepped_Stone_Structure_in_the_City_of_David.jpg"
+    },
+    {
+      "src": "assets/places/jerusalem/3.jpg",
+      "caption": "Ancient walls on the eastern hill of Jerusalem.",
+      "credit": "Ian Scott",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Canaanite_and_Israelite_walls_on_Jerusalem%27s_eastern_hill_(6388970869).jpg"
+    }
+  ],
+  "rephaim": [
+    {
+      "src": "assets/places/rephaim/1.jpg",
+      "caption": "Nahal Refaim Valley Park in southwest Jerusalem.",
+      "credit": "שלמה רודד",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:131936_nahal_refaim_valley_park_PikiWiki_Israel.jpg"
+    },
+    {
+      "src": "assets/places/rephaim/2.jpg",
+      "caption": "The stream of Nahal Refaim in the valley park.",
+      "credit": "שלמה רודד",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:131935_nahal_refaim_valley_park_PikiWiki_Israel.jpg"
+    }
+  ],
+  "bethlehem": [
+    {
+      "src": "assets/places/bethlehem/1.jpg",
+      "caption": "A valley in Bethlehem.",
+      "credit": "Bukvoed",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bethlehem-Nativity-215.jpg"
+    },
+    {
+      "src": "assets/places/bethlehem/2.jpg",
+      "caption": "Bethlehem on an early 20th-century postcard.",
+      "credit": "Lehnert & Landrock",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:2125._Bethlehem_-_General_View.jpg"
+    },
+    {
+      "src": "assets/places/bethlehem/3.jpg",
+      "caption": "Bethlehem in the late 19th or early 20th century.",
+      "credit": "Unknown author",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Bethlehem,_Palestine.jpg"
+    }
+  ],
+  "moab": [
+    {
+      "src": "assets/places/moab/1.jpg",
+      "caption": "The mountains of Moab across the Dead Sea, from the Mount of Olives.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Mts._(i.e.,_mountains)_of_Moab_%26_Dead_Sea_fr(om)_Olivet_LOC_matpc.03785.jpg"
+    },
+    {
+      "src": "assets/places/moab/2.jpg",
+      "caption": "Wadi Mujib, the Arnon. It was the north border of Moab (Num 21:13).",
+      "credit": "Zairon",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jordanien_Wadi_Mujib_17.JPG"
+    },
+    {
+      "src": "assets/places/moab/3.jpg",
+      "caption": "Ruins at Tell Dhiban, the Moabite city of Dibon.",
+      "credit": "Mohammad hajeer",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tell_Dhiban_23.jpg"
+    }
+  ],
+  "damascus": [
+    {
+      "src": "assets/places/damascus/1.jpg",
+      "caption": "The Street called Straight in Damascus, about 1900.",
+      "credit": "Detroit Photographic Company",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Street-called-Straight-Detroit.jpeg"
+    },
+    {
+      "src": "assets/places/damascus/2.jpg",
+      "caption": "The Umayyad Mosque. It stands on the site of earlier temples. The oldest known was a temple of the Aramean god Hadad.",
+      "credit": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Umayyad_Mosque,_Damascus,_Syria.jpg"
+    }
+  ],
+  "rabbah": [
+    {
+      "src": "assets/places/rabbah/1.jpg",
+      "caption": "The Amman Citadel, on the hill of Rabbah of the Ammonites.",
+      "credit": "Davric",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Amman_citadel_8.jpg"
+    },
+    {
+      "src": "assets/places/rabbah/2.jpg",
+      "caption": "The Roman Temple of Hercules on the citadel hill.",
+      "credit": "Diego Delso",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Hercules,_Amman,_Jordan3.jpg"
+    },
+    {
+      "src": "assets/places/rabbah/3.jpg",
+      "caption": "Ruins on the Amman Citadel.",
+      "credit": "Diego Delso",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Amman_Citadel,_Jordan4.jpg"
+    }
+  ],
+  "mahanaim": [
+    {
+      "src": "assets/places/mahanaim/1.jpg",
+      "caption": "Tulul adh-Dhahab, one proposed site of Mahanaim, above the Jabbok.",
+      "credit": "E. Rehfeld",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tulul_adh-Dhahab_and_Jabbok_in_spring.jpg"
+    },
+    {
+      "src": "assets/places/mahanaim/2.jpg",
+      "caption": "The twin hills of Tulul adh-Dhahab in spring.",
+      "credit": "E. Rehfeld",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tulul_adh-Dhahab_in_spring.jpg"
+    },
+    {
+      "src": "assets/places/mahanaim/3.jpg",
+      "caption": "Excavations on Tulul adh-Dhahab in 2008.",
+      "credit": "Jorre (Jochen Reinhard)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tulul_adh-Dhahab_morning_view_on_excavation_2008_I.JPG"
+    }
+  ],
+  "ephraim": [
+    {
+      "src": "assets/places/ephraim/1.jpg",
+      "caption": "Forest at Ajloun, in the hills of Gilead. The forest of Ephraim is not identified.",
+      "credit": "Freedom's Falcon",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ajloun_forests_JO_2.jpg"
+    },
+    {
+      "src": "assets/places/ephraim/2.jpg",
+      "caption": "Oak woodland in the Ajloun Forest Reserve.",
+      "credit": "Krzysztof Ziarnek, Kenraiz",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ajloun_Forest_Reserve_in_Jordan_kz05.jpg"
+    }
+  ],
+  "abel": [
+    {
+      "src": "assets/places/abel/1.jpg",
+      "caption": "Tel Abel Beth-maacah, looking southeast.",
+      "credit": "Moshechn",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Tell_Abil_el-Qame%E1%B8%A5_-_Tel_Abel_Beth_Maacah,_looking_southeast.JPG"
+    },
+    {
+      "src": "assets/places/abel/2.jpg",
+      "caption": "Excavated Iron Age buildings on the tel, 2015.",
+      "credit": "Tel Abel Beth Maacah Excavations",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Area_A,_end_of_2015_excavation_season,_looking_west.jpg"
+    }
+  ],
+  "gath": [
+    {
+      "src": "assets/places/gath/1.jpg",
+      "caption": "The summit of Tell es-Safi, the site of Gath, with the coastal plain beyond.",
+      "credit": "McKaby",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Tel_Zafit_1.jpg"
+    },
+    {
+      "src": "assets/places/gath/2.jpg",
+      "caption": "Ruins on the summit of Tell es-Safi.",
+      "credit": "שלמה רודד",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:120622_tel_tzfit_-_biblical_gat_PikiWiki_Israel.jpg"
+    },
+    {
+      "src": "assets/places/gath/3.jpg",
+      "caption": "The chalk cliffs of Tell es-Safi.",
+      "credit": "Ori~",
+      "license": "Attribution",
+      "source": "https://commons.wikimedia.org/wiki/File:Cafit024.jpg"
+    }
+  ],
+  "nazareth": [
+    {
+      "src": "assets/places/nazareth/1.jpg",
+      "caption": "Nazareth in the hills of Lower Galilee.",
+      "credit": "Tiamat",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Nazareth_from_El_Kishleh_neighborhood.jpg"
+    },
+    {
+      "src": "assets/places/nazareth/2.jpg",
+      "caption": "The old city of Nazareth, with the dome of the Basilica of the Annunciation.",
+      "credit": "FLASHPACKER TRAVELGUIDE",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Israel_Nazareth_Old_City_Altstadt_Verk%C3%BCndigungsbasilika_Church_of_Annunciation_(34714423420).jpg"
+    },
+    {
+      "src": "assets/places/nazareth/3.jpg",
+      "caption": "The Synagogue Church in the old city. Tradition puts the synagogue of Luke 4 here.",
+      "credit": "שלמה רודד",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:127766_nazareth-synagogue_church_PikiWiki_Israel.jpg"
+    }
+  ],
+  "baptism": [
+    {
+      "src": "assets/places/baptism/1.jpg",
+      "caption": "Pilgrims are baptized in the Jordan River at Qasr al-Yahud.",
+      "credit": "Oren Rozen",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Qasr_at_Yahud_160526_05.jpg"
+    },
+    {
+      "src": "assets/places/baptism/2.jpg",
+      "caption": "The baptism site at Qasr al-Yahud, on the west bank of the Jordan.",
+      "credit": "Jakub CA",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Qasr_al-Yahud_in_October_2019.jpg"
+    },
+    {
+      "src": "assets/places/baptism/3.jpg",
+      "caption": "The Church of John the Baptist at Al-Maghtas, on the east bank of the Jordan.",
+      "credit": "Oyoyoy",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bethany_Beyond_the_Jordan_24-03-2017-4.jpg"
+    }
+  ],
+  "cana": [
+    {
+      "src": "assets/places/cana/1.jpg",
+      "caption": "The Greek Orthodox Wedding Church in Kafr Kanna.",
+      "credit": "Chris06",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Wedding_Church_(Orthodox)_Kafr_Kanna_(1).jpg"
+    },
+    {
+      "src": "assets/places/cana/2.jpg",
+      "caption": "Kafr Kanna and the land around it, in the mid-20th century.",
+      "credit": "Willem van de Poll",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Het_dorp_Kana_en_het_omringende_landschap,_Bestanddeelnr_255-2983.jpg"
+    }
+  ],
+  "capernaum": [
+    {
+      "src": "assets/places/capernaum/1.jpg",
+      "caption": "The white limestone synagogue at Capernaum, from about the 4th century AD. It stands on the foundations of an earlier synagogue.",
+      "credit": "Eduard Marmet",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruins_of_the_White_Synagoge_in_Capernaum_(34682858815).jpg"
+    },
+    {
+      "src": "assets/places/capernaum/2.jpg",
+      "caption": "The basalt houses of the town, with the Sea of Galilee behind them.",
+      "credit": "Eduard Marmet",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruins_of_the_Byzantine_Village_in_Capernaum_(33840691954).jpg"
+    },
+    {
+      "src": "assets/places/capernaum/3.jpg",
+      "caption": "Capernaum from the Sea of Galilee.",
+      "credit": "Fallaner",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Holy_Land_2016_P0408_View_of_Capernaum_from_the_Sea_of_Galilee.jpg"
+    }
+  ],
+  "tyre": [
+    {
+      "src": "assets/places/tyre/1.jpg",
+      "caption": "The Roman hippodrome at Al-Bass in Tyre.",
+      "credit": "Carole Raddato",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tyre_hippodrome_01.jpg"
+    },
+    {
+      "src": "assets/places/tyre/2.jpg",
+      "caption": "The colonnaded Roman street at the Al-Mina site, by the sea.",
+      "credit": "Heretiq",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:TyreAlMinaCollonnadedStreet.jpg"
+    },
+    {
+      "src": "assets/places/tyre/3.jpg",
+      "caption": "Roman ruins at Al-Mina, on the old island of Tyre.",
+      "credit": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Columns_at_Al_Mina_site,_Tyre,_Lebanon.jpg"
+    }
+  ],
+  "caesarea": [
+    {
+      "src": "assets/places/caesarea/1.jpg",
+      "caption": "The cave of Pan at Banias. The town took the name Paneas from the god.",
+      "credit": "Bukvoed",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Banias-2-288.jpg"
+    },
+    {
+      "src": "assets/places/caesarea/2.jpg",
+      "caption": "The spring at Banias, one of the sources of the Jordan, below the cliff.",
+      "credit": "gugganij",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Banias_Spring_Cliff_Pan%27s_Cave.JPG"
+    },
+    {
+      "src": "assets/places/caesarea/3.jpg",
+      "caption": "The cliff and the niches of the shrines of Pan.",
+      "credit": "Dan Lundberg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Golan_Heights_0166_Banias_Springs_(5539856473).jpg"
+    }
+  ],
+  "sychar": [
+    {
+      "src": "assets/places/sychar/1.jpg",
+      "caption": "Jacob's Well, inside the Orthodox church at Bir Ya'qub in Nablus (John 4:6).",
+      "credit": "Granke",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Jacob%27s_well.jpg"
+    },
+    {
+      "src": "assets/places/sychar/2.jpg",
+      "caption": "The site of Jacob's Well and the plain below Mount Gerizim, in an early photograph.",
+      "credit": "Matson Collection",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Northern_views._Jacob%27s_Well_and_Plain_of_Makhna_LOC_matpc.01054_(cropped).jpg"
+    }
+  ],
+  "bethany": [
+    {
+      "src": "assets/places/bethany/1.jpg",
+      "caption": "The steps into the traditional tomb of Lazarus in al-Eizariya.",
+      "credit": "Thomasccnawiki",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Lazarus_Tomb.jpg"
+    },
+    {
+      "src": "assets/places/bethany/2.jpg",
+      "caption": "Bethany in an early photograph.",
+      "credit": "Unknown author",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Photograph_of_Bethany_(al-%27Eizariya).jpg"
+    },
+    {
+      "src": "assets/places/bethany/3.jpg",
+      "caption": "Modern al-Eizariya, on the east slope of the Mount of Olives.",
+      "credit": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:AlEizariyaMay232023.jpg"
+    }
   ]
 }

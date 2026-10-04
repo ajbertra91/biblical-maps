@@ -1,7 +1,9 @@
 // Downloads the site photos in scripts/photos.json from Wikimedia Commons.
 // Writes local copies to public/assets/places/<place>/ and the credits to src/data/photos.ts.
-// Usage: node scripts/fetch-photos.mjs
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+// Usage: node scripts/fetch-photos.mjs [--force]
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+
+const FORCE = process.argv.includes('--force')
 
 const WIDTH = 1280
 const UA = 'biblical-maps/0.1 (https://github.com/ajbertra91/biblical-maps)'
@@ -33,7 +35,12 @@ async function info(file) {
   return {
     // The API gives the original when it is narrower than WIDTH.
     url: ii.thumburl ?? ii.url,
-    credit: plain(m.Artist?.value) || plain(m.Credit?.value) || 'Unknown',
+    // Some files use the Creator template, which puts "Creator:" in front of the name.
+    credit: (plain(m.Artist?.value) || plain(m.Credit?.value) || 'Unknown')
+      .replace(/^Creator:/, '')
+      // Some author templates repeat the name in hidden markup, for example "Unknown authorUnknown author".
+      .replace(/^(.+)\1$/, '$1')
+      .replace(/^The original uploader was (.+) at (.+?)\.?$/, '$1 ($2)'),
     license: m.LicenseShortName?.value ?? 'See source',
     licenseUrl: m.LicenseUrl?.value,
     source: ii.descriptionurl,
@@ -47,11 +54,17 @@ for (const [place, photos] of Object.entries(manifest)) {
   for (const [i, p] of photos.entries()) {
     const meta = await info(p.file)
     const name = `${i + 1}.jpg`
-    const buf = Buffer.from(await (await get(meta.url)).arrayBuffer())
-    writeFileSync(`public/assets/places/${place}/${name}`, buf)
+    const path = `public/assets/places/${place}/${name}`
     const { url: _url, ...credit } = meta
     out[place].push({ src: `assets/places/${place}/${name}`, caption: p.caption, ...credit })
-    console.log(place, name, `${Math.round(buf.length / 1024)} KB`, credit.license, '·', credit.credit)
+    // A file on disk is kept. Use --force to download it again, for example after you change its order in the manifest.
+    if (existsSync(path) && !FORCE) {
+      console.log(place, name, 'kept')
+    } else {
+      const buf = Buffer.from(await (await get(meta.url)).arrayBuffer())
+      writeFileSync(path, buf)
+      console.log(place, name, `${Math.round(buf.length / 1024)} KB`, credit.license, '·', credit.credit)
+    }
     await sleep(500)
   }
 }

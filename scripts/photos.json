@@ -56,5 +56,274 @@
     { "file": "104264 tel beer sheva PikiWiki Israel.jpg", "caption": "Tel Be'er Sheva from the air at sunset." },
     { "file": "PikiWiki Israel 33680 Well and trough in Tel Beer Sheva.JPG", "caption": "A well and a trough at Tel Be'er Sheva." },
     { "file": "Tel Be'er Sheva Overview 2007041.JPG", "caption": "The excavated Israelite city at Tel Be'er Sheva." }
+  ],
+  "rameses": [
+    { "file": "Kolossalstatue Qantir.JPG", "caption": "The feet of a colossal statue of Ramesses II at Qantir, the site of Pi-Ramesses." },
+    { "file": "Tell el-daba04.jpg", "caption": "Tell el-Dab'a, the site of Avaris, next to Qantir. Pi-Ramesses grew over this city." },
+    { "file": "Tell el-Daba.jpg", "caption": "A small mound at Tell el-Dab'a, with fields and the village of Ezbet Rushdi." }
+  ],
+  "succoth": [
+    { "file": "Mashuta (Pithom), Egypt LOC matpc.23182.jpg", "caption": "Tell el-Maskhuta in the Wadi Tumilat, in an early photograph. Writers link it to Pithom or to Succoth." },
+    { "file": "The Brick store-chambers of Pithom, the city built by Hebrew bondsmen (looking north) --Egypt. (32) (1904) - front edited - TIMEA.jpg", "caption": "Brick chambers at Tell el-Maskhuta in 1904. Édouard Naville called them the store chambers of Pithom (Exod 1:11)." }
+  ],
+  "crossing": [
+    { "file": "Nuweiba, Beach, Red Sea, Sinai, Egypt.jpg", "caption": "The beach at Nuweiba, on the Gulf of Aqaba." },
+    { "file": "Sunrise up with camels near Nuweiba.jpg", "caption": "Sunrise over the Gulf of Aqaba near Nuweiba. The coast of Saudi Arabia, the land of Midian, is on the far side." },
+    { "file": "View of Nuweiba Port.JPG", "caption": "Nuweiba and the wide beach at the mouth of the wadi, from the hills." }
+  ],
+  "marah": [
+    { "file": "مدائن شعيب.jpg", "caption": "Rock-cut tombs at Maghair Shuaib, near al-Bad'. Local tradition links the site to Jethro, the father-in-law of Moses." },
+    { "file": "Al-Sauaidani Well.jpg", "caption": "The sign at the Al-Sauaidani Well in al-Bad'. Local people call it the Well of Moses." },
+    { "file": "Sinai. Springs of Moses. Exodus 15-23 LOC matpc.23007.jpg", "caption": "Ayun Musa, the Springs of Moses, near Suez, in an early photograph. Writers who use the traditional route put Marah here or at Ain Hawarah." }
+  ],
+  "sinai": [
+    { "file": "الثلوج تغطي جبل اللوز في تبوك 2022.jpg", "caption": "Cloud and snow on Jabal al-Lawz, in the Tabuk region of Saudi Arabia, in 2022." },
+    { "file": "إبل تسرح في الثلوج بجبل اللوز.jpg", "caption": "Camels in the snow on Jabal al-Lawz, in 2021." },
+    { "file": "Jabal Al-Lawz Location.jpg", "caption": "Jabal al-Lawz from the International Space Station. The Sinai Peninsula is across the Gulf of Aqaba." },
+    { "file": "Mount Sinai BW 4.jpg", "caption": "The path to Jebel Musa in the Sinai Peninsula, the traditional Mount Sinai." }
+  ],
+  "kadesh": [
+    { "file": "Sinai. Ain Gedeirat, Kadesh Barnea. Num. 20-1 LOC matpc.23028.jpg", "caption": "The oasis at Ain el-Qudeirat, often identified with Kadesh-barnea, in an early photograph." },
+    { "file": "PikiWiki Israel 75836 the oasis of kadesh barnea.jpg", "caption": "Trees and the stream bed at the oasis of Ain el-Qudeirat." },
+    { "file": "To Sinai by car. Ain Gedeirat. Possibly Kadesh Barnea of Num. 32-8, etc. LOC matpc.15542.jpg", "caption": "Ain el-Qudeirat below the hills, in an early photograph." }
+  ],
+  "ezion": [
+    { "file": "Graia, On the Red Sea, Near Ezion-Geber, Port of King Solomon MET DP71226.jpg", "caption": "Pharaoh's Island (Jezirat Faraun) in the Gulf of Aqaba, in a photograph of the 1800s. Some writers put Ezion-geber here, not at Tell el-Kheleifeh." },
+    { "file": "قلعة صلاح الدين علي جزيرة فرعون بطابا.jpg", "caption": "Pharaoh's Island today, with the castle of Saladin on it." },
+    { "file": "Ezion Geber (8764228745).jpg", "caption": "Travelers on camels near Ezion-geber, in a stereo photograph from about 1860 to 1880." }
+  ],
+  "nebo": [
+    { "file": "Overhead view from Mount Nebo of the Dead Sea and Jordan Valley area.jpg", "caption": "The view from Mount Nebo over the Dead Sea, the Jordan Valley and Jericho (Deut 34:1–3)." },
+    { "file": "Memorial of Moses in Mount Nebo.jpg", "caption": "The Memorial of Moses, the church on top of Mount Nebo." },
+    { "file": "View from Mount Nebo looking at Moses Spring.jpg", "caption": "The valley below Mount Nebo, toward the spring of Moses (Ayun Musa)." }
+  ],
+  "rephidim": [
+    { "file": "Sinai. Oasis in Wady Feiran (Rephidim), and distant view of Jebel Serbal. LOC matpc.07236.jpg", "caption": "The oasis in Wadi Feiran, with Jebel Serbal behind it, in an early photograph. Wadi Feiran is the traditional site of Rephidim. The map uses a site in Midian." },
+    { "file": "To Sinai by car. Wadi Feiran. Approaching Gebel Serbal LOC matpc.15560.jpg", "caption": "The road through Wadi Feiran toward Jebel Serbal, in an early photograph." },
+    { "file": "طريق حول جبل اللوز بين الثلوج بمنطقة تبوك.jpg", "caption": "A road near Jabal al-Lawz in snow. The map puts Rephidim at the split rock west of this mountain." }
+  ],
+  "arad": [
+    { "file": "89883 tel arad PikiWiki Israel.jpg", "caption": "Tel Arad from the air. The fortress on the hill is from the time of the kings of Judah." },
+    { "file": "By Ovedc - Tel Arad (9).jpg", "caption": "The lower city of Tel Arad, with the fortress hill behind it. The lower city is from the Early Bronze Age." },
+    { "file": "Arad 2.JPG", "caption": "Towers of the fortress at Tel Arad." }
+  ],
+  "heshbon": [
+    { "file": "Tell Hesban.jpg", "caption": "Tell Hesban, the site of Heshbon. Heshbon was the city of Sihon, king of the Amorites (Num 21:26)." },
+    { "file": "Tell Hesban (Arch).jpg", "caption": "An arch in the ruins at Tell Hesban." },
+    { "file": "East of Jordan and the Dead Sea. Site of Heshbon LOC matpc.06957.jpg", "caption": "The site of Heshbon, in an early photograph." }
+  ],
+  "edrei": [
+    { "file": "Derʻâh 123 km von Damaskus, 529 m ü. M. In der Mitte der Kerak (Burgberg). LCCN2014648727.jpg", "caption": "Daraa in about 1905. The hill in the middle is the old mound of the town." },
+    { "file": "דרעא 1917 - i אורי וולףi btm14593.jpeg", "caption": "Daraa in 1917." },
+    { "file": "Derʻâh Getreidedreschen mit dem Dreschschittlitten. 1906. LCCN2014648726.jpg", "caption": "Farmers thresh grain at Daraa in 1906." }
+  ],
+  "kenath": [
+    { "file": "Basilica Complex, Qanawat (قنوات), Syria - East part- view from north - PHBZ024 2016 3573 - Dumbarton Oaks.jpg", "caption": "Ruins of the basilica complex at Qanawat, the site of Kenath." },
+    { "file": "Al Quanawat-Kanatha - GAR - 8-04.jpg", "caption": "The Roman nymphaeum at Qanawat, in 2008." },
+    { "file": "A-060 Qanawat, Syria in 1900 by Gertrude Bell.jpg", "caption": "Ruins at Qanawat in 1900. Gertrude Bell took this photograph." }
+  ],
+  "shittim": [
+    { "file": "Tall el-Hammam overlooking the Jordan Valley 2007.jpg", "caption": "Tall el-Hammam above the Jordan Valley. It is one proposed site of Abel-shittim." },
+    { "file": "Date Palms Tall el-Hammam Jordan.jpg", "caption": "Date palms near Tall el-Hammam, in the plains of Moab." }
+  ],
+  "gilgal": [
+    { "file": "Gilgal of Benjamin.jpg", "caption": "A foot-shaped stone enclosure from the Iron Age, near Wadi al-Makuk. Some archaeologists link these enclosures to Gilgal." },
+    { "file": "Gilgal-Argaman-682.jpg", "caption": "The stone walls of the enclosure at Bedhat esh-Sha'ab (Gilgal Argaman), in the Jordan Valley." },
+    { "file": "Gilgal .jpg", "caption": "A hill in the Jordan Valley that tradition links to the camp at Gilgal (Josh 5:2–9)." }
+  ],
+  "ai": [
+    { "file": "Et-Tell (Ai) ruins.jpg", "caption": "Ruins at et-Tell, the traditional site of Ai." },
+    { "file": "Deir-Dibwan-686.jpg", "caption": "Excavated walls at et-Tell, next to the village of Deir Dibwan." },
+    { "file": "Maqatir Aerial Oblique.jpg", "caption": "Khirbet el-Maqatir from above. It is another proposed site of Ai." }
+  ],
+  "gibeon": [
+    { "file": "By Ovedc - Gibeon (1).jpg", "caption": "The rock-cut pool at Gibeon (el-Jib). Steps go down around its wall (2 Sam 2:13)." },
+    { "file": "By Ovedc - Gibeon (2).jpg", "caption": "Hikers at Gibeon, with fields around the site." },
+    { "file": "By Ovedc - Gibeon (11).jpg", "caption": "A rock-cut cave at Gibeon." }
+  ],
+  "bethhoron": [
+    { "file": "Beit Ur al-Fauqa color.jpg", "caption": "Beit Ur al-Fauqa, the site of Upper Beth-horon, in a photograph from 1950 to 1977." },
+    { "file": "Jaffa to Jerusalem. Ascent to Beth Horon LOC matpc.22720.jpg", "caption": "The ascent of Beth-horon, the old road from the coast up to the hills, in an early photograph." },
+    { "file": "Air views of Palestine. West of Jerusalem. Upper Beth-Horon. Beit 'Ur el-Foka LOC matpc.15867.jpg", "caption": "Upper Beth-horon from the air, in an early photograph." }
+  ],
+  "azekah": [
+    { "file": "Azekah, Israel.jpg", "caption": "The hill of Azekah above the Elah Valley." },
+    { "file": "Emek HaEla viewed from Tel Azeka -Spring 2013.jpg", "caption": "The Elah Valley from the top of Tel Azekah." },
+    { "file": "Khirbet Qeiyafa view of Tel Azeka.jpg", "caption": "Tel Azekah from Khirbet Qeiyafa. The walls in front are at Khirbet Qeiyafa." }
+  ],
+  "makkedah": [
+    { "file": "Al Kum - panoramio.jpg", "caption": "The view from the hills at al-Kum. Khirbet el-Qom, one proposed site of Makkedah, is next to the village." },
+    { "file": "כתובת קבורה מחורבת אל-כום.jpg", "caption": "A Hebrew grave inscription from Khirbet el-Qom. It is now in the Israel Museum." }
+  ],
+  "libnah": [
+    { "file": "Aerial view of Tel Burna.jpg", "caption": "Tel Burna from the air. It is one proposed site of Libnah." },
+    { "file": "Tel Burna.jpg", "caption": "The hill of Tel Burna." },
+    { "file": "Tel Burna3.jpg", "caption": "An excavation area at Tel Burna." }
+  ],
+  "lachish": [
+    { "file": "3124 תל לכיש.JPG", "caption": "Walls on the slope of Tel Lachish." },
+    { "file": "Approaching the gate of ancient Lachish (19654923232).jpg", "caption": "The road up to the gate of Lachish." },
+    { "file": "Entry ramp of Lachish from above (19039491004).jpg", "caption": "The entry ramp of Lachish from above, with fields below it." }
+  ],
+  "eglon": [
+    { "file": "Tel Eton.jpg", "caption": "Tel Eton, one proposed site of Eglon." },
+    { "file": "Tel-Eton-368.jpg", "caption": "The road to Tel Eton." },
+    { "file": "Four-room house.jpg", "caption": "An excavated four-room house at Tel Eton." }
+  ],
+  "hebron": [
+    { "file": "Ancient walls near olive trees in Hebron's Tel Hevron - Admot Yishai neighborhood.jpg", "caption": "Ancient walls in an olive grove at Tel Rumeida, the site of ancient Hebron." },
+    { "file": "Paul Rich, Olive Trees on Tel Rumeida, Hebron (102).jpg", "caption": "Olive trees on Tel Rumeida." },
+    { "file": "An ancient Roman olive tree in Tel Rumeida in the city of Hebron, Palestine.jpg", "caption": "An old olive tree on Tel Rumeida." }
+  ],
+  "debir": [
+    { "file": "TelDvir5417.JPG", "caption": "Khirbet Rabud from the northeast. It is one proposed site of Debir." },
+    { "file": "TelDvir6193.JPG", "caption": "Khirbet Rabud, with terraces on its slopes." },
+    { "file": "IHM תל דביר – חורבת רבוד.jpeg", "caption": "Ruins on top of Khirbet Rabud." }
+  ],
+  "merom": [
+    { "file": "Huleh district, (Lake Merom), Lake Huleh & Mt. Hermon from the Safad road LOC matpc.14490.jpg", "caption": "Lake Hula and Mount Hermon from the Safed road, in the 1940s. The map puts the waters of Merom here. The lake was drained in the 1950s." },
+    { "file": "COLOR PHOTO TAKEN IN THE LATE 19TH CENTURY BY FRENCH PHOTOGRAPHER, BONFILS, DEPICTING AN ARAB ARMED WITH THE A RIFLE ON THE SHORE OF LAKE HULA, IN THE NORTH. צילום צבע מסוף המ.jpg", "caption": "A man with a rifle on the shore of Lake Hula, in a color photograph by Bonfils from the late 1800s." },
+    { "file": "HachoolaLake1.jpg", "caption": "Agamon HaHula, a new lake in the Hula Valley, with the hills of Naftali behind it." }
+  ],
+  "hazor": [
+    { "file": "Common house structure in upper Hazor (5831065378).jpg", "caption": "The arch of a house in the upper city of Hazor." },
+    { "file": "Hatzor – Moat and Lower city.JPG", "caption": "The moat and the lower city of Hazor." },
+    { "file": "Tel el-Kadeh, Hazor. between 1950 and 1977. matpc.22970.jpg", "caption": "Tel el-Qedah, the site of Hazor, in a photograph from 1950 to 1977." }
+  ],
+  "jabesh": [
+    { "file": "Landscape at Wadi-al-Yabis, NINO F Scholten Transjordanie 3 069.tiff", "caption": "Wadi al-Yabis, the valley that keeps the name of Jabesh. Both proposed sites of the city are near this wadi." },
+    { "file": "Hills at Wadi al-Yabis, NINO F Scholten Transjordanie 3 024.tiff", "caption": "Hills above Wadi al-Yabis, in Gilead." }
+  ],
+  "geba": [
+    { "file": "Jaba6582.JPG", "caption": "The village of Jaba, the site of Geba." },
+    { "file": "Jaba6585.JPG", "caption": "Jaba from the west. Michmash is across the gorge to the north." }
+  ],
+  "michmash": [
+    { "file": "Mukhmus93.jpg", "caption": "The village of Mukhmas, the site of Michmash, from the west." },
+    { "file": "Area near Jerusalem. Michmash Gorge. I Sam 14-4, 5 LOC matpc.22846.tif", "caption": "The gorge between Geba and Michmash. Jonathan climbed the cliffs here to the Philistine garrison (1 Sam 14:4–5)." }
+  ],
+  "elah": [
+    { "file": "Valley of Elah from Tel Azeka.jpg", "caption": "The Valley of Elah from the top of Tel Azekah. The Philistines camped between Socoh and Azekah (1 Sam 17:1)." },
+    { "file": "The Elah valley.jpg", "caption": "The Valley of Elah from its west end." },
+    { "file": "Elah valley towards Beit Nettif.jpg", "caption": "The valley looking east toward the hills of Judah." }
+  ],
+  "maon": [
+    { "file": "Tel-Maon-592.jpg", "caption": "Tel Maon, in the Hebron hills." },
+    { "file": "Tel-Maon-195.jpg", "caption": "The view from Tel Maon. The wilderness of Maon is to the east (1 Sam 23:24)." },
+    { "file": "Tel-Maon-199.jpg", "caption": "Ruins on Tel Maon." }
+  ],
+  "engedi": [
+    { "file": "Ein-Gedi DavidRiver 8329a.jpg", "caption": "Nahal David at En-gedi, with the Dead Sea beyond." },
+    { "file": "En Gedi Waterfall.jpg", "caption": "A waterfall in Nahal David. The spring at En-gedi feeds it all year." },
+    { "file": "Ein-Gedi D08v2.jpg", "caption": "Cliffs at En-gedi. The text calls this area the Rocks of the Wild Goats (1 Sam 24:2)." }
+  ],
+  "ziklag": [
+    { "file": "Tel A-Sheria 5.jpg", "caption": "Tel Sera, one proposed site of Ziklag, on Nahal Gerar. The view looks south." },
+    { "file": "Tel A-Sheria 3.jpg", "caption": "Tel Sera from a distance." },
+    { "file": "Tel A-Sheria excavation 1.jpg", "caption": "Excavated walls on Tel Sera." }
+  ],
+  "aphek": [
+    { "file": "PikiWiki Israel 72597 tel afek.jpg", "caption": "Tel Afek, the site of Aphek. The fortress on top is Ottoman, from the 16th century." },
+    { "file": "Antipatris-general.jpg", "caption": "The Ottoman fortress on Tel Afek. Herod rebuilt the city as Antipatris." },
+    { "file": "Antipatris aerial view Feb 2014.JPG", "caption": "Tel Afek from the air, beside the springs of the Yarkon River." }
+  ],
+  "besor": [
+    { "file": "Tell el-Farah South.jpg", "caption": "Tell el-Farah (South), from the east. It stands above the Besor." },
+    { "file": "HaBsor Valey נחל הבשור - panoramio.jpg", "caption": "The bed of the Besor in the northwestern Negev." },
+    { "file": "PikiWiki Israel 43704 Geography of Israel.jpg", "caption": "The Besor valley in spring." }
+  ],
+  "gilboa": [
+    { "file": "Mount Gilboa (441170410).jpg", "caption": "The ridge of Mount Gilboa." },
+    { "file": "Mount Gilboa Avinadav Trail 09.jpg", "caption": "The view from Gilboa down to the Jezreel Valley, where Israel camped (1 Sam 29:1)." },
+    { "file": "Mount Gilboa from the Hill Moreh (4879737546).jpg", "caption": "Mount Gilboa from the hill of Moreh. The Philistines camped at Shunem, on this hill (1 Sam 28:4)." }
+  ],
+  "bethshan": [
+    { "file": "Beit-Shean-national-park-3-01707.jpg", "caption": "Tel Beth-shan. The city of Saul’s time was on this mound." },
+    { "file": "Tel Beit Shean Succot.jpg", "caption": "The Roman street of Scythopolis, with the tel behind it." },
+    { "file": "ANCIENT BEIT SHE'AN AERIAL (2).jpg", "caption": "The Roman and Byzantine city below the tel, from the air." }
+  ],
+  "jerusalem": [
+    { "file": "City of David, Southern Wall Temple Mount Kidron Valley Ophel and Siloam.jpg", "caption": "The City of David, the ridge south of the Temple Mount, above the Kidron Valley." },
+    { "file": "Remote view from Mount of Olives of the Stepped Stone Structure in the City of David.jpg", "caption": "The Stepped Stone Structure in the City of David, from the Mount of Olives." },
+    { "file": "Canaanite and Israelite walls on Jerusalem's eastern hill (6388970869).jpg", "caption": "Ancient walls on the eastern hill of Jerusalem." }
+  ],
+  "rephaim": [
+    { "file": "131936 nahal refaim valley park PikiWiki Israel.jpg", "caption": "Nahal Refaim Valley Park in southwest Jerusalem." },
+    { "file": "131935 nahal refaim valley park PikiWiki Israel.jpg", "caption": "The stream of Nahal Refaim in the valley park." }
+  ],
+  "bethlehem": [
+    { "file": "Bethlehem-Nativity-215.jpg", "caption": "A valley in Bethlehem." },
+    { "file": "2125. Bethlehem - General View.jpg", "caption": "Bethlehem on an early 20th-century postcard." },
+    { "file": "View of Bethlehem, Palestine.jpg", "caption": "Bethlehem in the late 19th or early 20th century." }
+  ],
+  "moab": [
+    { "file": "Mts. (i.e., mountains) of Moab & Dead Sea fr(om) Olivet LOC matpc.03785.jpg", "caption": "The mountains of Moab across the Dead Sea, from the Mount of Olives." },
+    { "file": "Jordanien Wadi Mujib 17.JPG", "caption": "Wadi Mujib, the Arnon. It was the north border of Moab (Num 21:13)." },
+    { "file": "Tell Dhiban 23.jpg", "caption": "Ruins at Tell Dhiban, the Moabite city of Dibon." }
+  ],
+  "damascus": [
+    { "file": "Street-called-Straight-Detroit.jpeg", "caption": "The Street called Straight in Damascus, about 1900." },
+    { "file": "The Umayyad Mosque, Damascus, Syria.jpg", "caption": "The Umayyad Mosque. It stands on the site of earlier temples. The oldest known was a temple of the Aramean god Hadad." }
+  ],
+  "rabbah": [
+    { "file": "Amman citadel 8.jpg", "caption": "The Amman Citadel, on the hill of Rabbah of the Ammonites." },
+    { "file": "Temple of Hercules, Amman, Jordan3.jpg", "caption": "The Roman Temple of Hercules on the citadel hill." },
+    { "file": "View of the Amman Citadel, Jordan4.jpg", "caption": "Ruins on the Amman Citadel." }
+  ],
+  "mahanaim": [
+    { "file": "Tulul adh-Dhahab and Jabbok in spring.jpg", "caption": "Tulul adh-Dhahab, one proposed site of Mahanaim, above the Jabbok." },
+    { "file": "Tulul adh-Dhahab in spring.jpg", "caption": "The twin hills of Tulul adh-Dhahab in spring." },
+    { "file": "Tulul adh-Dhahab morning view on excavation 2008 I.JPG", "caption": "Excavations on Tulul adh-Dhahab in 2008." }
+  ],
+  "ephraim": [
+    { "file": "Ajloun forests JO 2.jpg", "caption": "Forest at Ajloun, in the hills of Gilead. The forest of Ephraim is not identified." },
+    { "file": "Ajloun Forest Reserve in Jordan kz05.jpg", "caption": "Oak woodland in the Ajloun Forest Reserve." }
+  ],
+  "abel": [
+    { "file": "View of Tell Abil el-Qameḥ - Tel Abel Beth Maacah, looking southeast.JPG", "caption": "Tel Abel Beth-maacah, looking southeast." },
+    { "file": "Aerial view of Area A, end of 2015 excavation season, looking west.jpg", "caption": "Excavated Iron Age buildings on the tel, 2015." }
+  ],
+  "gath": [
+    { "file": "Tel Zafit 1.jpg", "caption": "The summit of Tell es-Safi, the site of Gath, with the coastal plain beyond." },
+    { "file": "120622 tel tzfit - biblical gat PikiWiki Israel.jpg", "caption": "Ruins on the summit of Tell es-Safi." },
+    { "file": "Cafit024.jpg", "caption": "The chalk cliffs of Tell es-Safi." }
+  ],
+  "nazareth": [
+    { "file": "View of Nazareth from El Kishleh neighborhood.jpg", "caption": "Nazareth in the hills of Lower Galilee." },
+    { "file": "Israel Nazareth Old City Altstadt Verkündigungsbasilika Church of Annunciation (34714423420).jpg", "caption": "The old city of Nazareth, with the dome of the Basilica of the Annunciation." },
+    { "file": "127766 nazareth-synagogue church PikiWiki Israel.jpg", "caption": "The Synagogue Church in the old city. Tradition puts the synagogue of Luke 4 here." }
+  ],
+  "baptism": [
+    { "file": "Qasr at Yahud 160526 05.jpg", "caption": "Pilgrims are baptized in the Jordan River at Qasr al-Yahud." },
+    { "file": "Qasr al-Yahud in October 2019.jpg", "caption": "The baptism site at Qasr al-Yahud, on the west bank of the Jordan." },
+    { "file": "Bethany Beyond the Jordan 24-03-2017-4.jpg", "caption": "The Church of John the Baptist at Al-Maghtas, on the east bank of the Jordan." }
+  ],
+  "cana": [
+    { "file": "Wedding Church (Orthodox) Kafr Kanna (1).jpg", "caption": "The Greek Orthodox Wedding Church in Kafr Kanna." },
+    { "file": "Het dorp Kana en het omringende landschap, Bestanddeelnr 255-2983.jpg", "caption": "Kafr Kanna and the land around it, in the mid-20th century." }
+  ],
+  "capernaum": [
+    { "file": "Ruins of the White Synagoge in Capernaum (34682858815).jpg", "caption": "The white limestone synagogue at Capernaum, from about the 4th century AD. It stands on the foundations of an earlier synagogue." },
+    { "file": "Ruins of the Byzantine Village in Capernaum (33840691954).jpg", "caption": "The basalt houses of the town, with the Sea of Galilee behind them." },
+    { "file": "Holy Land 2016 P0408 View of Capernaum from the Sea of Galilee.jpg", "caption": "Capernaum from the Sea of Galilee." }
+  ],
+  "tyre": [
+    { "file": "Tyre hippodrome 01.jpg", "caption": "The Roman hippodrome at Al-Bass in Tyre." },
+    { "file": "TyreAlMinaCollonnadedStreet.jpg", "caption": "The colonnaded Roman street at the Al-Mina site, by the sea." },
+    { "file": "Columns at Al Mina site, Tyre, Lebanon.jpg", "caption": "Roman ruins at Al-Mina, on the old island of Tyre." }
+  ],
+  "caesarea": [
+    { "file": "Banias-2-288.jpg", "caption": "The cave of Pan at Banias. The town took the name Paneas from the god." },
+    { "file": "Banias Spring Cliff Pan's Cave.JPG", "caption": "The spring at Banias, one of the sources of the Jordan, below the cliff." },
+    { "file": "Golan Heights 0166 Banias Springs (5539856473).jpg", "caption": "The cliff and the niches of the shrines of Pan." }
+  ],
+  "sychar": [
+    { "file": "Jacob's well.jpg", "caption": "Jacob's Well, inside the Orthodox church at Bir Ya'qub in Nablus (John 4:6)." },
+    { "file": "Northern views. Jacob's Well and Plain of Makhna LOC matpc.01054 (cropped).jpg", "caption": "The site of Jacob's Well and the plain below Mount Gerizim, in an early photograph." }
+  ],
+  "bethany": [
+    { "file": "Lazarus Tomb.jpg", "caption": "The steps into the traditional tomb of Lazarus in al-Eizariya." },
+    { "file": "Photograph of Bethany (al-'Eizariya).jpg", "caption": "Bethany in an early photograph." },
+    { "file": "AlEizariyaMay232023.jpg", "caption": "Modern al-Eizariya, on the east slope of the Mount of Olives." }
   ]
 }

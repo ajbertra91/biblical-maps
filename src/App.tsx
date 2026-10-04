@@ -18,8 +18,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
 const routeStopBefore = (stops: Stop[], i: number) => stops.slice(0, i).reverse().find((s) => !s.offRoute)
 const prefersReduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
 
-function App() {
-  const [familyId, setFamilyId] = useState<FamilyId>('military')
+function App({ initial = 'military' }: { initial?: FamilyId }) {
+  const [familyId, setFamilyId] = useState<FamilyId>(initial)
   const family = familyById(familyId)
   const stops = family.stops
   const stageRef = useRef<HTMLDivElement>(null)
@@ -75,6 +75,8 @@ function App() {
     window.scrollTo(0, 0)
     setHover(null)
     setFamilyId(id)
+    // Keep the URL on the current map without a new history entry. Back returns to the landing page.
+    window.history.replaceState(null, '', `#/${id}`)
   }
 
   // Arrow keys step through the stops when no control has focus.
@@ -132,6 +134,10 @@ function App() {
         <div className="frame" aria-hidden="true"><i /><i /><i /><i /></div>
 
         <header className="bar">
+          <a className="home" href="#/">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5L4 6l3.5 3.5" /></svg>
+            All maps
+          </a>
           <span className="mark">Biblical Maps</span>
           <div className="tabs" role="group" aria-label="Map family">
             {FAMILIES.map((f) => (

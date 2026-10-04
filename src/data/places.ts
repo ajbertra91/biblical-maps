@@ -422,7 +422,7 @@ export const FAMILIES: Family[] = [
   },
   {
     id: 'ministry',
-    name: 'Ministry',
+    name: 'Jesus',
     sub: 'Selected stops in the ministry of Jesus',
     stops: [
       { place: 'nazareth', ref: 'Luke 4:16', event: 'Reads in the synagogue', span: 120 },

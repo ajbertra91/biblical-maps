@@ -144,6 +144,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tabs button[data-f="kings"] i { color: var(--violet); }
 .tabs button[data-f="abraham"] i { color: var(--sand); }
 .tabs button[aria-pressed="true"] i { background: currentColor; }
+.home { display: flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 .85rem 0 .6rem; border: 1px solid var(--line-strong); background: rgba(6, 9, 10, .7); font: 500 .72rem/1 var(--data); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); text-decoration: none; white-space: nowrap; transition: color .2s var(--ease), border-color .2s var(--ease); }
+.home svg { width: .75rem; height: .75rem; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.home:hover { color: var(--t5); border-color: var(--t4); }
 .sources { margin-left: auto; position: relative; }
 .sources summary { font: 500 .72rem/1 var(--data); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-dim); cursor: pointer; padding: .8rem .2rem; list-style: none; }
 .sources summary::-webkit-details-marker { display: none; }
@@ -251,3 +254,35 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .place-name { font-size: 2.4rem; }
   .key { display: none; }
 }
+
+/* Landing page. One card per map family. */
+.landing { min-height: 100svh; max-width: 76rem; margin: 0 auto; padding: 0 1.6rem 2.5rem; display: flex; flex-direction: column; }
+.landing-bar { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.landing-intro { padding: 3.5rem 0 2.5rem; max-width: 40rem; }
+.landing-intro h1 { margin: 0 0 .8rem; font: 900 clamp(2.6rem, 6vw, 4.2rem)/.95 var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--t5); }
+.landing-intro p { margin: 0; color: var(--ink-dim); font-size: 1.15rem; }
+.choices { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 1rem; }
+.choice { --fam: var(--amber); height: 100%; display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.choice[data-f="abraham"] { --fam: var(--sand); }
+.choice[data-f="movement"] { --fam: var(--white-hot); }
+.choice[data-f="military"] { --fam: var(--amber); }
+.choice[data-f="kings"] { --fam: var(--violet); }
+.choice[data-f="ministry"] { --fam: var(--cyan); }
+.choice:hover, .choice:focus-visible { border-color: var(--fam); transform: translateY(-2px); }
+.sketch { display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--sea); border-bottom: 1px solid var(--line); }
+.sketch .land { fill: var(--t2); stroke: var(--t4); stroke-opacity: .6; stroke-width: calc(1px * var(--k)); }
+.sketch .route { fill: none; stroke: var(--fam); stroke-width: calc(2px * var(--k)); stroke-linecap: round; stroke-linejoin: round; opacity: .75; transition: opacity .25s var(--ease); }
+.sketch .pin { r: calc(3.5px * var(--k)); fill: var(--sea); stroke: var(--fam); stroke-width: calc(1.5px * var(--k)); }
+.choice[data-f="military"] .sketch .pin, .choice[data-f="kings"] .sketch .pin { fill: var(--fam); }
+.choice:hover .sketch .route, .choice:focus-visible .sketch .route { opacity: 1; }
+.choice-body { display: flex; flex-direction: column; gap: .45rem; padding: 1rem 1.1rem 1.15rem; flex: 1; }
+.choice-name { display: flex; align-items: center; gap: .6rem; font: 700 1.7rem/1 var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--t5); }
+.choice-name i { width: .75rem; height: .75rem; background: var(--fam); display: block; }
+.choice-sub { color: var(--ink-dim); flex: 1; }
+.choice-data { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--fam); }
+.landing-foot { margin-top: auto; padding-top: 2.5rem; font: 400 .7rem/1.6 var(--data); color: var(--t3); }
+@media (max-width: 760px) {
+  .landing { padding: 0 1rem 2rem; }
+  .landing-intro { padding: 2.2rem 0 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .choice { transition: none; } .choice:hover, .choice:focus-visible { transform: none; } }

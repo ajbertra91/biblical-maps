@@ -98,8 +98,8 @@ describe('App', () => {
 
   it('switches the map family', () => {
     render(<App />)
-    fireEvent.click(screen.getByRole('button', { name: 'Ministry' }))
-    expect(screen.getByRole('heading', { name: 'Ministry' })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Jesus' }))
+    expect(screen.getByRole('heading', { name: 'Jesus' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /nazareth, luke 4:16/i })).toBeInTheDocument()
   })
 })
