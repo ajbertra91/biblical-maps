@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  // GitHub Pages serves the site from /biblical-maps/.
+  base: '/biblical-maps/',
   plugins: [
     react(),
     tailwindcss(),
@@ -12,7 +14,8 @@ export default defineConfig({
       manifest: {
         name: 'Biblical Maps',
         short_name: 'Biblical Maps',
-        start_url: '/',
+        start_url: '.',
+        scope: '.',
         display: 'standalone',
         background_color: '#06090a',
         theme_color: '#06090a',
