@@ -10,12 +10,12 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'divine-counsel',
-        short_name: 'divine-counsel',
+        name: 'Biblical Maps',
+        short_name: 'Biblical Maps',
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#111111',
+        background_color: '#06090a',
+        theme_color: '#06090a',
         icons: [
           {
             src: 'pwa-192x192.png',

@@ -1,12 +1,75 @@
 import { describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App.tsx'
+import { FAMILIES, PLACES } from './data/places'
+
+const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John) \d+/
 
 describe('App', () => {
-  it('renders the hello-world heading', () => {
+  it('opens on the conquest overview with a Scripture-cited stop list', () => {
     render(<App />)
-    expect(
-      screen.getByRole('heading', { name: /hello, divine-counsel/i }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Conquest' })).toBeInTheDocument()
+    expect(screen.getByRole('list', { name: /conquest stops/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /jericho, josh 6:20/i })).toBeInTheDocument()
+  })
+
+  it('cites Scripture and has a known place for every stop', () => {
+    for (const f of FAMILIES) {
+      for (const s of f.stops) {
+        expect(PLACES[s.place], `${f.id}: ${s.place}`).toBeDefined()
+        expect(s.ref).toMatch(REF)
+        for (const m of s.moves ?? []) {
+          expect(m.ref, `${f.id}: ${m.label}`).toMatch(REF)
+          expect(m.path.length).toBeGreaterThan(1)
+          for (const id of m.path) expect(PLACES[id], `${f.id}: ${m.label}: ${id}`).toBeDefined()
+        }
+      }
+    }
+  })
+
+  it('shows Saul and David battles with cited army movements', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Kings' }))
+    expect(screen.getByRole('heading', { name: 'Kings' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /mount gilboa, 1 sam 31:1–6/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /rabbah, 2 sam 10:6–14; 2 sam 11:1, 14–17; 2 sam 12:26–31/i })).toBeInTheDocument()
+    expect(document.querySelector('.routes path')).toBeNull()
+  })
+
+  it('marks the Rephaim peoples of Deuteronomy on the military map', () => {
+    render(<App />)
+    for (const name of ['Anakim', 'Emim', 'Zamzummim', 'Rephaim of Bashan']) {
+      expect(document.querySelector('.giant')?.closest('svg')).toHaveTextContent(name)
+    }
+    for (const g of FAMILIES.flatMap((f) => f.giants ?? [])) {
+      expect(g.ref).toMatch(/^(Deut|2 Sam) \d+/)
+      for (const id of g.places) expect(PLACES[id], `${g.id}: ${id}`).toBeDefined()
+    }
+  })
+
+  it('shows every reference for a place in a pop-up on focus', () => {
+    render(<App />)
+    fireEvent.focus(screen.getByRole('button', { name: /^ai, josh 7:2–5; josh 8:1–29/i }))
+    const box = document.querySelector('.cite-box')!
+    expect(box).toHaveTextContent('Ai')
+    expect(box).toHaveTextContent('Josh 7:2–5')
+    expect(box).toHaveTextContent('Josh 8:1–29')
+  })
+
+  it('puts Abraham first, from Ur to the sacrifice of Isaac', () => {
+    render(<App />)
+    const tabs = screen.getByRole('group', { name: 'Map family' })
+    expect(tabs.querySelector('button')).toHaveTextContent('Abraham')
+    fireEvent.click(screen.getByRole('button', { name: 'Abraham' }))
+    expect(screen.getByRole('heading', { name: 'Abraham' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^ur, gen 11:27–31/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /mount moriah, gen 22:1–14/i })).toBeInTheDocument()
+  })
+
+  it('switches the map family', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Ministry' }))
+    expect(screen.getByRole('heading', { name: 'Ministry' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /nazareth, luke 4:16/i })).toBeInTheDocument()
   })
 })
