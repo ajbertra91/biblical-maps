@@ -3,8 +3,8 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const dir = process.argv[2] ?? '../.work'
-// Egypt in the southwest to Haran in the north and Ur in the southeast.
-const B = { lon0: 29.0, lon1: 49.0, lat0: 26.8, lat1: 38.2 }
+// Rome in the west, Nubia in the south, the Caucasus in the north and Parthia in the east.
+const B = { lon0: 10.0, lon1: 58.0, lat0: 13.0, lat1: 45.5 }
 // Scale stays at 1000 units for 9 degrees, so spans in the map data keep their size.
 const scale = 1000 / 9
 const W = Math.round((B.lon1 - B.lon0) * scale)

@@ -8,7 +8,7 @@ import { PHOTOS } from './data/photos'
 // Every photo file in public/assets. Vite lists the paths. It does not load the files.
 const FILES = Object.keys(import.meta.glob('/public/assets/places/**/*.jpg'))
 
-const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John) \d+/
+const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John|Acts) \d+/
 
 describe('App', () => {
   it('opens on the conquest overview with a Scripture-cited stop list', () => {
@@ -61,10 +61,20 @@ describe('App', () => {
     expect(box).toHaveTextContent('Josh 8:1–29')
   })
 
-  it('puts Abraham first, from Ur to the sacrifice of Isaac', () => {
+  it('puts the Table of Nations first, then Abraham', () => {
     render(<App />)
     const tabs = screen.getByRole('group', { name: 'Map family' })
-    expect(tabs.querySelector('button')).toHaveTextContent('Abraham')
+    const [first, second] = tabs.querySelectorAll('button')
+    expect(first).toHaveTextContent('Nations')
+    expect(second).toHaveTextContent('Abraham')
+    fireEvent.click(first)
+    expect(screen.getByRole('heading', { name: 'Nations' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^gomer, gen 10:2–3/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^sheba, gen 10:7; gen 10:28/i })).toBeInTheDocument()
+  })
+
+  it('follows Abraham from Ur to the sacrifice of Isaac', () => {
+    render(<App />)
     fireEvent.click(screen.getByRole('button', { name: 'Abraham' }))
     expect(screen.getByRole('heading', { name: 'Abraham' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^ur, gen 11:27–31/i })).toBeInTheDocument()
@@ -101,5 +111,32 @@ describe('App', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Jesus' }))
     expect(screen.getByRole('heading', { name: 'Jesus' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /nazareth, luke 4:16/i })).toBeInTheDocument()
+  })
+
+  it('follows Paul on four journeys in Acts', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Paul' }))
+    expect(screen.getByRole('heading', { name: 'Paul' })).toBeInTheDocument()
+    const paul = FAMILIES.find((f) => f.id === 'paul')!
+    expect(paul.stops.every((s) => s.ref.startsWith('Acts'))).toBe(true)
+    expect([...new Set(paul.stops.map((s) => s.journey))]).toEqual(['First journey', 'Between journeys', 'Second journey', 'Third journey', 'Journey to Rome'])
+    expect(screen.getByRole('button', { name: /^paphos, acts 13:6–12/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^athens, acts 17:15–34/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^miletus, acts 20:15–38/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^rome, acts 28:14–31/i })).toBeInTheDocument()
+    // The seven churches of Revelation lie on the route from Lystra to Troas. They are not stops.
+    const via = Object.values(paul.via!).flat()
+    expect(via.map((v) => v.place)).toEqual(['laodicea', 'philadelphia', 'ephesus', 'smyrna', 'sardis', 'thyatira', 'pergamum'])
+    for (const v of via) expect(v.ref).toMatch(/^Rev [23]:/)
+    expect(Object.keys(paul.via!).map((k) => paul.stops[+k].place)).toEqual(['lystra'])
+    expect(paul.stops.some((s) => ['laodicea', 'sardis', 'smyrna'].includes(s.place))).toBe(false)
+  })
+
+  it('puts Pentecost to the right of Jesus', () => {
+    render(<App />)
+    const labels = [...screen.getByRole('group', { name: 'Map family' }).querySelectorAll('button')].map((b) => b.textContent)
+    expect(labels.indexOf('Pentecost')).toBe(labels.indexOf('Jesus') + 1)
+    fireEvent.click(screen.getByRole('button', { name: 'Pentecost' }))
+    expect(screen.getByRole('button', { name: /^parthia, acts 2:9/i })).toBeInTheDocument()
   })
 })

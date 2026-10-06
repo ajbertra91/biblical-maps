@@ -52,7 +52,7 @@ export function Landing() {
                 <span className="choice-name"><i aria-hidden="true" />{f.name}</span>
                 <span className="choice-sub">{f.sub}</span>
                 <span className="choice-data num">
-                  {f.route === false ? `${f.stops.length} battles` : `${f.stops.length} stops · ≈${Math.round(routeKm(f))} km`}
+                  {f.route === false ? `${f.stops.length} ${f.terms?.many ?? 'battles'}` : `${f.stops.length} stops · ≈${Math.round(routeKm(f))} km`}
                 </span>
               </span>
             </a>

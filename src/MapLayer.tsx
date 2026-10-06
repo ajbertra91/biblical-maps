@@ -16,6 +16,12 @@ const REGIONS: { t: string; lat: number; lon: number; rot?: number; start?: bool
   { t: 'Euphrates', lat: 34.45, lon: 41.75, rot: 29, level: 'wide', water: true },
   { t: 'Tigris', lat: 35.0, lon: 44.0, rot: 68, level: 'wide', water: true },
   { t: 'Persian Gulf', lat: 29.25, lon: 48.75, level: 'wide', water: true },
+  { t: 'ANATOLIA', lat: 39.2, lon: 31.0, level: 'wide' },
+  { t: 'ARABIA', lat: 23.5, lon: 43.0, level: 'wide' },
+  { t: 'LIBYA', lat: 28.0, lon: 24.0, level: 'wide' },
+  { t: 'NUBIA', lat: 18.5, lon: 29.0, level: 'wide' },
+  { t: 'Black Sea', lat: 43.0, lon: 34.0, level: 'wide', water: true },
+  { t: 'Red Sea', lat: 21.0, lon: 38.0, rot: 50, level: 'wide', water: true },
   { t: 'Dead Sea', lat: 31.45, lon: 35.66, start: true, level: 'mid', water: true },
   { t: 'Sea of Galilee', lat: 32.8, lon: 35.7, start: true, level: 'mid', water: true },
 ]
@@ -56,6 +62,7 @@ export const MapLayer = memo(function MapLayer({ family, active, svgRef, onPick,
     if (s.offRoute) return
     nodes.push({ p: pts[i], leg: i })
     ;(family.bends?.[i] ?? []).forEach((b) => nodes.push({ p: project(b[0], b[1]), leg: i }))
+    ;(family.via?.[i] ?? []).forEach((v) => nodes.push({ p: project(PLACES[v.place].lat, PLACES[v.place].lon), leg: i }))
   })
   const legs = nodes.slice(0, -1).map((n, k) => {
     const same = nodes.filter((m) => m.leg === n.leg)
@@ -79,7 +86,7 @@ export const MapLayer = memo(function MapLayer({ family, active, svgRef, onPick,
       viewBox={`0 0 ${GEO_W} ${GEO_H}`}
       preserveAspectRatio="xMidYMid meet"
       role="img"
-      aria-label={`Map of ${family.name.toLowerCase()} stops from Egypt to Mesopotamia`}
+      aria-label={`Map: ${family.sub}`}
     >
       <rect className="sea" x="-500" y="-500" width={GEO_W + 1000} height={GEO_H + 1000} />
       <path className="shore" d={LAND} />
@@ -100,13 +107,26 @@ export const MapLayer = memo(function MapLayer({ family, active, svgRef, onPick,
       </g>
 
       <g className="landmarks">
-        {LANDMARKS.map((l) => {
+        {LANDMARKS.filter((l) => !Object.keys(first).some((id) => place(id).name === l.t)).map((l) => {
           const [x, y] = project(l.lat, l.lon)
           return (
             <g key={l.t} className="landmark" transform={`translate(${x.toFixed(1)} ${y.toFixed(1)})`}>
               <title>{`${l.note} · ${l.ref}`}</title>
               <rect className="mark" x="-1" y="-1" width="2" height="2" />
               <text className="label" x="1" y="0">{l.t}</text>
+            </g>
+          )
+        })}
+      </g>
+
+      <g className="landmarks via">
+        {Object.values(family.via ?? {}).flat().filter((v) => first[v.place] === undefined).map((v) => {
+          const [x, y] = project(place(v.place).lat, place(v.place).lon)
+          return (
+            <g key={v.place} className="landmark" transform={`translate(${x.toFixed(1)} ${y.toFixed(1)})`}>
+              <title>{`${place(v.place).name} · ${v.ref}. The route passes here. Acts does not name it.`}</title>
+              <rect className="mark" x="-1" y="-1" width="2" height="2" />
+              <text className="label" x="1" y="0">{place(v.place).name}</text>
             </g>
           )
         })}

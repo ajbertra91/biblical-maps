@@ -35,7 +35,10 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
   const keys = useMemo<Key[]>(() => {
     const at = (id: string) => project(PLACES[id].lat, PLACES[id].lon)
     const pts: Pt[] = stops.map((s) => at(s.place))
-    const bends = Object.values(family.bends ?? {}).flat().map((b) => project(b[0], b[1]))
+    const bends = [
+      ...Object.values(family.bends ?? {}).flat().map((b) => project(b[0], b[1])),
+      ...Object.values(family.via ?? {}).flat().map((v) => project(PLACES[v.place].lat, PLACES[v.place].lon)),
+    ]
     const fit = [...pts, ...bends]
     const [cx, cy] = centerOf(fit)
     // A stop with army movements frames the whole of each movement.
@@ -60,6 +63,9 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
   )
   const totalKm = legKm.reduce((a, b) => a + b, 0)
   const hasRoute = family.route !== false
+  const terms = family.terms ?? (hasRoute
+    ? { one: 'Stop', many: 'stops', hint: 'Scroll to follow the route.' }
+    : { one: 'Battle', many: 'battles and campaigns', hint: 'Scroll to follow the battles.' })
   const forces = [...new Set(stops.flatMap((s) => s.moves?.map((m) => m.force) ?? []))]
 
   const goTo = useCallback(
@@ -101,6 +107,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
     list.scrollTo?.({ top: chapter === 0 ? 0 : top, behavior: prefersReduced() ? 'auto' : 'smooth' })
   }, [chapter, familyId])
 
+  const nameOf = (id: string) => PLACES[id].name
   const stop = chapter > 0 ? stops[chapter - 1] : undefined
   const place = stop ? PLACES[stop.place] : undefined
   const photos = stop ? PHOTOS[stop.place] : undefined
@@ -121,7 +128,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
         <div className="cite" ref={cite} aria-hidden="true">
           {citeId && (
             <div className="cite-box">
-              <b>{PLACES[citeId].name}</b>
+              <b>{nameOf(citeId)}</b>
               {citeStops.map((s) => (
                 <span key={s.i} data-current={s.i === chapter - 1}>{s.ref}</span>
               ))}
@@ -153,6 +160,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
               <p><b>Base map</b> Natural Earth 1:10m land, lakes and rivers. Public domain.</p>
               <p><b>Sites</b> Coordinates come from Wikidata. Many biblical sites are debated, so each stop shows how sure the identification is.</p>
               <p><b>Routes</b> Lines join stops in order. The paths between stops are schematic.</p>
+              <p><b>Via</b> Some routes pass through places that the stop does not name. They show as small marks with their own citation. They are not stops.</p>
               <p><b>Armies</b> Arrows join places that the text names for a movement. Each arrow cites its passage. The paths are schematic.</p>
               <p><b>Scripture</b> Each stop cites its passage. Check each reference in your own translation.</p>
             </div>
@@ -171,7 +179,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
               <li key={i}>
                 <button onClick={() => goTo(i + 1)} aria-current={chapter === i + 1 ? 'step' : undefined} data-reached={chapter >= i + 1}>
                   <span className="n">{pad(i + 1)}</span>
-                  <span className="t">{PLACES[s.place].name}</span>
+                  <span className="t">{nameOf(s.place)}</span>
                 </button>
               </li>
             ))}
@@ -185,8 +193,9 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
               <p className="meta">
                 <span className="num">{pad(chapter)} / {pad(stops.length)}</span>
                 <span className="tag" data-c={place.confidence}>{CONFIDENCE[place.confidence]}</span>
+                {stop.journey && <span className="tag">{stop.journey}</span>}
               </p>
-              <h1 className="place-name">{place.name}</h1>
+              <h1 className="place-name">{nameOf(stop.place)}</h1>
               <p className="event">{stop.event}</p>
               <p className="ref">
                 <span>{stop.ref}</span>
@@ -220,8 +229,8 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
               <p className="meta"><span className="num">00 / {pad(stops.length)}</span></p>
               <h1 className="place-name">{family.name}</h1>
               <p className="event">{family.sub}</p>
-              <p className="data num">{hasRoute ? `${stops.length} stops · ≈${Math.round(totalKm)} km in straight lines` : `${stops.length} battles and campaigns`}</p>
-              <p className="hint">{hasRoute ? 'Scroll to follow the route.' : 'Scroll to follow the battles.'}</p>
+              <p className="data num">{hasRoute ? `${stops.length} stops · ≈${Math.round(totalKm)} km in straight lines` : `${stops.length} ${terms.many}`}</p>
+              <p className="hint">{terms.hint}</p>
             </>
           )}
         </section>
@@ -231,7 +240,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
           {forces.map((f) => <li key={f}><i className="k-move" data-force={f} />{FORCES[f]}</li>)}
           {family.zones && <li><i className="k-zone" />Campaign area</li>}
           {family.giants && <li><i className="k-giant" />{family.id === 'kings' ? 'Giants of Gath' : 'Rephaim peoples'}</li>}
-          <li><i className="k-pin" />{hasRoute ? 'Stop' : 'Battle'}</li>
+          <li><i className="k-pin" />{terms.one}</li>
         </ul>
       </div>
       {photosFor && <PhotoViewer place={PLACES[photosFor].name} photos={PHOTOS[photosFor]} onClose={closePhotos} />}
