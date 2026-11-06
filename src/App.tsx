@@ -153,6 +153,10 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
                 {f.name}
               </button>
             ))}
+            <a href="#/terrain" data-f="terrain">
+              <i aria-hidden="true" />
+              3D Jerusalem
+            </a>
           </div>
           <details className="sources">
             <summary>Sources</summary>

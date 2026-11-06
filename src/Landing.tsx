@@ -58,9 +58,18 @@ export function Landing() {
             </a>
           </li>
         ))}
+        <li>
+          <a className="choice" href="#/terrain" data-f="terrain">
+            <span className="choice-body">
+              <span className="choice-name"><i aria-hidden="true" />3D Jerusalem</span>
+              <span className="choice-sub">Fly over the hills of Israel in 3D and watch Jerusalem grow from David to today.</span>
+              <span className="choice-data num">5 eras · real elevation</span>
+            </span>
+          </a>
+        </li>
       </ul>
       <footer className="landing-foot">
-        Base map: Natural Earth, public domain. Site coordinates: Wikidata. Routes are schematic.
+        Base map: Natural Earth, public domain. 3D terrain: AWS Terrain Tiles (SRTM and others). Site coordinates: Wikidata. Routes are schematic.
       </footer>
     </main>
   )

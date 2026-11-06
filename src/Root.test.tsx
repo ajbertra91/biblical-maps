@@ -56,3 +56,15 @@ describe('Root', () => {
     expect(screen.getByRole('heading', { name: 'Choose a map' })).toBeInTheDocument()
   })
 })
+
+describe('3D Jerusalem', () => {
+  it('lists the 3D map on the landing page', () => {
+    render(<Root />)
+    expect(screen.getAllByRole('link').some((a) => a.getAttribute('href') === '#/terrain')).toBe(true)
+  })
+  it('links to the 3D map from a family map', () => {
+    window.history.replaceState(null, '', '#/ministry')
+    render(<Root />)
+    expect(screen.getByRole('link', { name: /3D Jerusalem/ })).toHaveAttribute('href', '#/terrain')
+  })
+})
