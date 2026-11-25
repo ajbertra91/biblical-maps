@@ -60,7 +60,7 @@ export const ERAS: Era[] = [
     population: [1000, 2000],
     density: 12,
     blurb: 'David takes the Jebusite stronghold and calls it the City of David. It sits on a narrow spur above the Gihon spring, with steep valleys on both sides.',
-    ref: '2 Samuel 5:6–9',
+    ref: '2 Samuel 5:6-9',
     landmarks: [
       { id: 'stronghold', name: 'Stronghold of Zion', at: [35.2358, 31.7752], size: [40, 30, 14], kind: 'fort', ref: '2 Samuel 5:7' },
       { id: 'threshing', name: 'Threshing floor of Araunah', at: [35.2354, 31.7782], size: [30, 30, 1.5], kind: 'tower', ref: '2 Samuel 24:18' },
@@ -76,7 +76,7 @@ export const ERAS: Era[] = [
     population: [3000, 5000],
     density: 12,
     blurb: 'Solomon builds the Temple on Mount Moriah and a royal palace beside it. The city grows north along the ridge and the Ophel joins the old city to the Temple.',
-    ref: '1 Kings 6–7',
+    ref: '1 Kings 6-7',
     landmarks: [
       { id: 'temple', name: 'Solomon’s Temple', at: [35.2354, 31.7783], size: [30, 90, 28], kind: 'temple', ref: '1 Kings 6:2' },
       { id: 'palace', name: 'Royal palace', at: [35.2354, 31.7768], size: [90, 60, 14], kind: 'palace', ref: '1 Kings 7:1' },
@@ -93,7 +93,7 @@ export const ERAS: Era[] = [
     population: [1500, 4000],
     density: 6,
     blurb: 'The Babylonians burned the city in 586 BC. Returned exiles rebuild a small Temple and Nehemiah closes the broken walls in 52 days. The city is far smaller than before and largely empty.',
-    ref: 'Nehemiah 2:11–6:15',
+    ref: 'Nehemiah 2:11-6:15',
     landmarks: [
       { id: 'temple', name: 'Second Temple (Zerubbabel)', at: [35.2354, 31.7783], size: [30, 80, 20], kind: 'temple', ref: 'Ezra 6:15' },
       { id: 'valley', name: 'Valley Gate', at: [35.2343, 31.7715], size: [10, 10, 12], kind: 'gate', ref: 'Nehemiah 2:13' },
@@ -113,7 +113,7 @@ export const ERAS: Era[] = [
     population: [40000, 80000],
     density: 14,
     blurb: 'Herod has doubled the Temple platform and rebuilt the Temple in marble and gold. The Upper City climbs the western hill, the Lower City runs down the ridge, and festival crowds swell the population several times over.',
-    ref: 'John 2:20; Mark 13:1–2',
+    ref: 'John 2:20; Mark 13:1-2',
     landmarks: [
       { id: 'platform', name: 'Temple platform', at: [35.2358, 31.7783], size: [300, 460, 5], kind: 'platform', ref: 'Mark 13:1' },
       { id: 'temple', name: 'Herod’s Temple', at: [35.2354, 31.7780], size: [50, 100, 50], kind: 'temple', ref: 'John 2:20' },
@@ -137,7 +137,7 @@ export const ERAS: Era[] = [
     population: [900000, 1000000],
     density: 14,
     blurb: 'The Ottoman walls of 1541 enclose the Old City, about 0.9 km² and 35,000 people. Beyond them the modern municipality covers about 126 km² of hills, with roughly a million residents.',
-    ref: 'Walls of Suleiman, 1535–1542',
+    ref: 'Walls of Suleiman, 1535-1542',
     landmarks: [
       { id: 'platform', name: 'Haram al-Sharif platform', at: [35.2358, 31.7783], size: [300, 460, 5], kind: 'platform' },
       { id: 'dome', name: 'Dome of the Rock', at: [35.2354, 31.7780], size: [50, 50, 35], kind: 'dome' },

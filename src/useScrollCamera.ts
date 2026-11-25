@@ -45,7 +45,7 @@ export function useScrollCamera({ keys, stopCount, svgRef, stageRef, readout, ci
       const st = stage.style
       st.setProperty('--k', (vb.w / w).toFixed(5))
       st.setProperty('--t', (t / Math.max(1, stopCount)).toFixed(4))
-      const level = cam.s > 420 ? 'wide' : cam.s > 180 ? 'mid' : 'close'
+      const level = cam.s > 2200 ? 'world' : cam.s > 420 ? 'wide' : cam.s > 180 ? 'mid' : 'close'
       if (stage.dataset.level !== level) stage.dataset.level = level
       for (let i = 0; i < stopCount; i++) {
         // Leg i joins stop i to stop i+1 and draws during the flight that starts at t = i + 1.

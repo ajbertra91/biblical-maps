@@ -4,7 +4,7 @@ import { FAMILIES } from './data/places'
 import type { SceneApi, View } from './terrain/scene'
 
 const fmt = (n: number) => n.toLocaleString('en-US')
-const range = ([lo, hi]: [number, number]) => `${fmt(lo)}–${fmt(hi)}`
+const range = ([lo, hi]: [number, number]) => `${fmt(lo)}-${fmt(hi)}`
 const acres = (ha: number) => `${fmt(ha)} ha`
 
 const VIEWS: { id: View; name: string }[] = [

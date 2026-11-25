@@ -1,11 +1,20 @@
 // Site coordinates come from Wikidata (P625) unless a note says otherwise.
 // Many biblical sites are debated. `confidence` records that. Scripture
 // references are for each stop; verify against your translation before use.
+import { CHURCH, CHURCH_PLACES } from './church'
 
-export type FamilyId = 'nations' | 'pentecost' | 'abraham' | 'ministry' | 'movement' | 'military' | 'kings' | 'paul'
+export type FamilyId = 'nations' | 'pentecost' | 'abraham' | 'ministry' | 'movement' | 'military' | 'kings' | 'paul' | 'church'
 export type Confidence = 'identified' | 'traditional' | 'debated'
 /** Who an army belongs to. The map gives each force its own color. */
-export type Force = 'saul' | 'david' | 'foreign' | 'revolt' | 'abraham' | 'lot' | 'hagar' | 'angels'
+export type Force = 'saul' | 'david' | 'foreign' | 'revolt' | 'abraham' | 'lot' | 'hagar' | 'angels' | 'record' | 'tradition'
+/** How a stop on the early church map is known. */
+export type Basis = 'scripture' | 'record' | 'tradition'
+
+export const BASIS: Record<Basis, string> = {
+  scripture: 'Scripture',
+  record: 'Early record',
+  tradition: 'Later tradition',
+}
 
 export const FORCES: Record<Force, string> = {
   abraham: 'Abraham and his household',
@@ -16,6 +25,8 @@ export const FORCES: Record<Force, string> = {
   david: 'House of David',
   foreign: 'Foreign army',
   revolt: 'Revolt against David',
+  record: 'Travel in early records',
+  tradition: 'Travel in later tradition',
 }
 
 /** One army movement. Every place on the path is a named place in Scripture. */
@@ -54,6 +65,12 @@ export interface Stop {
   offRoute?: true
   /** The journey the stop belongs to, when a map has several. */
   journey?: string
+  /** The date as the panel shows it, for example "c. 64". */
+  when?: string
+  /** The year on the timeline. Negative years are not used. */
+  year?: number
+  /** How the stop is known. A stop without it cites Scripture. */
+  basis?: Basis
   note?: string
 }
 
@@ -73,9 +90,12 @@ export interface Family {
   zones?: { id: string; name: string; ref: string; places: string[]; radius: number }[]
   /** Peoples of great size that Deuteronomy names, with the land each held. */
   giants?: { id: string; name: string; ref: string; places: string[]; radius: number; note?: string }[]
+  /** A time bar for maps that move through years. Eras are labeled bands on it. */
+  timeline?: { from: number; to: number; eras: { name: string; from: number; to: number }[] }
 }
 
 export const PLACES: Record<string, Place> = {
+  ...CHURCH_PLACES,
   rameses: { id: 'rameses', name: 'Rameses', lat: 30.7994, lon: 31.8342, confidence: 'traditional', note: 'Often identified with Pi-Ramesses (Qantir).', source: 'Q937930' },
   succoth: { id: 'succoth', name: 'Succoth', lat: 30.5519, lon: 32.0986, confidence: 'debated', note: 'Often linked to Tell el-Maskhuta (Pithom).', source: 'Q1630019' },
   crossing: { id: 'crossing', name: 'Sea crossing', lat: 28.97, lon: 34.755, confidence: 'debated', schematic: true, note: 'Placed in the Gulf of Aqaba off Nuweiba Beach, which matches Mount Sinai in Midian. The Straits of Tiran, the Gulf of Suez and the Bitter Lakes are also proposed.' },
@@ -195,7 +215,7 @@ export const PLACES: Record<string, Place> = {
   lud: { id: 'lud', name: 'Lud', lat: 38.4883, lon: 28.0403, confidence: 'debated', note: 'Not identified. Many writers link Lud to Lydia. Sardis was its capital.', source: 'Q232615' },
   joktan: { id: 'joktan', name: 'Joktan', lat: 16.3, lon: 48.0, confidence: 'debated', schematic: true, note: 'His sons lived from Mesha to Sephar, the eastern hill country (Gen 10:30). Neither is identified. The point is schematic, in southern Arabia.' },
 
-  // Pentecost, Acts 2:9–11. Regions get a schematic point. Cities use a known site.
+  // Pentecost, Acts 2:9-11. Regions get a schematic point. Cities use a known site.
   parthia: { id: 'parthia', name: 'Parthia', lat: 37.0, lon: 56.0, confidence: 'debated', schematic: true, note: 'The Parthian empire ran from the Euphrates to the east of the Caspian Sea. The point is schematic, in its northeast.' },
   mesopotamia: { id: 'mesopotamia', name: 'Mesopotamia', lat: 35.8, lon: 40.5, confidence: 'debated', schematic: true, note: 'The land between the Tigris and the Euphrates. The point is schematic.' },
   judea: { id: 'judea', name: 'Judea', lat: 31.55, lon: 35.0, confidence: 'debated', schematic: true, note: 'The Roman province around Jerusalem. The point is schematic, in the hill country.' },
@@ -280,11 +300,11 @@ export const FAMILIES: Family[] = [
     route: false,
     terms: { one: 'Place', many: 'places', hint: 'Scroll to follow the nations.' },
     stops: [
-      // Japheth, Gen 10:2–5
-      { place: 'gomer', ref: 'Gen 10:2–3', event: 'Gomer, a son of Japheth', span: 700 },
+      // Japheth, Gen 10:2-5
+      { place: 'gomer', ref: 'Gen 10:2-3', event: 'Gomer, a son of Japheth', span: 700 },
       { place: 'magog', ref: 'Gen 10:2', event: 'Magog, a son of Japheth', span: 700 },
       { place: 'madai', ref: 'Gen 10:2', event: 'Madai, a son of Japheth', span: 500 },
-      { place: 'javan', ref: 'Gen 10:2, 4–5', event: 'Javan, a son of Japheth. His sons are Elishah, Tarshish, Kittim and Dodanim', span: 500 },
+      { place: 'javan', ref: 'Gen 10:2, 4-5', event: 'Javan, a son of Japheth. His sons are Elishah, Tarshish, Kittim and Dodanim', span: 500 },
       { place: 'tubal', ref: 'Gen 10:2', event: 'Tubal, a son of Japheth', span: 500 },
       { place: 'meshech', ref: 'Gen 10:2', event: 'Meshech, a son of Japheth', span: 500 },
       { place: 'tiras', ref: 'Gen 10:2', event: 'Tiras, a son of Japheth', span: 700 },
@@ -293,31 +313,31 @@ export const FAMILIES: Family[] = [
       { place: 'togarmah', ref: 'Gen 10:3', event: 'Togarmah, a son of Gomer', span: 500 },
       { place: 'kittim', ref: 'Gen 10:4', event: 'Kittim, a son of Javan. Elishah is also his son', span: 400 },
       { place: 'dodanim', ref: 'Gen 10:4', event: 'Dodanim, a son of Javan', span: 500 },
-      // Ham, Gen 10:6–20
-      { place: 'cush', ref: 'Gen 10:6–8', event: 'Cush, a son of Ham. His sons are Seba, Havilah, Sabtah, Raamah and Sabteca. Nimrod is also his son', span: 900 },
-      { place: 'egypt', ref: 'Gen 10:6, 13–14', event: 'Mizraim, a son of Ham. His sons are Ludim, Anamim, Lehabim, Naphtuhim, Pathrusim, Casluhim and Caphtorim', span: 700 },
+      // Ham, Gen 10:6-20
+      { place: 'cush', ref: 'Gen 10:6-8', event: 'Cush, a son of Ham. His sons are Seba, Havilah, Sabtah, Raamah and Sabteca. Nimrod is also his son', span: 900 },
+      { place: 'egypt', ref: 'Gen 10:6, 13-14', event: 'Mizraim, a son of Ham. His sons are Ludim, Anamim, Lehabim, Naphtuhim, Pathrusim, Casluhim and Caphtorim', span: 700 },
       { place: 'put', ref: 'Gen 10:6', event: 'Put, a son of Ham', span: 800 },
       { place: 'seba', ref: 'Gen 10:7', event: 'Seba, a son of Cush', span: 600 },
       { place: 'raamah', ref: 'Gen 10:7', event: 'Raamah, a son of Cush. His sons are Sheba and Dedan', span: 600 },
       { place: 'sheba', ref: 'Gen 10:7', event: 'Sheba, a son of Raamah', span: 500 },
       { place: 'dedan', ref: 'Gen 10:7', event: 'Dedan, a son of Raamah', span: 500 },
       { place: 'caphtor', ref: 'Gen 10:14', event: 'The Philistines came from the Casluhim. The Caphtorim are also sons of Mizraim', span: 500 },
-      { place: 'babel', ref: 'Gen 10:8–10', event: 'Nimrod, a son of Cush, is the first mighty man on earth. His kingdom begins with Babel, Erech, Accad and Calneh in Shinar', span: 400 },
+      { place: 'babel', ref: 'Gen 10:8-10', event: 'Nimrod, a son of Cush, is the first mighty man on earth. His kingdom begins with Babel, Erech, Accad and Calneh in Shinar', span: 400 },
       { place: 'erech', ref: 'Gen 10:10', event: 'Erech, a city in the kingdom of Nimrod', span: 300 },
-      { place: 'nineveh', ref: 'Gen 10:11–12', event: 'Asshur goes out from that land and builds Nineveh, Rehoboth-ir, Calah and Resen', span: 300 },
-      { place: 'calah', ref: 'Gen 10:11–12', event: 'Calah, a city built by Asshur', span: 250 },
+      { place: 'nineveh', ref: 'Gen 10:11-12', event: 'Asshur goes out from that land and builds Nineveh, Rehoboth-ir, Calah and Resen', span: 300 },
+      { place: 'calah', ref: 'Gen 10:11-12', event: 'Calah, a city built by Asshur', span: 250 },
       { place: 'sidon', ref: 'Gen 10:15', event: 'Canaan, a son of Ham. His firstborn is Sidon. Heth is also his son', span: 400 },
-      { place: 'arvad', ref: 'Gen 10:17–18', event: 'The Arvadites and the Zemarites are sons of Canaan', span: 300 },
+      { place: 'arvad', ref: 'Gen 10:17-18', event: 'The Arvadites and the Zemarites are sons of Canaan', span: 300 },
       { place: 'hamath', ref: 'Gen 10:18', event: 'The Hamathites are sons of Canaan', span: 300 },
       { place: 'gaza', ref: 'Gen 10:19', event: 'The border of the Canaanites runs from Sidon toward Gerar as far as Gaza', span: 400 },
       { place: 'sodom', ref: 'Gen 10:19', event: 'The border turns toward Sodom, Gomorrah, Admah and Zeboiim, as far as Lasha', span: 300 },
-      // Shem, Gen 10:21–31
+      // Shem, Gen 10:21-31
       { place: 'elam', ref: 'Gen 10:22', event: 'Elam, a son of Shem', span: 500 },
       { place: 'asshur', ref: 'Gen 10:22', event: 'Asshur, a son of Shem', span: 400 },
       { place: 'arpachshad', ref: 'Gen 10:22, 24', event: 'Arpachshad, a son of Shem. His son is Shelah. Shelah’s son is Eber', span: 600 },
       { place: 'lud', ref: 'Gen 10:22', event: 'Lud, a son of Shem', span: 500 },
-      { place: 'damascus', ref: 'Gen 10:22–23', event: 'Aram, a son of Shem. His sons are Uz, Hul, Gether and Mash', span: 500, note: 'Aram is the land of the Arameans. Damascus was their chief city.' },
-      { place: 'joktan', ref: 'Gen 10:25–30', event: 'Eber has two sons, Peleg and Joktan. The sons of Joktan live in the eastern hill country', span: 900 },
+      { place: 'damascus', ref: 'Gen 10:22-23', event: 'Aram, a son of Shem. His sons are Uz, Hul, Gether and Mash', span: 500, note: 'Aram is the land of the Arameans. Damascus was their chief city.' },
+      { place: 'joktan', ref: 'Gen 10:25-30', event: 'Eber has two sons, Peleg and Joktan. The sons of Joktan live in the eastern hill country', span: 900 },
       { place: 'sheba', ref: 'Gen 10:28', event: 'Sheba, a son of Joktan', span: 500 },
     ],
   },
@@ -326,54 +346,54 @@ export const FAMILIES: Family[] = [
     name: 'Abraham',
     sub: 'The life of Abraham, Genesis 11 to 25',
     stops: [
-      { place: 'ur', ref: 'Gen 11:27–31', event: 'Terah takes Abram, Sarai and Lot from Ur to go to Canaan', span: 620, note: 'God brought Abram out from Ur (Gen 15:7). Acts 7:2–3 says God appeared to him in Mesopotamia, before he lived in Haran. Acts puts the call of Gen 12:1 there.' },
-      { place: 'haran', ref: 'Gen 11:31–32', event: 'They settle in Haran. Terah dies there', span: 300 },
-      { place: 'haran', ref: 'Gen 12:1–5', event: 'The LORD calls Abram. At 75 he leaves Haran with Sarai, Lot and their people', span: 300, note: 'Acts 7:4 says Abram left Haran after his father died. If Terah was 70 at the birth of Abram (Gen 11:26), Terah was still alive (Gen 11:32; 12:4). Many writers say Abram was not the first son.' },
-      { place: 'shechem', ref: 'Gen 12:6–7', event: 'The LORD appears at the oak of Moreh and promises the land. Abram builds an altar', span: 140 },
+      { place: 'ur', ref: 'Gen 11:27-31', event: 'Terah takes Abram, Sarai and Lot from Ur to go to Canaan', span: 620, note: 'God brought Abram out from Ur (Gen 15:7). Acts 7:2-3 says God appeared to him in Mesopotamia, before he lived in Haran. Acts puts the call of Gen 12:1 there.' },
+      { place: 'haran', ref: 'Gen 11:31-32', event: 'They settle in Haran. Terah dies there', span: 300 },
+      { place: 'haran', ref: 'Gen 12:1-5', event: 'The LORD calls Abram. At 75 he leaves Haran with Sarai, Lot and their people', span: 300, note: 'Acts 7:4 says Abram left Haran after his father died. If Terah was 70 at the birth of Abram (Gen 11:26), Terah was still alive (Gen 11:32; 12:4). Many writers say Abram was not the first son.' },
+      { place: 'shechem', ref: 'Gen 12:6-7', event: 'The LORD appears at the oak of Moreh and promises the land. Abram builds an altar', span: 140 },
       { place: 'bethel', ref: 'Gen 12:8', event: 'Abram pitches his tent between Bethel and Ai and builds an altar', span: 120 },
-      { place: 'egypt', ref: 'Gen 12:10–20', event: 'Famine drives Abram to Egypt. Pharaoh takes Sarai, then sends them away', span: 320, note: 'Abram first journeys toward the Negev (Gen 12:9).' },
-      { place: 'bethel', ref: 'Gen 13:1–4', event: 'Abram returns through the Negev to the altar at Bethel', span: 140 },
-      { place: 'bethel', ref: 'Gen 13:5–13', event: 'Abram and Lot part. Lot moves his tent as far as Sodom', moves: [
-        { force: 'lot', label: 'Lot', path: ['bethel', 'sodom'], ref: 'Gen 13:10–12' },
+      { place: 'egypt', ref: 'Gen 12:10-20', event: 'Famine drives Abram to Egypt. Pharaoh takes Sarai, then sends them away', span: 320, note: 'Abram first journeys toward the Negev (Gen 12:9).' },
+      { place: 'bethel', ref: 'Gen 13:1-4', event: 'Abram returns through the Negev to the altar at Bethel', span: 140 },
+      { place: 'bethel', ref: 'Gen 13:5-13', event: 'Abram and Lot part. Lot moves his tent as far as Sodom', moves: [
+        { force: 'lot', label: 'Lot', path: ['bethel', 'sodom'], ref: 'Gen 13:10-12' },
       ] },
-      { place: 'mamre', ref: 'Gen 13:14–18', event: 'The LORD gives Abram all the land he sees. Abram settles by the oaks of Mamre', span: 120 },
-      { place: 'siddim', ref: 'Gen 14:1–12', event: 'Four kings of the east defeat the kings of Sodom and Gomorrah and take Lot', offRoute: true, note: 'The kings came from Shinar, Ellasar, Elam and Goiim (Gen 14:1). The arrow places Ashteroth-karnaim at Ashtaroth. Hazazon-tamar is En-gedi (2 Chr 20:2).', moves: [
-        { force: 'foreign', label: 'Chedorlaomer', path: ['ashtaroth', 'elparan', 'kadesh', 'engedi', 'siddim'], ref: 'Gen 14:5–9' },
+      { place: 'mamre', ref: 'Gen 13:14-18', event: 'The LORD gives Abram all the land he sees. Abram settles by the oaks of Mamre', span: 120 },
+      { place: 'siddim', ref: 'Gen 14:1-12', event: 'Four kings of the east defeat the kings of Sodom and Gomorrah and take Lot', offRoute: true, note: 'The kings came from Shinar, Ellasar, Elam and Goiim (Gen 14:1). The arrow places Ashteroth-karnaim at Ashtaroth. Hazazon-tamar is En-gedi (2 Chr 20:2).', moves: [
+        { force: 'foreign', label: 'Chedorlaomer', path: ['ashtaroth', 'elparan', 'kadesh', 'engedi', 'siddim'], ref: 'Gen 14:5-9' },
       ] },
-      { place: 'dan', ref: 'Gen 14:13–16', event: 'Abram pursues with 318 men, attacks by night and brings back Lot', note: 'The text calls the city Dan. Its earlier name was Laish (Judg 18:29). Hobah, north of Damascus, is not identified, so the arrow ends at Damascus.', moves: [
-        { force: 'foreign', label: 'Four kings', path: ['siddim', 'dan'], ref: 'Gen 14:11–14' },
-        { force: 'abraham', label: 'Abram', path: ['mamre', 'dan', 'damascus'], ref: 'Gen 14:13–15' },
+      { place: 'dan', ref: 'Gen 14:13-16', event: 'Abram pursues with 318 men, attacks by night and brings back Lot', note: 'The text calls the city Dan. Its earlier name was Laish (Judg 18:29). Hobah, north of Damascus, is not identified, so the arrow ends at Damascus.', moves: [
+        { force: 'foreign', label: 'Four kings', path: ['siddim', 'dan'], ref: 'Gen 14:11-14' },
+        { force: 'abraham', label: 'Abram', path: ['mamre', 'dan', 'damascus'], ref: 'Gen 14:13-15' },
       ] },
-      { place: 'salem', ref: 'Gen 14:17–24', event: 'Melchizedek, king of Salem, blesses Abram. Abram gives him a tenth', moves: [
-        { force: 'abraham', label: 'Abram', path: ['damascus', 'salem'], ref: 'Gen 14:16–17' },
+      { place: 'salem', ref: 'Gen 14:17-24', event: 'Melchizedek, king of Salem, blesses Abram. Abram gives him a tenth', moves: [
+        { force: 'abraham', label: 'Abram', path: ['damascus', 'salem'], ref: 'Gen 14:16-17' },
       ] },
-      { place: 'mamre', ref: 'Gen 15:1–21', event: 'The LORD makes a covenant with Abram. He promises the land from the river of Egypt to the Euphrates', span: 900, note: 'The text does not name the place. Abram lived by the oaks of Mamre (Gen 14:13). Acts 7:5 says God gave him no land, not even a foot, but promised it to him and his offspring when he had no child. Acts 7:6–7 quotes Gen 15:13–14: his offspring will be slaves for 400 years.' },
-      { place: 'mamre', ref: 'Gen 16:1–16', event: 'Hagar flees from Sarai. The angel of the LORD sends her back. She bears Ishmael', note: 'Hagar was on the way to Shur (Gen 16:7).', moves: [
-        { force: 'hagar', label: 'Hagar', path: ['mamre', 'lahairoi'], ref: 'Gen 16:6–14' },
+      { place: 'mamre', ref: 'Gen 15:1-21', event: 'The LORD makes a covenant with Abram. He promises the land from the river of Egypt to the Euphrates', span: 900, note: 'The text does not name the place. Abram lived by the oaks of Mamre (Gen 14:13). Acts 7:5 says God gave him no land, not even a foot, but promised it to him and his offspring when he had no child. Acts 7:6-7 quotes Gen 15:13-14: his offspring will be slaves for 400 years.' },
+      { place: 'mamre', ref: 'Gen 16:1-16', event: 'Hagar flees from Sarai. The angel of the LORD sends her back. She bears Ishmael', note: 'Hagar was on the way to Shur (Gen 16:7).', moves: [
+        { force: 'hagar', label: 'Hagar', path: ['mamre', 'lahairoi'], ref: 'Gen 16:6-14' },
       ] },
-      { place: 'mamre', ref: 'Gen 17:1–27', event: 'God names Abram Abraham and Sarai Sarah. He gives the covenant of circumcision', span: 120, note: 'The text does not name the place. Abraham is 99 (Gen 17:1).' },
-      { place: 'mamre', ref: 'Gen 18:1–33', event: 'Three men visit Abraham by the oaks of Mamre. Abraham pleads for Sodom', moves: [
+      { place: 'mamre', ref: 'Gen 17:1-27', event: 'God names Abram Abraham and Sarai Sarah. He gives the covenant of circumcision', span: 120, note: 'The text does not name the place. Abraham is 99 (Gen 17:1).' },
+      { place: 'mamre', ref: 'Gen 18:1-33', event: 'Three men visit Abraham by the oaks of Mamre. Abraham pleads for Sodom', moves: [
         { force: 'angels', label: 'Two angels', path: ['mamre', 'sodom'], ref: 'Gen 18:16, 22; 19:1' },
       ] },
-      { place: 'mamre', ref: 'Gen 19:24–29', event: 'The LORD destroys Sodom and Gomorrah. Abraham sees the smoke', moves: [
-        { force: 'lot', label: 'Lot', path: ['sodom', 'zoar'], ref: 'Gen 19:15–23' },
+      { place: 'mamre', ref: 'Gen 19:24-29', event: 'The LORD destroys Sodom and Gomorrah. Abraham sees the smoke', moves: [
+        { force: 'lot', label: 'Lot', path: ['sodom', 'zoar'], ref: 'Gen 19:15-23' },
       ] },
-      { place: 'gerar', ref: 'Gen 20:1–18', event: 'Abraham lives in Gerar. Abimelech takes Sarah, then gives her back', span: 120 },
-      { place: 'gerar', ref: 'Gen 21:1–7', event: 'Sarah bears Isaac. Abraham is 100', span: 120, note: 'The text does not name the place. Abraham lived in Gerar (Gen 20:1). Abraham circumcised Isaac on the eighth day (Gen 21:4; Acts 7:8).' },
-      { place: 'gerar', ref: 'Gen 21:8–21', event: 'Abraham sends Hagar and Ishmael away', note: 'The text does not name the place.', moves: [
+      { place: 'gerar', ref: 'Gen 20:1-18', event: 'Abraham lives in Gerar. Abimelech takes Sarah, then gives her back', span: 120 },
+      { place: 'gerar', ref: 'Gen 21:1-7', event: 'Sarah bears Isaac. Abraham is 100', span: 120, note: 'The text does not name the place. Abraham lived in Gerar (Gen 20:1). Abraham circumcised Isaac on the eighth day (Gen 21:4; Acts 7:8).' },
+      { place: 'gerar', ref: 'Gen 21:8-21', event: 'Abraham sends Hagar and Ishmael away', note: 'The text does not name the place.', moves: [
         { force: 'hagar', label: 'Hagar and Ishmael', path: ['gerar', 'beersheba', 'paran'], ref: 'Gen 21:14, 21' },
       ] },
-      { place: 'beersheba', ref: 'Gen 21:22–34', event: 'Abraham and Abimelech make a covenant at the well. Abraham names the place Beersheba', span: 110 },
-      { place: 'moriah', ref: 'Gen 22:1–14', event: 'God tests Abraham. Abraham binds Isaac. The LORD provides a ram', note: 'Abraham sees the place on the third day (Gen 22:4).', moves: [
-        { force: 'abraham', label: 'Abraham and Isaac', path: ['beersheba', 'moriah'], ref: 'Gen 22:3–4' },
+      { place: 'beersheba', ref: 'Gen 21:22-34', event: 'Abraham and Abimelech make a covenant at the well. Abraham names the place Beersheba', span: 110 },
+      { place: 'moriah', ref: 'Gen 22:1-14', event: 'God tests Abraham. Abraham binds Isaac. The LORD provides a ram', note: 'Abraham sees the place on the third day (Gen 22:4).', moves: [
+        { force: 'abraham', label: 'Abraham and Isaac', path: ['beersheba', 'moriah'], ref: 'Gen 22:3-4' },
       ] },
-      { place: 'beersheba', ref: 'Gen 22:15–19', event: 'The angel of the LORD repeats the promise. Abraham returns to Beersheba', span: 120 },
-      { place: 'machpelah', ref: 'Gen 23:1–20', event: 'Sarah dies at Hebron. Abraham buys the cave of Machpelah and buries her', span: 100, note: 'Sarah died at Kiriath-arba, that is, Hebron (Gen 23:2). Acts 7:16 says Abraham bought a tomb in Shechem from the sons of Hamor. In Genesis, Abraham buys Machpelah from Ephron the Hittite (Gen 23:16), and Jacob buys land at Shechem from the sons of Hamor (Gen 33:19).' },
-      { place: 'mamre', ref: 'Gen 24:1–67', event: 'Abraham sends his servant to the city of Nahor. The servant brings back Rebekah for Isaac', note: 'The text does not say where Abraham lived. The arrow starts at Mamre. Laban, the brother of Rebekah, lived in Haran (Gen 27:43).', moves: [
+      { place: 'beersheba', ref: 'Gen 22:15-19', event: 'The angel of the LORD repeats the promise. Abraham returns to Beersheba', span: 120 },
+      { place: 'machpelah', ref: 'Gen 23:1-20', event: 'Sarah dies at Hebron. Abraham buys the cave of Machpelah and buries her', span: 100, note: 'Sarah died at Kiriath-arba, that is, Hebron (Gen 23:2). Acts 7:16 says Abraham bought a tomb in Shechem from the sons of Hamor. In Genesis, Abraham buys Machpelah from Ephron the Hittite (Gen 23:16), and Jacob buys land at Shechem from the sons of Hamor (Gen 33:19).' },
+      { place: 'mamre', ref: 'Gen 24:1-67', event: 'Abraham sends his servant to the city of Nahor. The servant brings back Rebekah for Isaac', note: 'The text does not say where Abraham lived. The arrow starts at Mamre. Laban, the brother of Rebekah, lived in Haran (Gen 27:43).', moves: [
         { force: 'abraham', label: 'Servant', path: ['mamre', 'haran'], ref: 'Gen 24:10' },
-        { force: 'abraham', label: 'Rebekah', path: ['haran', 'lahairoi'], ref: 'Gen 24:61–62' },
+        { force: 'abraham', label: 'Rebekah', path: ['haran', 'lahairoi'], ref: 'Gen 24:61-62' },
       ] },
-      { place: 'machpelah', ref: 'Gen 25:7–10', event: 'Abraham dies at 175. Isaac and Ishmael bury him with Sarah', span: 100 },
+      { place: 'machpelah', ref: 'Gen 25:7-10', event: 'Abraham dies at 175. Isaac and Ishmael bury him with Sarah', span: 100 },
     ],
     // Bend points are schematic. The text does not give the routes. The first
     // leg follows the Euphrates. The legs to and from Egypt pass the Negev.
@@ -391,11 +411,11 @@ export const FAMILIES: Family[] = [
     stops: [
       { place: 'rameses', ref: 'Exod 12:37', event: 'Israel leaves Rameses', span: 240 },
       { place: 'succoth', ref: 'Exod 12:37', event: 'Israel reaches Succoth', span: 240 },
-      { place: 'crossing', ref: 'Exod 14:21–22', event: 'Israel crosses the sea', span: 260 },
+      { place: 'crossing', ref: 'Exod 14:21-22', event: 'Israel crosses the sea', span: 260 },
       { place: 'marah', ref: 'Exod 15:23', event: 'Israel finds bitter water', span: 260 },
-      { place: 'sinai', ref: 'Exod 19:1–2', event: 'Israel camps before the mountain', span: 300 },
+      { place: 'sinai', ref: 'Exod 19:1-2', event: 'Israel camps before the mountain', span: 300 },
       { place: 'kadesh', ref: 'Num 13:26', event: 'The spies return', span: 280 },
-      { place: 'ezion', ref: 'Num 33:35–36', event: 'Israel camps at Ezion-geber', span: 260 },
+      { place: 'ezion', ref: 'Num 33:35-36', event: 'Israel camps at Ezion-geber', span: 260 },
       { place: 'nebo', ref: 'Deut 34:1', event: 'Moses views the land', span: 240 },
     ],
     // Bend points are schematic. They keep the route on land, except at the sea.
@@ -411,52 +431,52 @@ export const FAMILIES: Family[] = [
     name: 'Conquest',
     sub: 'Battles from the Exodus to the conquest of Canaan',
     stops: [
-      { place: 'crossing', ref: 'Exod 14:23–28', event: 'The sea covers the army of Pharaoh', span: 260 },
-      { place: 'rephidim', ref: 'Exod 17:8–13', event: 'Joshua defeats Amalek', span: 240 },
-      { place: 'hormah', ref: 'Num 14:40–45; Deut 1:41–44', event: 'Amalekites and Canaanites drive Israel back to Hormah', span: 200 },
-      { place: 'kadesh', ref: 'Num 20:14–21', event: 'Edom comes out with an army and refuses passage', span: 220 },
-      { place: 'arad', ref: 'Num 21:1–3', event: 'The king of Arad attacks. Israel destroys the cities', span: 160 },
-      { place: 'heshbon', ref: 'Num 21:21–26; Deut 2:30–36', event: 'Israel defeats Sihon at Jahaz and takes Heshbon', span: 160 },
+      { place: 'crossing', ref: 'Exod 14:23-28', event: 'The sea covers the army of Pharaoh', span: 260 },
+      { place: 'rephidim', ref: 'Exod 17:8-13', event: 'Joshua defeats Amalek', span: 240 },
+      { place: 'hormah', ref: 'Num 14:40-45; Deut 1:41-44', event: 'Amalekites and Canaanites drive Israel back to Hormah', span: 200 },
+      { place: 'kadesh', ref: 'Num 20:14-21', event: 'Edom comes out with an army and refuses passage', span: 220 },
+      { place: 'arad', ref: 'Num 21:1-3', event: 'The king of Arad attacks. Israel destroys the cities', span: 160 },
+      { place: 'heshbon', ref: 'Num 21:21-26; Deut 2:30-36', event: 'Israel defeats Sihon at Jahaz and takes Heshbon', span: 160 },
       { place: 'jazer', ref: 'Num 21:32', event: 'Israel takes the villages of Jazer', span: 120 },
-      { place: 'edrei', ref: 'Num 21:33–35; Deut 3:1–3', event: 'Israel defeats Og, king of Bashan', span: 160 },
+      { place: 'edrei', ref: 'Num 21:33-35; Deut 3:1-3', event: 'Israel defeats Og, king of Bashan', span: 160 },
       { place: 'kenath', ref: 'Num 32:42', event: 'Nobah takes Kenath and its villages', span: 160 },
-      { place: 'shittim', ref: 'Num 31:1–12; 33:49', event: 'The army returns to the camp from the war on Midian', span: 160 },
-      { place: 'gilgal', ref: 'Josh 3:14–17; 4:19', event: 'Israel crosses the Jordan and camps at Gilgal', span: 110 },
-      { place: 'jericho', ref: 'Josh 6:20–21', event: 'The wall falls. Israel takes the city', span: 90 },
-      { place: 'ai', ref: 'Josh 7:2–5', event: 'The men of Ai drive Israel back', span: 90 },
-      { place: 'ai', ref: 'Josh 8:1–29', event: 'Israel ambushes and burns Ai', span: 90 },
-      { place: 'gibeon', ref: 'Josh 10:1–14', event: 'Israel defeats five Amorite kings. The sun stands still', span: 100 },
-      { place: 'bethhoron', ref: 'Josh 10:10–11', event: 'Israel chases the enemy down the pass of Beth-horon', span: 100 },
-      { place: 'azekah', ref: 'Josh 10:10–11', event: 'Hailstones fall on the enemy as far as Azekah', span: 100 },
-      { place: 'makkedah', ref: 'Josh 10:16–28', event: 'The five kings are taken from the cave. Israel takes Makkedah', span: 100 },
-      { place: 'libnah', ref: 'Josh 10:29–30', event: 'Israel takes Libnah', span: 100 },
-      { place: 'lachish', ref: 'Josh 10:31–33', event: 'Israel takes Lachish and defeats Horam, king of Gezer', span: 100 },
-      { place: 'eglon', ref: 'Josh 10:34–35', event: 'Israel takes Eglon', span: 100 },
-      { place: 'hebron', ref: 'Josh 10:36–37', event: 'Israel takes Hebron', span: 100 },
-      { place: 'debir', ref: 'Josh 10:38–39', event: 'Israel takes Debir', span: 100 },
+      { place: 'shittim', ref: 'Num 31:1-12; 33:49', event: 'The army returns to the camp from the war on Midian', span: 160 },
+      { place: 'gilgal', ref: 'Josh 3:14-17; 4:19', event: 'Israel crosses the Jordan and camps at Gilgal', span: 110 },
+      { place: 'jericho', ref: 'Josh 6:20-21', event: 'The wall falls. Israel takes the city', span: 90 },
+      { place: 'ai', ref: 'Josh 7:2-5', event: 'The men of Ai drive Israel back', span: 90 },
+      { place: 'ai', ref: 'Josh 8:1-29', event: 'Israel ambushes and burns Ai', span: 90 },
+      { place: 'gibeon', ref: 'Josh 10:1-14', event: 'Israel defeats five Amorite kings. The sun stands still', span: 100 },
+      { place: 'bethhoron', ref: 'Josh 10:10-11', event: 'Israel chases the enemy down the pass of Beth-horon', span: 100 },
+      { place: 'azekah', ref: 'Josh 10:10-11', event: 'Hailstones fall on the enemy as far as Azekah', span: 100 },
+      { place: 'makkedah', ref: 'Josh 10:16-28', event: 'The five kings are taken from the cave. Israel takes Makkedah', span: 100 },
+      { place: 'libnah', ref: 'Josh 10:29-30', event: 'Israel takes Libnah', span: 100 },
+      { place: 'lachish', ref: 'Josh 10:31-33', event: 'Israel takes Lachish and defeats Horam, king of Gezer', span: 100 },
+      { place: 'eglon', ref: 'Josh 10:34-35', event: 'Israel takes Eglon', span: 100 },
+      { place: 'hebron', ref: 'Josh 10:36-37', event: 'Israel takes Hebron', span: 100 },
+      { place: 'debir', ref: 'Josh 10:38-39', event: 'Israel takes Debir', span: 100 },
       { place: 'gilgal', ref: 'Josh 10:43', event: 'Israel returns to the camp at Gilgal', span: 140 },
-      { place: 'merom', ref: 'Josh 11:1–9', event: 'Israel defeats the kings with Jabin at the waters of Merom', span: 120 },
-      { place: 'hazor', ref: 'Josh 11:10–11', event: 'Israel takes and burns Hazor', span: 120 },
-      { place: 'hebron', ref: 'Josh 15:13–14', event: 'Caleb drives out the three sons of Anak', span: 110 },
-      { place: 'debir', ref: 'Josh 15:15–17', event: 'Othniel takes Debir (Kiriath-sepher)', span: 100 },
+      { place: 'merom', ref: 'Josh 11:1-9', event: 'Israel defeats the kings with Jabin at the waters of Merom', span: 120 },
+      { place: 'hazor', ref: 'Josh 11:10-11', event: 'Israel takes and burns Hazor', span: 120 },
+      { place: 'hebron', ref: 'Josh 15:13-14', event: 'Caleb drives out the three sons of Anak', span: 110 },
+      { place: 'debir', ref: 'Josh 15:15-17', event: 'Othniel takes Debir (Kiriath-sepher)', span: 100 },
       { place: 'dan', ref: 'Josh 19:47', event: 'The Danites take Leshem and name it Dan', span: 120 },
     ],
     // Israel goes around Edom (Num 21:4). Bend points are schematic. They keep
     // the route on land, except at the sea.
     bends: { 0: [[28.97, 34.88]], 4: [[29.57, 35.0], [30.35, 35.95]], 23: [[32.75, 35.49], [32.95, 35.52]] },
     zones: [
-      { id: 'negev', name: 'Negev', ref: 'Num 14:45; 21:1–3', places: ['hormah', 'arad'], radius: 12 },
-      { id: 'east', name: 'East of the Jordan', ref: 'Num 21; 31–32; Deut 2–3', places: ['heshbon', 'jazer', 'edrei', 'kenath', 'shittim'], radius: 12 },
-      { id: 'central', name: 'Central campaign', ref: 'Josh 6–8', places: ['gilgal', 'jericho', 'ai'], radius: 9 },
+      { id: 'negev', name: 'Negev', ref: 'Num 14:45; 21:1-3', places: ['hormah', 'arad'], radius: 12 },
+      { id: 'east', name: 'East of the Jordan', ref: 'Num 21; 31-32; Deut 2-3', places: ['heshbon', 'jazer', 'edrei', 'kenath', 'shittim'], radius: 12 },
+      { id: 'central', name: 'Central campaign', ref: 'Josh 6-8', places: ['gilgal', 'jericho', 'ai'], radius: 9 },
       { id: 'south', name: 'Southern campaign', ref: 'Josh 10', places: ['gibeon', 'bethhoron', 'azekah', 'makkedah', 'libnah', 'lachish', 'eglon', 'hebron', 'debir'], radius: 9 },
       { id: 'north', name: 'Northern campaign', ref: 'Josh 11', places: ['merom', 'hazor'], radius: 12 },
     ],
     // Deuteronomy counts these peoples as Rephaim (Deut 2:11, 20; 3:11). Num 13:33 links the Anakim to the Nephilim.
     giants: [
-      { id: 'anakim', name: 'Anakim', ref: 'Deut 1:24–28; 9:1–2', places: ['hebron'], radius: 16, note: 'Deut 1:24 names the valley of Eshcol. Num 13:22–23 places it at Hebron.' },
-      { id: 'emim', name: 'Emim', ref: 'Deut 2:9–11', places: ['ar'], radius: 18, note: 'They lived in Moab. Ar is its named city.' },
-      { id: 'zamzummim', name: 'Zamzummim', ref: 'Deut 2:19–21; 3:11', places: ['rabbah'], radius: 16, note: 'They lived in the land of Ammon. Rabbah is its named city.' },
-      { id: 'rephaim', name: 'Rephaim of Bashan', ref: 'Deut 1:4; 3:1–13', places: ['ashtaroth', 'edrei', 'salecah'], radius: 12, note: 'Og, king of Bashan, was the last of the Rephaim. Bashan was called the land of the Rephaim.' },
+      { id: 'anakim', name: 'Anakim', ref: 'Deut 1:24-28; 9:1-2', places: ['hebron'], radius: 16, note: 'Deut 1:24 names the valley of Eshcol. Num 13:22-23 places it at Hebron.' },
+      { id: 'emim', name: 'Emim', ref: 'Deut 2:9-11', places: ['ar'], radius: 18, note: 'They lived in Moab. Ar is its named city.' },
+      { id: 'zamzummim', name: 'Zamzummim', ref: 'Deut 2:19-21; 3:11', places: ['rabbah'], radius: 16, note: 'They lived in the land of Ammon. Rabbah is its named city.' },
+      { id: 'rephaim', name: 'Rephaim of Bashan', ref: 'Deut 1:4; 3:1-13', places: ['ashtaroth', 'edrei', 'salecah'], radius: 12, note: 'Og, king of Bashan, was the last of the Rephaim. Bashan was called the land of the Rephaim.' },
     ],
   },
   {
@@ -466,103 +486,103 @@ export const FAMILIES: Family[] = [
     route: false,
     stops: [
       // Saul
-      { place: 'jabesh', ref: '1 Sam 11:1–11', event: 'Saul defeats Nahash and the Ammonites', moves: [
-        { force: 'saul', label: 'Saul', path: ['bezek', 'jabesh'], ref: '1 Sam 11:8–11' },
+      { place: 'jabesh', ref: '1 Sam 11:1-11', event: 'Saul defeats Nahash and the Ammonites', moves: [
+        { force: 'saul', label: 'Saul', path: ['bezek', 'jabesh'], ref: '1 Sam 11:8-11' },
       ] },
-      { place: 'geba', ref: '1 Sam 13:2–3', event: 'Jonathan defeats the Philistine garrison at Geba', moves: [
-        { force: 'saul', label: 'Jonathan', path: ['gibeah', 'geba'], ref: '1 Sam 13:2–3' },
+      { place: 'geba', ref: '1 Sam 13:2-3', event: 'Jonathan defeats the Philistine garrison at Geba', moves: [
+        { force: 'saul', label: 'Jonathan', path: ['gibeah', 'geba'], ref: '1 Sam 13:2-3' },
       ] },
-      { place: 'michmash', ref: '1 Sam 13:5–18', event: 'The Philistines camp at Michmash and send out raiders', moves: [
-        { force: 'saul', label: 'Saul', path: ['michmash', 'gilgal', 'geba'], ref: '1 Sam 13:2–4, 15–16' },
+      { place: 'michmash', ref: '1 Sam 13:5-18', event: 'The Philistines camp at Michmash and send out raiders', moves: [
+        { force: 'saul', label: 'Saul', path: ['michmash', 'gilgal', 'geba'], ref: '1 Sam 13:2-4, 15-16' },
         { force: 'foreign', label: 'Philistines', path: ['michmash', 'ophrah'], ref: '1 Sam 13:17' },
         { force: 'foreign', label: 'Philistines', path: ['michmash', 'bethhoron'], ref: '1 Sam 13:18' },
       ] },
-      { place: 'michmash', ref: '1 Sam 14:1–23', event: 'Jonathan attacks the garrison. Israel routs the Philistines', moves: [
+      { place: 'michmash', ref: '1 Sam 14:1-23', event: 'Jonathan attacks the garrison. Israel routs the Philistines', moves: [
         { force: 'saul', label: 'Israel', path: ['michmash', 'aijalon'], ref: '1 Sam 14:31' },
       ] },
-      { place: 'amalek', ref: '1 Sam 15:1–9', event: 'Saul defeats the Amalekites and spares Agag', moves: [
+      { place: 'amalek', ref: '1 Sam 15:1-9', event: 'Saul defeats the Amalekites and spares Agag', moves: [
         { force: 'saul', label: 'Saul', path: ['amalek', 'carmel', 'gilgal'], ref: '1 Sam 15:12' },
       ] },
-      { place: 'elah', ref: '1 Sam 17:1–51', event: 'David kills Goliath', moves: [
+      { place: 'elah', ref: '1 Sam 17:1-51', event: 'David kills Goliath', moves: [
         { force: 'saul', label: 'Israel', path: ['elah', 'gath'], ref: '1 Sam 17:52' },
         { force: 'saul', label: 'Israel', path: ['elah', 'ekron'], ref: '1 Sam 17:52' },
       ] },
-      { place: 'keilah', ref: '1 Sam 23:1–5', event: 'David saves Keilah from the Philistines', span: 90 },
-      { place: 'maon', ref: '1 Sam 23:24–28', event: 'Saul closes in on David. A Philistine raid calls him away', moves: [
-        { force: 'saul', label: 'Saul', path: ['gibeah', 'maon'], ref: '1 Sam 23:19–25' },
-        { force: 'david', label: 'David', path: ['ziph', 'maon'], ref: '1 Sam 23:15, 24–25' },
+      { place: 'keilah', ref: '1 Sam 23:1-5', event: 'David saves Keilah from the Philistines', span: 90 },
+      { place: 'maon', ref: '1 Sam 23:24-28', event: 'Saul closes in on David. A Philistine raid calls him away', moves: [
+        { force: 'saul', label: 'Saul', path: ['gibeah', 'maon'], ref: '1 Sam 23:19-25' },
+        { force: 'david', label: 'David', path: ['ziph', 'maon'], ref: '1 Sam 23:15, 24-25' },
       ] },
-      { place: 'engedi', ref: '1 Sam 24:1–2', event: 'Saul takes 3,000 men to look for David', moves: [
+      { place: 'engedi', ref: '1 Sam 24:1-2', event: 'Saul takes 3,000 men to look for David', moves: [
         { force: 'david', label: 'David', path: ['maon', 'engedi'], ref: '1 Sam 23:29' },
       ] },
-      { place: 'ziph', ref: '1 Sam 26:1–2', event: 'Saul takes 3,000 men to the wilderness of Ziph', moves: [
-        { force: 'saul', label: 'Saul', path: ['gibeah', 'ziph'], ref: '1 Sam 26:1–2' },
+      { place: 'ziph', ref: '1 Sam 26:1-2', event: 'Saul takes 3,000 men to the wilderness of Ziph', moves: [
+        { force: 'saul', label: 'Saul', path: ['gibeah', 'ziph'], ref: '1 Sam 26:1-2' },
       ] },
-      { place: 'ziklag', ref: '1 Sam 27:6–9', event: 'David raids the Geshurites, Girzites and Amalekites', span: 130 },
-      { place: 'aphek', ref: '1 Sam 29:1–11', event: 'The Philistines gather at Aphek. Their lords send David back', moves: [
+      { place: 'ziklag', ref: '1 Sam 27:6-9', event: 'David raids the Geshurites, Girzites and Amalekites', span: 130 },
+      { place: 'aphek', ref: '1 Sam 29:1-11', event: 'The Philistines gather at Aphek. Their lords send David back', moves: [
         { force: 'david', label: 'David', path: ['aphek', 'ziklag'], ref: '1 Sam 29:11; 30:1' },
       ] },
-      { place: 'ziklag', ref: '1 Sam 30:1–6', event: 'Amalekites burn Ziklag and take its people', span: 110 },
-      { place: 'besor', ref: '1 Sam 30:9–20', event: 'David pursues the Amalekites and takes back all they took', moves: [
-        { force: 'david', label: 'David', path: ['ziklag', 'besor'], ref: '1 Sam 30:9–10' },
+      { place: 'ziklag', ref: '1 Sam 30:1-6', event: 'Amalekites burn Ziklag and take its people', span: 110 },
+      { place: 'besor', ref: '1 Sam 30:9-20', event: 'David pursues the Amalekites and takes back all they took', moves: [
+        { force: 'david', label: 'David', path: ['ziklag', 'besor'], ref: '1 Sam 30:9-10' },
       ] },
-      { place: 'gilboa', ref: '1 Sam 31:1–6', event: 'The Philistines defeat Israel. Saul and his sons die', moves: [
+      { place: 'gilboa', ref: '1 Sam 31:1-6', event: 'The Philistines defeat Israel. Saul and his sons die', moves: [
         { force: 'foreign', label: 'Philistines', path: ['aphek', 'shunem', 'gilboa'], ref: '1 Sam 28:4; 29:1; 31:1' },
       ] },
-      { place: 'bethshan', ref: '1 Sam 31:8–13', event: 'The Philistines hang Saul’s body on the wall. The men of Jabesh take it at night', moves: [
-        { force: 'saul', label: 'Men of Jabesh', path: ['jabesh', 'bethshan'], ref: '1 Sam 31:11–12' },
+      { place: 'bethshan', ref: '1 Sam 31:8-13', event: 'The Philistines hang Saul’s body on the wall. The men of Jabesh take it at night', moves: [
+        { force: 'saul', label: 'Men of Jabesh', path: ['jabesh', 'bethshan'], ref: '1 Sam 31:11-12' },
       ] },
       // David
-      { place: 'gibeon', ref: '2 Sam 2:12–17', event: 'Joab’s men defeat Abner’s men at the pool of Gibeon', moves: [
+      { place: 'gibeon', ref: '2 Sam 2:12-17', event: 'Joab’s men defeat Abner’s men at the pool of Gibeon', moves: [
         { force: 'saul', label: 'Abner', path: ['mahanaim', 'gibeon'], ref: '2 Sam 2:12' },
-        { force: 'david', label: 'Joab', path: ['hebron', 'gibeon'], ref: '2 Sam 2:11–13' },
+        { force: 'david', label: 'Joab', path: ['hebron', 'gibeon'], ref: '2 Sam 2:11-13' },
       ] },
-      { place: 'jerusalem', ref: '2 Sam 5:6–9', event: 'David takes the stronghold of Zion from the Jebusites', moves: [
-        { force: 'david', label: 'David', path: ['hebron', 'jerusalem'], ref: '2 Sam 5:5–6' },
+      { place: 'jerusalem', ref: '2 Sam 5:6-9', event: 'David takes the stronghold of Zion from the Jebusites', moves: [
+        { force: 'david', label: 'David', path: ['hebron', 'jerusalem'], ref: '2 Sam 5:5-6' },
       ] },
-      { place: 'rephaim', ref: '2 Sam 5:17–21', event: 'David defeats the Philistines at Baal-perazim', span: 70, note: 'Baal-perazim is not identified. The Philistines spread out in the Valley of Rephaim (2 Sam 5:18).' },
-      { place: 'bethlehem', ref: '2 Sam 23:13–17', event: 'Three mighty men break through the Philistine camp for water', note: 'Scripture does not date this event. The setting matches 2 Sam 5:17–18.', moves: [
-        { force: 'david', label: 'Three mighty men', path: ['adullam', 'bethlehem'], ref: '2 Sam 23:13–16' },
+      { place: 'rephaim', ref: '2 Sam 5:17-21', event: 'David defeats the Philistines at Baal-perazim', span: 70, note: 'Baal-perazim is not identified. The Philistines spread out in the Valley of Rephaim (2 Sam 5:18).' },
+      { place: 'bethlehem', ref: '2 Sam 23:13-17', event: 'Three mighty men break through the Philistine camp for water', note: 'Scripture does not date this event. The setting matches 2 Sam 5:17-18.', moves: [
+        { force: 'david', label: 'Three mighty men', path: ['adullam', 'bethlehem'], ref: '2 Sam 23:13-16' },
       ] },
-      { place: 'rephaim', ref: '2 Sam 5:22–25', event: 'David strikes the Philistines from Geba to Gezer', moves: [
+      { place: 'rephaim', ref: '2 Sam 5:22-25', event: 'David strikes the Philistines from Geba to Gezer', moves: [
         { force: 'david', label: 'David', path: ['geba', 'gezer'], ref: '2 Sam 5:25' },
       ] },
       { place: 'moab', ref: '2 Sam 8:2', event: 'David defeats Moab', span: 160 },
-      { place: 'damascus', ref: '2 Sam 8:3–8', event: 'David defeats Hadadezer and the Arameans of Damascus', span: 160 },
-      { place: 'salt', ref: '2 Sam 8:13–14; 1 Kgs 11:15–16', event: 'David strikes 18,000 in the Valley of Salt and puts garrisons in Edom', span: 160 },
-      { place: 'rabbah', ref: '2 Sam 10:6–14', event: 'Joab and Abishai defeat the Ammonites and the Arameans', note: 'The battle was at the gate of the Ammonite city (2 Sam 10:8, 14). The text does not name it.', moves: [
-        { force: 'david', label: 'Joab', path: ['jerusalem', 'rabbah'], ref: '2 Sam 10:7–9' },
+      { place: 'damascus', ref: '2 Sam 8:3-8', event: 'David defeats Hadadezer and the Arameans of Damascus', span: 160 },
+      { place: 'salt', ref: '2 Sam 8:13-14; 1 Kgs 11:15-16', event: 'David strikes 18,000 in the Valley of Salt and puts garrisons in Edom', span: 160 },
+      { place: 'rabbah', ref: '2 Sam 10:6-14', event: 'Joab and Abishai defeat the Ammonites and the Arameans', note: 'The battle was at the gate of the Ammonite city (2 Sam 10:8, 14). The text does not name it.', moves: [
+        { force: 'david', label: 'Joab', path: ['jerusalem', 'rabbah'], ref: '2 Sam 10:7-9' },
       ] },
-      { place: 'helam', ref: '2 Sam 10:15–19', event: 'David defeats Shobach and the Arameans at Helam', moves: [
+      { place: 'helam', ref: '2 Sam 10:15-19', event: 'David defeats Shobach and the Arameans at Helam', moves: [
         { force: 'david', label: 'David', path: ['jerusalem', 'helam'], ref: '2 Sam 10:17' },
       ] },
-      { place: 'rabbah', ref: '2 Sam 11:1, 14–17', event: 'Joab besieges Rabbah. Uriah dies at the wall', moves: [
+      { place: 'rabbah', ref: '2 Sam 11:1, 14-17', event: 'Joab besieges Rabbah. Uriah dies at the wall', moves: [
         { force: 'david', label: 'Joab', path: ['jerusalem', 'rabbah'], ref: '2 Sam 11:1' },
       ] },
-      { place: 'rabbah', ref: '2 Sam 12:26–31', event: 'David takes Rabbah', moves: [
+      { place: 'rabbah', ref: '2 Sam 12:26-31', event: 'David takes Rabbah', moves: [
         { force: 'david', label: 'David', path: ['jerusalem', 'rabbah'], ref: '2 Sam 12:29' },
       ] },
-      { place: 'hebron', ref: '2 Sam 15:7–12', event: 'Absalom is made king at Hebron', moves: [
-        { force: 'revolt', label: 'Absalom', path: ['jerusalem', 'hebron'], ref: '2 Sam 15:7–9' },
+      { place: 'hebron', ref: '2 Sam 15:7-12', event: 'Absalom is made king at Hebron', moves: [
+        { force: 'revolt', label: 'Absalom', path: ['jerusalem', 'hebron'], ref: '2 Sam 15:7-9' },
       ] },
-      { place: 'mahanaim', ref: '2 Sam 15:14; 17:22–24', event: 'David leaves Jerusalem and crosses the Jordan to Mahanaim', moves: [
-        { force: 'david', label: 'David', path: ['jerusalem', 'olives', 'mahanaim'], ref: '2 Sam 15:30; 17:22–24' },
+      { place: 'mahanaim', ref: '2 Sam 15:14; 17:22-24', event: 'David leaves Jerusalem and crosses the Jordan to Mahanaim', moves: [
+        { force: 'david', label: 'David', path: ['jerusalem', 'olives', 'mahanaim'], ref: '2 Sam 15:30; 17:22-24' },
         { force: 'revolt', label: 'Absalom', path: ['hebron', 'jerusalem'], ref: '2 Sam 15:37; 16:15' },
       ] },
-      { place: 'ephraim', ref: '2 Sam 18:1–15', event: 'David’s men defeat Absalom’s army. Absalom dies', moves: [
-        { force: 'david', label: 'Joab, Abishai, Ittai', path: ['mahanaim', 'ephraim'], ref: '2 Sam 18:1–6' },
-        { force: 'revolt', label: 'Absalom', path: ['jerusalem', 'ephraim'], ref: '2 Sam 17:24–26; 18:6' },
+      { place: 'ephraim', ref: '2 Sam 18:1-15', event: 'David’s men defeat Absalom’s army. Absalom dies', moves: [
+        { force: 'david', label: 'Joab, Abishai, Ittai', path: ['mahanaim', 'ephraim'], ref: '2 Sam 18:1-6' },
+        { force: 'revolt', label: 'Absalom', path: ['jerusalem', 'ephraim'], ref: '2 Sam 17:24-26; 18:6' },
       ] },
-      { place: 'gibeon', ref: '2 Sam 20:8–10', event: 'Joab kills Amasa at the great stone in Gibeon', moves: [
-        { force: 'david', label: 'Joab and Abishai', path: ['jerusalem', 'gibeon'], ref: '2 Sam 20:7–8' },
+      { place: 'gibeon', ref: '2 Sam 20:8-10', event: 'Joab kills Amasa at the great stone in Gibeon', moves: [
+        { force: 'david', label: 'Joab and Abishai', path: ['jerusalem', 'gibeon'], ref: '2 Sam 20:7-8' },
       ] },
-      { place: 'abel', ref: '2 Sam 20:14–22', event: 'Joab besieges Abel Beth-maacah. The city gives up Sheba', moves: [
-        { force: 'david', label: 'Joab', path: ['gibeon', 'abel'], ref: '2 Sam 20:10, 14–15' },
+      { place: 'abel', ref: '2 Sam 20:14-22', event: 'Joab besieges Abel Beth-maacah. The city gives up Sheba', moves: [
+        { force: 'david', label: 'Joab', path: ['gibeon', 'abel'], ref: '2 Sam 20:10, 14-15' },
       ] },
-      { place: 'gath', ref: '2 Sam 21:15–22', event: 'David’s men kill four descendants of the giant', span: 100, note: 'Two of the battles were at Gob (2 Sam 21:18–19), which is not identified. One was at Gath (2 Sam 21:20).' },
+      { place: 'gath', ref: '2 Sam 21:15-22', event: 'David’s men kill four descendants of the giant', span: 100, note: 'Two of the battles were at Gob (2 Sam 21:18-19), which is not identified. One was at Gath (2 Sam 21:20).' },
     ],
     giants: [
-      { id: 'rapha', name: 'Sons of the giant', ref: '2 Sam 21:15–22', places: ['gath'], radius: 14, note: 'Goliath was from Gath (1 Sam 17:4). The four men were born to the giant in Gath (2 Sam 21:22).' },
+      { id: 'rapha', name: 'Sons of the giant', ref: '2 Sam 21:15-22', places: ['gath'], radius: 14, note: 'Goliath was from Gath (1 Sam 17:4). The four men were born to the giant in Gath (2 Sam 21:22).' },
     ],
   },
   {
@@ -572,14 +592,14 @@ export const FAMILIES: Family[] = [
     stops: [
       { place: 'nazareth', ref: 'Luke 4:16', event: 'Reads in the synagogue', span: 120 },
       { place: 'baptism', ref: 'Matt 3:13', event: 'Is baptized by John', span: 110 },
-      { place: 'cana', ref: 'John 2:1–11', event: 'Turns water into wine', span: 90 },
+      { place: 'cana', ref: 'John 2:1-11', event: 'Turns water into wine', span: 90 },
       { place: 'capernaum', ref: 'Matt 4:13', event: 'Settles in the town', span: 90 },
       { place: 'tyre', ref: 'Matt 15:21', event: 'Withdraws to the region of Tyre', span: 130 },
       { place: 'caesarea', ref: 'Matt 16:13', event: 'Asks who people say he is', span: 90 },
       { place: 'capernaum', ref: 'Matt 17:24', event: 'Returns to the town', span: 90 },
       { place: 'sychar', ref: 'John 4:5', event: 'Speaks with a Samaritan woman', span: 130 },
       { place: 'bethany', ref: 'John 11:1', event: 'Raises Lazarus', span: 100 },
-      { place: 'jerusalem', ref: 'Matt 21:1–11', event: 'Enters the city', span: 100 },
+      { place: 'jerusalem', ref: 'Matt 21:1-11', event: 'Enters the city', span: 100 },
     ],
     // Bend points are schematic. They keep the route off the Sea of Galilee.
     bends: {
@@ -597,12 +617,12 @@ export const FAMILIES: Family[] = [
     route: false,
     terms: { one: 'Place', many: 'places', hint: 'Scroll to follow the nations.' },
     stops: [
-      { place: 'jerusalem', ref: 'Acts 1:4–8', event: 'Jesus tells the apostles to wait in Jerusalem for the promise of the Father. They will be his witnesses in Jerusalem, Judea, Samaria and to the end of the earth', span: 120 },
-      { place: 'olives', ref: 'Acts 1:9–12', event: 'Jesus is lifted up and a cloud takes him from their sight. The apostles return to Jerusalem from the mount called Olivet', span: 100, note: 'Olivet is a Sabbath day’s journey from Jerusalem (Acts 1:12).' },
-      { place: 'jerusalem', ref: 'Acts 1:13–14', event: 'The apostles go to the upper room. They devote themselves to prayer with the women, Mary the mother of Jesus and his brothers', span: 100 },
-      { place: 'jerusalem', ref: 'Acts 1:15–26', event: 'About 120 believers are gathered. The lot falls on Matthias, who is added to the eleven apostles', span: 100 },
-      { place: 'jerusalem', ref: 'Acts 2:1–4', event: 'On the day of Pentecost they are all together in one place. Tongues like fire rest on each of them. They are filled with the Holy Spirit and speak in other tongues', span: 100 },
-      { place: 'jerusalem', ref: 'Acts 2:5–8', event: 'Devout Jews from every nation under heaven are living in Jerusalem. Each hears the disciples speak in his own language', span: 100 },
+      { place: 'jerusalem', ref: 'Acts 1:4-8', event: 'Jesus tells the apostles to wait in Jerusalem for the promise of the Father. They will be his witnesses in Jerusalem, Judea, Samaria and to the end of the earth', span: 120 },
+      { place: 'olives', ref: 'Acts 1:9-12', event: 'Jesus is lifted up and a cloud takes him from their sight. The apostles return to Jerusalem from the mount called Olivet', span: 100, note: 'Olivet is a Sabbath day’s journey from Jerusalem (Acts 1:12).' },
+      { place: 'jerusalem', ref: 'Acts 1:13-14', event: 'The apostles go to the upper room. They devote themselves to prayer with the women, Mary the mother of Jesus and his brothers', span: 100 },
+      { place: 'jerusalem', ref: 'Acts 1:15-26', event: 'About 120 believers are gathered. The lot falls on Matthias, who is added to the eleven apostles', span: 100 },
+      { place: 'jerusalem', ref: 'Acts 2:1-4', event: 'On the day of Pentecost they are all together in one place. Tongues like fire rest on each of them. They are filled with the Holy Spirit and speak in other tongues', span: 100 },
+      { place: 'jerusalem', ref: 'Acts 2:5-8', event: 'Devout Jews from every nation under heaven are living in Jerusalem. Each hears the disciples speak in his own language', span: 100 },
       { place: 'parthia', ref: 'Acts 2:9', event: 'Parthians are in the crowd', span: 1000 },
       { place: 'madai', ref: 'Acts 2:9', event: 'Medes are in the crowd', span: 700 },
       { place: 'elam', ref: 'Acts 2:9', event: 'Elamites are in the crowd', span: 600 },
@@ -618,7 +638,7 @@ export const FAMILIES: Family[] = [
       { place: 'rome', ref: 'Acts 2:10', event: 'Visitors from Rome are in the crowd, both Jews and proselytes', span: 800 },
       { place: 'crete', ref: 'Acts 2:11', event: 'Cretans are in the crowd', span: 500 },
       { place: 'arabia', ref: 'Acts 2:11', event: 'Arabians are in the crowd. All of them hear the mighty works of God in their own tongues', span: 800 },
-      { place: 'jerusalem', ref: 'Acts 2:14–41', event: 'Peter stands with the eleven and speaks to the crowd. About 3,000 people receive his word and are baptized', span: 100 },
+      { place: 'jerusalem', ref: 'Acts 2:14-41', event: 'Peter stands with the eleven and speaks to the crowd. About 3,000 people receive his word and are baptized', span: 100 },
     ],
   },
   {
@@ -626,78 +646,78 @@ export const FAMILIES: Family[] = [
     name: 'Paul',
     sub: 'The journeys of Paul in Acts, with the voyage to Rome',
     stops: [
-      { place: 'antioch', ref: 'Acts 13:1–3', event: 'The church sets Barnabas and Saul apart. They go out with John Mark', span: 200, journey: 'First journey' },
+      { place: 'antioch', ref: 'Acts 13:1-3', event: 'The church sets Barnabas and Saul apart. They go out with John Mark', span: 200, journey: 'First journey' },
       { place: 'seleucia', ref: 'Acts 13:4', event: 'They go down to Seleucia and sail to Cyprus', span: 250, journey: 'First journey' },
       { place: 'salamis', ref: 'Acts 13:5', event: 'They preach in the synagogues', span: 250, journey: 'First journey' },
-      { place: 'paphos', ref: 'Acts 13:6–12', event: 'The proconsul Sergius Paulus believes. Elymas is struck blind', span: 250, journey: 'First journey' },
+      { place: 'paphos', ref: 'Acts 13:6-12', event: 'The proconsul Sergius Paulus believes. Elymas is struck blind', span: 250, journey: 'First journey' },
       { place: 'perga', ref: 'Acts 13:13', event: 'They sail to Perga. John Mark leaves them', span: 250, journey: 'First journey' },
-      { place: 'pisantioch', ref: 'Acts 13:14–52', event: 'Paul preaches in the synagogue. The Jews drive them out', span: 250, journey: 'First journey' },
-      { place: 'iconium', ref: 'Acts 13:51–14:6', event: 'A great number believe. They flee a plot to stone them', span: 250, journey: 'First journey' },
-      { place: 'lystra', ref: 'Acts 14:6–20', event: 'Paul heals a man lame from birth. The crowd stones Paul', span: 200, journey: 'First journey' },
-      { place: 'derbe', ref: 'Acts 14:20–21', event: 'They preach the gospel and make many disciples', span: 250, journey: 'First journey' },
-      { place: 'pisantioch', ref: 'Acts 14:21–23', event: 'They return through Lystra, Iconium and Antioch. They appoint elders in every church', span: 250, journey: 'First journey' },
-      { place: 'perga', ref: 'Acts 14:24–25', event: 'They pass through Pisidia and Pamphylia and speak the word in Perga', span: 250, journey: 'First journey' },
+      { place: 'pisantioch', ref: 'Acts 13:14-52', event: 'Paul preaches in the synagogue. The Jews drive them out', span: 250, journey: 'First journey' },
+      { place: 'iconium', ref: 'Acts 13:51-14:6', event: 'A great number believe. They flee a plot to stone them', span: 250, journey: 'First journey' },
+      { place: 'lystra', ref: 'Acts 14:6-20', event: 'Paul heals a man lame from birth. The crowd stones Paul', span: 200, journey: 'First journey' },
+      { place: 'derbe', ref: 'Acts 14:20-21', event: 'They preach the gospel and make many disciples', span: 250, journey: 'First journey' },
+      { place: 'pisantioch', ref: 'Acts 14:21-23', event: 'They return through Lystra, Iconium and Antioch. They appoint elders in every church', span: 250, journey: 'First journey' },
+      { place: 'perga', ref: 'Acts 14:24-25', event: 'They pass through Pisidia and Pamphylia and speak the word in Perga', span: 250, journey: 'First journey' },
       { place: 'attalia', ref: 'Acts 14:25', event: 'They go down to Attalia', span: 250, journey: 'First journey' },
-      { place: 'antioch', ref: 'Acts 14:26–28', event: 'They sail back to Antioch and report all that God had done', span: 200, journey: 'First journey' },
-      { place: 'jerusalem', ref: 'Acts 15:1–29', event: 'Paul and Barnabas go up to Jerusalem. The apostles and elders decide that Gentiles need not be circumcised', span: 200, journey: 'Between journeys' },
-      { place: 'antioch', ref: 'Acts 15:30–40', event: 'Paul and Barnabas part over John Mark. Paul chooses Silas', span: 200, journey: 'Second journey' },
+      { place: 'antioch', ref: 'Acts 14:26-28', event: 'They sail back to Antioch and report all that God had done', span: 200, journey: 'First journey' },
+      { place: 'jerusalem', ref: 'Acts 15:1-29', event: 'Paul and Barnabas go up to Jerusalem. The apostles and elders decide that Gentiles need not be circumcised', span: 200, journey: 'Between journeys' },
+      { place: 'antioch', ref: 'Acts 15:30-40', event: 'Paul and Barnabas part over John Mark. Paul chooses Silas', span: 200, journey: 'Second journey' },
       { place: 'tarsus', ref: 'Acts 15:41', event: 'Paul goes through Syria and Cilicia and strengthens the churches', span: 300, journey: 'Second journey' },
       { place: 'derbe', ref: 'Acts 16:1', event: 'Paul comes to Derbe and Lystra', span: 250, journey: 'Second journey' },
-      { place: 'lystra', ref: 'Acts 16:1–5', event: 'Paul takes Timothy with him. The churches grow in number daily', span: 200, journey: 'Second journey' },
-      { place: 'troas', ref: 'Acts 16:6–10', event: 'The Holy Spirit forbids them to speak in Asia. In a vision a man of Macedonia calls Paul', span: 300, journey: 'Second journey' },
+      { place: 'lystra', ref: 'Acts 16:1-5', event: 'Paul takes Timothy with him. The churches grow in number daily', span: 200, journey: 'Second journey' },
+      { place: 'troas', ref: 'Acts 16:6-10', event: 'The Holy Spirit forbids them to speak in Asia. In a vision a man of Macedonia calls Paul', span: 300, journey: 'Second journey' },
       { place: 'samothrace', ref: 'Acts 16:11', event: 'They sail from Troas straight to Samothrace', span: 300, journey: 'Second journey' },
       { place: 'neapolis', ref: 'Acts 16:11', event: 'They come the next day to Neapolis', span: 200, journey: 'Second journey' },
-      { place: 'philippi', ref: 'Acts 16:12–40', event: 'Lydia believes. Paul and Silas are beaten and jailed. The jailer believes', span: 200, journey: 'Second journey' },
-      { place: 'thessalonica', ref: 'Acts 17:1–9', event: 'Paul reasons in the synagogue for three Sabbaths. A mob attacks the house of Jason', span: 250, journey: 'Second journey' },
-      { place: 'berea', ref: 'Acts 17:10–14', event: 'The Jews of Berea examine the Scriptures daily. Jews from Thessalonica stir up the crowds', span: 200, journey: 'Second journey' },
-      { place: 'athens', ref: 'Acts 17:15–34', event: 'Paul speaks to the Areopagus. Some men join him and believe', span: 250, journey: 'Second journey' },
-      { place: 'corinth', ref: 'Acts 18:1–17', event: 'Paul stays a year and a half. He lives with Aquila and Priscilla', span: 250, journey: 'Second journey' },
+      { place: 'philippi', ref: 'Acts 16:12-40', event: 'Lydia believes. Paul and Silas are beaten and jailed. The jailer believes', span: 200, journey: 'Second journey' },
+      { place: 'thessalonica', ref: 'Acts 17:1-9', event: 'Paul reasons in the synagogue for three Sabbaths. A mob attacks the house of Jason', span: 250, journey: 'Second journey' },
+      { place: 'berea', ref: 'Acts 17:10-14', event: 'The Jews of Berea examine the Scriptures daily. Jews from Thessalonica stir up the crowds', span: 200, journey: 'Second journey' },
+      { place: 'athens', ref: 'Acts 17:15-34', event: 'Paul speaks to the Areopagus. Some men join him and believe', span: 250, journey: 'Second journey' },
+      { place: 'corinth', ref: 'Acts 18:1-17', event: 'Paul stays a year and a half. He lives with Aquila and Priscilla', span: 250, journey: 'Second journey' },
       { place: 'cenchreae', ref: 'Acts 18:18', event: 'Paul cuts his hair at Cenchreae because of a vow', span: 200, journey: 'Second journey' },
-      { place: 'ephesus', ref: 'Acts 18:19–21', event: 'Paul reasons in the synagogue. He promises to return', span: 250, journey: 'Second journey' },
+      { place: 'ephesus', ref: 'Acts 18:19-21', event: 'Paul reasons in the synagogue. He promises to return', span: 250, journey: 'Second journey' },
       { place: 'caesareamar', ref: 'Acts 18:22', event: 'Paul lands at Caesarea', span: 300, journey: 'Second journey' },
       { place: 'jerusalem', ref: 'Acts 18:22', event: 'Paul goes up and greets the church', span: 250, journey: 'Second journey' },
       { place: 'antioch', ref: 'Acts 18:22', event: 'Paul goes down to Antioch', span: 300, journey: 'Second journey' },
       { place: 'antioch', ref: 'Acts 18:23', event: 'Paul spends some time in Antioch. He then goes through Galatia and Phrygia and strengthens the disciples', span: 350, journey: 'Third journey' },
-      { place: 'ephesus', ref: 'Acts 19:1–41', event: 'Paul stays more than two years. All Asia hears the word. A riot fills the theater', span: 250, journey: 'Third journey' },
-      { place: 'macedonia', ref: 'Acts 20:1–2', event: 'Paul says farewell and goes to Macedonia. He encourages the believers', span: 300, journey: 'Third journey' },
-      { place: 'corinth', ref: 'Acts 20:2–3', event: 'Paul spends three months in Greece', span: 250, journey: 'Third journey' },
-      { place: 'philippi', ref: 'Acts 20:3–6', event: 'Paul returns through Macedonia and sails from Philippi after the days of Unleavened Bread', span: 250, journey: 'Third journey' },
-      { place: 'troas', ref: 'Acts 20:6–12', event: 'Paul speaks until midnight. Eutychus falls from the window and Paul raises him', span: 250, journey: 'Third journey' },
-      { place: 'assos', ref: 'Acts 20:13–14', event: 'Paul goes on foot to Assos and joins the ship', span: 200, journey: 'Third journey' },
-      { place: 'miletus', ref: 'Acts 20:15–38', event: 'Paul calls the Ephesian elders and bids them farewell', span: 250, journey: 'Third journey' },
-      { place: 'patara', ref: 'Acts 21:1–2', event: 'They sail by Cos and Rhodes to Patara and board a ship for Phoenicia', span: 350, journey: 'Third journey' },
-      { place: 'tyre', ref: 'Acts 21:3–6', event: 'The ship unloads at Tyre. The disciples there urge Paul not to go up to Jerusalem', span: 300, journey: 'Third journey' },
+      { place: 'ephesus', ref: 'Acts 19:1-41', event: 'Paul stays more than two years. All Asia hears the word. A riot fills the theater', span: 250, journey: 'Third journey' },
+      { place: 'macedonia', ref: 'Acts 20:1-2', event: 'Paul says farewell and goes to Macedonia. He encourages the believers', span: 300, journey: 'Third journey' },
+      { place: 'corinth', ref: 'Acts 20:2-3', event: 'Paul spends three months in Greece', span: 250, journey: 'Third journey' },
+      { place: 'philippi', ref: 'Acts 20:3-6', event: 'Paul returns through Macedonia and sails from Philippi after the days of Unleavened Bread', span: 250, journey: 'Third journey' },
+      { place: 'troas', ref: 'Acts 20:6-12', event: 'Paul speaks until midnight. Eutychus falls from the window and Paul raises him', span: 250, journey: 'Third journey' },
+      { place: 'assos', ref: 'Acts 20:13-14', event: 'Paul goes on foot to Assos and joins the ship', span: 200, journey: 'Third journey' },
+      { place: 'miletus', ref: 'Acts 20:15-38', event: 'Paul calls the Ephesian elders and bids them farewell', span: 250, journey: 'Third journey' },
+      { place: 'patara', ref: 'Acts 21:1-2', event: 'They sail by Cos and Rhodes to Patara and board a ship for Phoenicia', span: 350, journey: 'Third journey' },
+      { place: 'tyre', ref: 'Acts 21:3-6', event: 'The ship unloads at Tyre. The disciples there urge Paul not to go up to Jerusalem', span: 300, journey: 'Third journey' },
       { place: 'ptolemais', ref: 'Acts 21:7', event: 'They greet the brothers and stay one day', span: 200, journey: 'Third journey' },
-      { place: 'caesareamar', ref: 'Acts 21:8–14', event: 'Paul stays with Philip the evangelist. Agabus foretells that Paul will be bound in Jerusalem', span: 200, journey: 'Third journey' },
-      { place: 'jerusalem', ref: 'Acts 21:15–17', event: 'The brothers receive Paul gladly', span: 200, journey: 'Third journey' },
-      { place: 'jerusalem', ref: 'Acts 21:27–23:30', event: 'A mob seizes Paul in the temple. The Roman tribune takes him into custody', span: 200, journey: 'Journey to Rome' },
-      { place: 'caesareamar', ref: 'Acts 23:31–26:32', event: 'Paul is held two years. He appeals to Caesar', span: 250, journey: 'Journey to Rome' },
-      { place: 'sidon', ref: 'Acts 27:1–3', event: 'The ship lands at Sidon. Julius lets Paul visit his friends', span: 300, journey: 'Journey to Rome' },
-      { place: 'myra', ref: 'Acts 27:4–6', event: 'They sail under the lee of Cyprus. At Myra they board a ship of Alexandria bound for Italy', span: 400, journey: 'Journey to Rome' },
+      { place: 'caesareamar', ref: 'Acts 21:8-14', event: 'Paul stays with Philip the evangelist. Agabus foretells that Paul will be bound in Jerusalem', span: 200, journey: 'Third journey' },
+      { place: 'jerusalem', ref: 'Acts 21:15-17', event: 'The brothers receive Paul gladly', span: 200, journey: 'Third journey' },
+      { place: 'jerusalem', ref: 'Acts 21:27-23:30', event: 'A mob seizes Paul in the temple. The Roman tribune takes him into custody', span: 200, journey: 'Journey to Rome' },
+      { place: 'caesareamar', ref: 'Acts 23:31-26:32', event: 'Paul is held two years. He appeals to Caesar', span: 250, journey: 'Journey to Rome' },
+      { place: 'sidon', ref: 'Acts 27:1-3', event: 'The ship lands at Sidon. Julius lets Paul visit his friends', span: 300, journey: 'Journey to Rome' },
+      { place: 'myra', ref: 'Acts 27:4-6', event: 'They sail under the lee of Cyprus. At Myra they board a ship of Alexandria bound for Italy', span: 400, journey: 'Journey to Rome' },
       { place: 'cnidus', ref: 'Acts 27:7', event: 'They sail slowly and reach Cnidus with difficulty', span: 350, journey: 'Journey to Rome' },
-      { place: 'fairhavens', ref: 'Acts 27:8–12', event: 'They sail along Crete to Fair Havens. Paul warns against going on', span: 350, journey: 'Journey to Rome' },
-      { place: 'cauda', ref: 'Acts 27:13–17', event: 'A northeaster seizes the ship. It runs under the lee of Cauda', span: 400, journey: 'Journey to Rome' },
-      { place: 'malta', ref: 'Acts 27:18–28:10', event: 'After fourteen days the ship runs aground. All 276 reach land. They winter on the island', span: 350, journey: 'Journey to Rome' },
-      { place: 'syracuse', ref: 'Acts 28:11–12', event: 'They sail in a ship of Alexandria and stay three days at Syracuse', span: 450, journey: 'Journey to Rome' },
+      { place: 'fairhavens', ref: 'Acts 27:8-12', event: 'They sail along Crete to Fair Havens. Paul warns against going on', span: 350, journey: 'Journey to Rome' },
+      { place: 'cauda', ref: 'Acts 27:13-17', event: 'A northeaster seizes the ship. It runs under the lee of Cauda', span: 400, journey: 'Journey to Rome' },
+      { place: 'malta', ref: 'Acts 27:18-28:10', event: 'After fourteen days the ship runs aground. All 276 reach land. They winter on the island', span: 350, journey: 'Journey to Rome' },
+      { place: 'syracuse', ref: 'Acts 28:11-12', event: 'They sail in a ship of Alexandria and stay three days at Syracuse', span: 450, journey: 'Journey to Rome' },
       { place: 'rhegium', ref: 'Acts 28:13', event: 'They sail around to Rhegium', span: 350, journey: 'Journey to Rome' },
-      { place: 'puteoli', ref: 'Acts 28:13–14', event: 'They find brothers at Puteoli and stay seven days', span: 300, journey: 'Journey to Rome' },
-      { place: 'rome', ref: 'Acts 28:14–31', event: 'Paul lives two years in his own rented house. He welcomes all and preaches the kingdom of God', span: 250, journey: 'Journey to Rome' },
+      { place: 'puteoli', ref: 'Acts 28:13-14', event: 'They find brothers at Puteoli and stay seven days', span: 300, journey: 'Journey to Rome' },
+      { place: 'rome', ref: 'Acts 28:14-31', event: 'Paul lives two years in his own rented house. He welcomes all and preaches the kingdom of God', span: 250, journey: 'Journey to Rome' },
     ],
-  },
+  },  CHURCH,
 ]
 
-// Paul crosses Asia between Lystra and Troas (Acts 16:6–8). The route runs through the seven churches
-// of Revelation 2–3. Acts does not name them, so they are not stops.
+// Paul crosses Asia between Lystra and Troas (Acts 16:6-8). The route runs through the seven churches
+// of Revelation 2-3. Acts does not name them, so they are not stops.
 const paul = FAMILIES.find((f) => f.id === 'paul')!
 paul.via = {
   [paul.stops.findIndex((s, i) => s.place === 'lystra' && paul.stops[i + 1]?.place === 'troas')]: [
-    { place: 'laodicea', ref: 'Rev 3:14–22' },
-    { place: 'philadelphia', ref: 'Rev 3:7–13' },
-    { place: 'ephesus', ref: 'Rev 2:1–7' },
-    { place: 'smyrna', ref: 'Rev 2:8–11' },
-    { place: 'sardis', ref: 'Rev 3:1–6' },
-    { place: 'thyatira', ref: 'Rev 2:18–29' },
-    { place: 'pergamum', ref: 'Rev 2:12–17' },
+    { place: 'laodicea', ref: 'Rev 3:14-22' },
+    { place: 'philadelphia', ref: 'Rev 3:7-13' },
+    { place: 'ephesus', ref: 'Rev 2:1-7' },
+    { place: 'smyrna', ref: 'Rev 2:8-11' },
+    { place: 'sardis', ref: 'Rev 3:1-6' },
+    { place: 'thyatira', ref: 'Rev 2:18-29' },
+    { place: 'pergamum', ref: 'Rev 2:12-17' },
   ],
 }
 

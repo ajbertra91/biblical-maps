@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { MapLayer } from './MapLayer'
 import { PhotoViewer } from './PhotoViewer'
 import { centerOf, type Key } from './camera'
-import { FAMILIES, FORCES, PLACES, familyById, type Confidence, type FamilyId, type Stop } from './data/places'
+import { BASIS, FAMILIES, FORCES, PLACES, familyById, type Confidence, type Family, type FamilyId, type Stop } from './data/places'
 import { PHOTOS } from './data/photos'
 import { distanceKm, project, type Pt } from './data/geo-utils'
 import { useScrollCamera } from './useScrollCamera'
@@ -17,6 +17,33 @@ const pad = (n: number) => String(n).padStart(2, '0')
 /** Last stop before index i that is on the route. */
 const routeStopBefore = (stops: Stop[], i: number) => stops.slice(0, i).reverse().find((s) => !s.offRoute)
 const prefersReduced = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+const latLon = (lat: number, lon: number) =>
+  `${Math.abs(lat).toFixed(3)}°${lat >= 0 ? 'N' : 'S'} ${Math.abs(lon).toFixed(3)}°${lon >= 0 ? 'E' : 'W'}`
+
+/** A time bar. It marks each stop at its year and shows the era of the current stop. */
+function Timeline({ family, chapter }: { family: Family; chapter: number }) {
+  const tl = family.timeline!
+  const pct = (y: number) => `${(((y - tl.from) / (tl.to - tl.from)) * 100).toFixed(2)}%`
+  const cur = chapter > 0 ? family.stops[chapter - 1] : undefined
+  const era = cur?.year !== undefined ? tl.eras.find((e) => cur.year! >= e.from && cur.year! < e.to) ?? tl.eras[tl.eras.length - 1] : undefined
+  const ticks: number[] = []
+  for (let y = Math.ceil(tl.from / 100) * 100; y <= tl.to; y += 100) ticks.push(y)
+  return (
+    <div className="timeline" aria-hidden="true">
+      <p className="tl-head"><span className="num">{tl.from}-{tl.to} CE</span>{era && <b>{era.name}</b>}{cur && <span className="num now">{cur.when ?? cur.year}</span>}</p>
+      <div className="tl-track">
+        {tl.eras.map((e) => (
+          <span key={e.name} className="tl-era" data-on={e === era} style={{ left: pct(e.from), width: `calc(${pct(e.to)} - ${pct(e.from)})` }} />
+        ))}
+        {family.stops.map((s, i) => s.year !== undefined && (
+          <i key={i} className="tl-dot" data-reached={chapter >= i + 1} style={{ left: pct(s.year) }} />
+        ))}
+        {cur?.year !== undefined && <span className="tl-now" style={{ left: pct(cur.year) }} />}
+      </div>
+      <div className="tl-ticks num">{ticks.map((y) => <span key={y} style={{ left: pct(y) }}>{y}</span>)}</div>
+    </div>
+  )
+}
 
 function App({ initial = 'military' }: { initial?: FamilyId }) {
   const [familyId, setFamilyId] = useState<FamilyId>(initial)
@@ -167,9 +194,17 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
               <p><b>Via</b> Some routes pass through places that the stop does not name. They show as small marks with their own citation. They are not stops.</p>
               <p><b>Armies</b> Arrows join places that the text names for a movement. Each arrow cites its passage. The paths are schematic.</p>
               <p><b>Scripture</b> Each stop cites its passage. Check each reference in your own translation.</p>
+              {family.id === 'church' && (
+                <>
+                  <p><b>Early church</b> Stops after Acts cite early writers, such as Eusebius, Irenaeus and Josephus. Each stop shows how it is known: Scripture, an early record, or a later tradition. Most stories of where the Twelve went come from later tradition.</p>
+                  <p><b>Dates</b> Many dates are approximate or debated. The timeline puts each stop at one year.</p>
+                </>
+              )}
             </div>
           </details>
         </header>
+
+        {family.timeline && <Timeline family={family} chapter={chapter} />}
 
         <div className="hud hud-tr" ref={readout} aria-hidden="true">
           <div className="coords"><span className="k">Lat</span> <span className="v-lat" /><br /><span className="k">Lon</span> <span className="v-lon" /></div>
@@ -182,7 +217,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
             {stops.map((s, i) => (
               <li key={i}>
                 <button onClick={() => goTo(i + 1)} aria-current={chapter === i + 1 ? 'step' : undefined} data-reached={chapter >= i + 1}>
-                  <span className="n">{pad(i + 1)}</span>
+                  <span className="n">{family.timeline && s.year !== undefined ? s.year : pad(i + 1)}</span>
                   <span className="t">{nameOf(s.place)}</span>
                 </button>
               </li>
@@ -196,8 +231,10 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
             <>
               <p className="meta">
                 <span className="num">{pad(chapter)} / {pad(stops.length)}</span>
+                {stop.when && <span className="tag when">{stop.when}</span>}
+                {stop.basis && <span className="tag" data-b={stop.basis}>{BASIS[stop.basis]}</span>}
                 <span className="tag" data-c={place.confidence}>{CONFIDENCE[place.confidence]}</span>
-                {stop.journey && <span className="tag">{stop.journey}</span>}
+                {stop.journey && !family.timeline && <span className="tag">{stop.journey}</span>}
               </p>
               <h1 className="place-name">{nameOf(stop.place)}</h1>
               <p className="event">{stop.event}</p>
@@ -222,7 +259,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
                 </ul>
               )}
               <p className="data num">
-                {place.schematic ? 'Location unknown' : `${place.lat.toFixed(3)}°N ${place.lon.toFixed(3)}°E`}
+                {place.schematic ? 'Location unknown' : latLon(place.lat, place.lon)}
                 {hasRoute && legKm[chapter - 1] > 0 && ` · ≈${Math.round(legKm[chapter - 1])} km from ${PLACES[routeStopBefore(stops, chapter - 1)!.place].name}`}
               </p>
               {stop.note && <p className="note">{stop.note}</p>}
@@ -230,7 +267,7 @@ function App({ initial = 'military' }: { initial?: FamilyId }) {
             </>
           ) : (
             <>
-              <p className="meta"><span className="num">00 / {pad(stops.length)}</span></p>
+              <p className="meta"><span className="num">00 / {pad(stops.length)}</span>{family.timeline && <span className="tag when">{family.timeline.from}-{family.timeline.to} CE</span>}</p>
               <h1 className="place-name">{family.name}</h1>
               <p className="event">{family.sub}</p>
               <p className="data num">{hasRoute ? `${stops.length} stops · ≈${Math.round(totalKm)} km in straight lines` : `${stops.length} ${terms.many}`}</p>

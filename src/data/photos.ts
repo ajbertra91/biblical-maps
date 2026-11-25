@@ -485,7 +485,7 @@ export const PHOTOS: Record<string, Photo[]> = {
   "nebo": [
     {
       "src": "assets/places/nebo/1.jpg",
-      "caption": "The view from Mount Nebo over the Dead Sea, the Jordan Valley and Jericho (Deut 34:1–3).",
+      "caption": "The view from Mount Nebo over the Dead Sea, the Jordan Valley and Jericho (Deut 34:1-3).",
       "credit": "Mohammad hajeer",
       "license": "CC BY 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
@@ -669,7 +669,7 @@ export const PHOTOS: Record<string, Photo[]> = {
     },
     {
       "src": "assets/places/gilgal/3.jpg",
-      "caption": "A hill in the Jordan Valley that tradition links to the camp at Gilgal (Josh 5:2–9).",
+      "caption": "A hill in the Jordan Valley that tradition links to the camp at Gilgal (Josh 5:2-9).",
       "credit": "Rgrobman",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
@@ -1018,7 +1018,7 @@ export const PHOTOS: Record<string, Photo[]> = {
     },
     {
       "src": "assets/places/michmash/2.jpg",
-      "caption": "The gorge between Geba and Michmash. Jonathan climbed the cliffs here to the Philistine garrison (1 Sam 14:4–5).",
+      "caption": "The gorge between Geba and Michmash. Jonathan climbed the cliffs here to the Philistine garrison (1 Sam 14:4-5).",
       "credit": "Matson Collection",
       "license": "Public domain",
       "source": "https://commons.wikimedia.org/wiki/File:Area_near_Jerusalem._Michmash_Gorge._I_Sam_14-4,_5_LOC_matpc.22846.tif"

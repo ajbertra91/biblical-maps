@@ -8,7 +8,7 @@ import { PHOTOS } from './data/photos'
 // Every photo file in public/assets. Vite lists the paths. It does not load the files.
 const FILES = Object.keys(import.meta.glob('/public/assets/places/**/*.jpg'))
 
-const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John|Acts) \d+/
+const REF = /^(Gen|Exod|Num|Deut|Josh|1 Sam|2 Sam|1 Kgs|2 Kgs|Matt|Luke|John|Acts|Gal|Rev) \d+/
 
 describe('App', () => {
   it('opens on the conquest overview with a Scripture-cited stop list', () => {
@@ -22,9 +22,12 @@ describe('App', () => {
     for (const f of FAMILIES) {
       for (const s of f.stops) {
         expect(PLACES[s.place], `${f.id}: ${s.place}`).toBeDefined()
-        expect(s.ref).toMatch(REF)
+        // A stop known from an early record or a later tradition cites that source, not Scripture.
+        if (!s.basis || s.basis === 'scripture') expect(s.ref).toMatch(REF)
+        else expect(s.ref.length, `${f.id}: ${s.place}`).toBeGreaterThan(3)
         for (const m of s.moves ?? []) {
-          expect(m.ref, `${f.id}: ${m.label}`).toMatch(REF)
+          if (f.timeline) expect(m.ref.length, `${f.id}: ${m.label}`).toBeGreaterThan(3)
+          else expect(m.ref, `${f.id}: ${m.label}`).toMatch(REF)
           expect(m.path.length).toBeGreaterThan(1)
           for (const id of m.path) expect(PLACES[id], `${f.id}: ${m.label}: ${id}`).toBeDefined()
         }
@@ -32,12 +35,31 @@ describe('App', () => {
     }
   })
 
+  it('dates every early church stop and keeps the stops in time order', () => {
+    const church = FAMILIES.find((f) => f.id === 'church')!
+    const years = church.stops.map((s) => s.year!)
+    for (const s of church.stops) {
+      expect(s.year, s.place).toBeGreaterThanOrEqual(church.timeline!.from)
+      expect(s.year, s.place).toBeLessThanOrEqual(church.timeline!.to)
+      expect(s.when, s.place).toBeTruthy()
+      expect(s.basis, s.place).toBeTruthy()
+    }
+    expect(years).toEqual([...years].sort((a, b) => a - b))
+  })
+
+  it('shows the time bar and the basis of each early church stop', () => {
+    render(<App initial="church" />)
+    expect(screen.getByRole('heading', { name: 'Early church' })).toBeInTheDocument()
+    expect(document.querySelector('.timeline')).toHaveTextContent('30-500 CE')
+    expect(screen.getByRole('button', { name: /mylapore, origen/i })).toBeInTheDocument()
+  })
+
   it('shows Saul and David battles with cited army movements', () => {
     render(<App />)
     fireEvent.click(screen.getByRole('button', { name: 'Kings' }))
     expect(screen.getByRole('heading', { name: 'Kings' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /mount gilboa, 1 sam 31:1–6/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /rabbah, 2 sam 10:6–14; 2 sam 11:1, 14–17; 2 sam 12:26–31/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /mount gilboa, 1 sam 31:1-6/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /rabbah, 2 sam 10:6-14; 2 sam 11:1, 14-17; 2 sam 12:26-31/i })).toBeInTheDocument()
     expect(document.querySelector('.routes path')).toBeNull()
   })
 
@@ -54,11 +76,11 @@ describe('App', () => {
 
   it('shows every reference for a place in a pop-up on focus', () => {
     render(<App />)
-    fireEvent.focus(screen.getByRole('button', { name: /^ai, josh 7:2–5; josh 8:1–29/i }))
+    fireEvent.focus(screen.getByRole('button', { name: /^ai, josh 7:2-5; josh 8:1-29/i }))
     const box = document.querySelector('.cite-box')!
     expect(box).toHaveTextContent('Ai')
-    expect(box).toHaveTextContent('Josh 7:2–5')
-    expect(box).toHaveTextContent('Josh 8:1–29')
+    expect(box).toHaveTextContent('Josh 7:2-5')
+    expect(box).toHaveTextContent('Josh 8:1-29')
   })
 
   it('puts the Table of Nations first, then Abraham', () => {
@@ -69,7 +91,7 @@ describe('App', () => {
     expect(second).toHaveTextContent('Abraham')
     fireEvent.click(first)
     expect(screen.getByRole('heading', { name: 'Nations' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /^gomer, gen 10:2–3/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^gomer, gen 10:2-3/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /^sheba, gen 10:7; gen 10:28/i })).toBeInTheDocument()
   })
 
@@ -77,8 +99,8 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getByRole('button', { name: 'Abraham' }))
     expect(screen.getByRole('heading', { name: 'Abraham' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /^ur, gen 11:27–31/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /mount moriah, gen 22:1–14/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^ur, gen 11:27-31/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /mount moriah, gen 22:1-14/i })).toBeInTheDocument()
   })
 
   it('has a local file and a credit for every site photo', () => {
@@ -120,10 +142,10 @@ describe('App', () => {
     const paul = FAMILIES.find((f) => f.id === 'paul')!
     expect(paul.stops.every((s) => s.ref.startsWith('Acts'))).toBe(true)
     expect([...new Set(paul.stops.map((s) => s.journey))]).toEqual(['First journey', 'Between journeys', 'Second journey', 'Third journey', 'Journey to Rome'])
-    expect(screen.getByRole('button', { name: /^paphos, acts 13:6–12/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /^athens, acts 17:15–34/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /^miletus, acts 20:15–38/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /^rome, acts 28:14–31/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^paphos, acts 13:6-12/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^athens, acts 17:15-34/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^miletus, acts 20:15-38/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /^rome, acts 28:14-31/i })).toBeInTheDocument()
     // The seven churches of Revelation lie on the route from Lystra to Troas. They are not stops.
     const via = Object.values(paul.via!).flat()
     expect(via.map((v) => v.place)).toEqual(['laodicea', 'philadelphia', 'ephesus', 'smyrna', 'sardis', 'thyatira', 'pergamum'])

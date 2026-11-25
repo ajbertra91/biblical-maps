@@ -41,7 +41,7 @@ export function Landing() {
       </header>
       <section className="landing-intro">
         <h1>Choose a map</h1>
-        <p>Each map follows one story across the land. Scroll to move from place to place. Every stop cites Scripture.</p>
+        <p>Each map follows one story across the land. Scroll to move from place to place. Every stop cites its source: Scripture, or an early writer on the church map.</p>
       </section>
       <ul className="choices" aria-label="Maps">
         {FAMILIES.map((f) => (

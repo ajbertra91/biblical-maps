@@ -3,18 +3,19 @@ import { GEO_BOUNDS, GEO_H, GEO_W, LAKES, LAND, RIVERS } from './data/geo'
 import { leg, paddedHull, project, through, type Pt } from './data/geo-utils'
 import { PLACES, type Family } from './data/places'
 
-const REGIONS: { t: string; lat: number; lon: number; rot?: number; start?: boolean; level: 'wide' | 'mid' | 'close'; water?: boolean }[] = [
+// `small` labels hide when the whole map shows, so the labels of the wider world stay clear.
+const REGIONS: { t: string; lat: number; lon: number; rot?: number; start?: boolean; level: 'wide' | 'mid' | 'close'; water?: boolean; small?: true }[] = [
   { t: 'EGYPT', lat: 29.9, lon: 30.5, level: 'wide' },
-  { t: 'SINAI', lat: 29.0, lon: 33.7, level: 'wide' },
-  { t: 'CANAAN', lat: 32.1, lon: 35.0, rot: -90, level: 'wide' },
-  { t: 'MOAB', lat: 31.3, lon: 36.1, level: 'wide' },
-  { t: 'EDOM', lat: 30.2, lon: 35.7, level: 'wide' },
+  { t: 'SINAI', lat: 29.0, lon: 33.7, level: 'wide', small: true },
+  { t: 'CANAAN', lat: 32.1, lon: 35.0, rot: -90, level: 'wide', small: true },
+  { t: 'MOAB', lat: 31.3, lon: 36.1, level: 'wide', small: true },
+  { t: 'EDOM', lat: 30.2, lon: 35.7, level: 'wide', small: true },
   { t: 'Mediterranean Sea', lat: 33.6, lon: 33.0, level: 'wide', water: true },
-  { t: 'SHINAR', lat: 32.9, lon: 45.3, level: 'wide' },
-  { t: 'ELAM', lat: 32.6, lon: 47.9, level: 'wide' },
-  { t: 'ARAM-NAHARAIM', lat: 36.25, lon: 40.6, level: 'wide' },
-  { t: 'Euphrates', lat: 34.45, lon: 41.75, rot: 29, level: 'wide', water: true },
-  { t: 'Tigris', lat: 35.0, lon: 44.0, rot: 68, level: 'wide', water: true },
+  { t: 'SHINAR', lat: 32.9, lon: 45.3, level: 'wide', small: true },
+  { t: 'ELAM', lat: 32.6, lon: 47.9, level: 'wide', small: true },
+  { t: 'ARAM-NAHARAIM', lat: 36.25, lon: 40.6, level: 'wide', small: true },
+  { t: 'Euphrates', lat: 34.45, lon: 41.75, rot: 29, level: 'wide', water: true, small: true },
+  { t: 'Tigris', lat: 35.0, lon: 44.0, rot: 68, level: 'wide', water: true, small: true },
   { t: 'Persian Gulf', lat: 29.25, lon: 48.75, level: 'wide', water: true },
   { t: 'ANATOLIA', lat: 39.2, lon: 31.0, level: 'wide' },
   { t: 'ARABIA', lat: 23.5, lon: 43.0, level: 'wide' },
@@ -22,13 +23,28 @@ const REGIONS: { t: string; lat: number; lon: number; rot?: number; start?: bool
   { t: 'NUBIA', lat: 18.5, lon: 29.0, level: 'wide' },
   { t: 'Black Sea', lat: 43.0, lon: 34.0, level: 'wide', water: true },
   { t: 'Red Sea', lat: 21.0, lon: 38.0, rot: 50, level: 'wide', water: true },
+  // The wider world of the early church
+  { t: 'HISPANIA', lat: 40.0, lon: -4.0, level: 'wide' },
+  { t: 'GAUL', lat: 46.8, lon: 2.5, level: 'wide' },
+  { t: 'BRITAIN', lat: 52.6, lon: -1.6, level: 'wide' },
+  { t: 'IRELAND', lat: 53.2, lon: -8.0, level: 'wide' },
+  { t: 'GERMANIA', lat: 51.5, lon: 11.0, level: 'wide' },
+  { t: 'ITALY', lat: 42.6, lon: 12.9, rot: -50, level: 'wide' },
+  { t: 'AFRICA', lat: 34.6, lon: 8.6, level: 'wide' },
+  { t: 'ARMENIA', lat: 39.6, lon: 42.5, level: 'wide' },
+  { t: 'PERSIA', lat: 30.5, lon: 54.0, level: 'wide' },
+  { t: 'INDIA', lat: 20.0, lon: 77.0, level: 'wide' },
+  { t: 'AKSUM', lat: 15.6, lon: 37.6, level: 'wide' },
+  { t: 'Caspian Sea', lat: 42.0, lon: 50.8, level: 'wide', water: true },
+  { t: 'Arabian Sea', lat: 15.5, lon: 64.0, level: 'wide', water: true },
+  { t: 'Atlantic Ocean', lat: 45.5, lon: -8.5, level: 'wide', water: true },
   { t: 'Dead Sea', lat: 31.45, lon: 35.66, start: true, level: 'mid', water: true },
   { t: 'Sea of Galilee', lat: 32.8, lon: 35.7, start: true, level: 'mid', water: true },
 ]
 
 // Reference cities that are not stops. Each cites Scripture.
 const LANDMARKS = [
-  { t: 'Babylon', lat: 32.5425, lon: 44.4211, ref: 'Gen 10:10; 11:1–9', note: 'Babel, in the land of Shinar' },
+  { t: 'Babylon', lat: 32.5425, lon: 44.4211, ref: 'Gen 10:10; 11:1-9', note: 'Babel, in the land of Shinar' },
 ]
 
 const GRATICULE = (() => {
@@ -99,7 +115,7 @@ export const MapLayer = memo(function MapLayer({ family, active, svgRef, onPick,
         {REGIONS.map((r) => {
           const [x, y] = project(r.lat, r.lon)
           return (
-            <text key={r.t} className={`region lv-${r.level}${r.water ? ' water' : ''}`} x={x} y={y} textAnchor={r.start ? "start" : "middle"} transform={r.rot ? `rotate(${r.rot} ${x} ${y})` : undefined}>
+            <text key={r.t} className={`region lv-${r.level}${r.water ? ' water' : ''}${r.small ? ' small' : ''}`} x={x} y={y} textAnchor={r.start ? "start" : "middle"} transform={r.rot ? `rotate(${r.rot} ${x} ${y})` : undefined}>
               {r.t}
             </text>
           )
